@@ -70,7 +70,7 @@ export const Rsvp: React.FC = () => {
             </p>
 
             <h2
-              className="text-2xl font-serif text-forest tracking-tight"
+              className="text-2xl font-serif text-forest tracking-tight text-embossed"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               {weddingConfig.rsvp.heading}

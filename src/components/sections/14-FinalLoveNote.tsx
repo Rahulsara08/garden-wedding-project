@@ -39,7 +39,7 @@ export const FinalLoveNote: React.FC = () => {
         </p>
 
         <h2
-          className="text-3xl sm:text-4xl font-serif text-forest tracking-normal my-3"
+          className="text-3xl sm:text-4xl font-serif text-forest tracking-normal my-3 text-embossed"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           {loveNote.names}

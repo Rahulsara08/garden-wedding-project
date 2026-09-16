@@ -259,7 +259,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.9, delay: 0.35 }}
-                  className="text-xl sm:text-2xl font-serif text-forest tracking-normal mb-1.5 flex items-center justify-center flex-wrap"
+                  className="text-xl sm:text-2xl font-serif text-forest tracking-normal mb-1.5 flex items-center justify-center flex-wrap text-embossed"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
                   <span>{weddingConfig.couple.brideFirstName}</span>

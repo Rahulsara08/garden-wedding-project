@@ -28,7 +28,7 @@ export const GetInTouch: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl font-serif text-forest tracking-tight"
+            className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {contacts.heading}

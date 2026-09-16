@@ -76,7 +76,7 @@ export const Countdown: React.FC = () => {
             UNTIL WE SAY I DO
           </p>
 
-          <h2 className="font-script text-2xl sm:text-[1.7rem] text-forest">
+          <h2 className="font-script text-2xl sm:text-[1.7rem] text-forest text-embossed">
             Countdown to Our Forever
           </h2>
 

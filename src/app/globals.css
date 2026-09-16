@@ -50,6 +50,36 @@ body {
   background-position: 0 0, 12px 12px;
 }
 
+/* Embossed / Raised Letterpress Heading Effect */
+.text-embossed {
+  text-shadow: 
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px 1px 1px rgba(31, 41, 33, 0.28),
+    1px 2px 4px rgba(31, 41, 33, 0.12);
+  letter-spacing: -0.01em;
+}
+
+.text-embossed-gold {
+  text-shadow: 
+    -1px -1px 0 rgba(255, 255, 255, 0.95),
+    1px 1px 1px rgba(143, 110, 54, 0.35),
+    1px 2px 4px rgba(143, 110, 54, 0.2);
+}
+
+/* Subtle float animation for floral garlands and ornaments */
+@keyframes floralSway {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0.6deg);
+  }
+}
+
+.animate-floral-sway {
+  animation: floralSway 5s ease-in-out infinite;
+}
+
 /* Gold glow for seals and buttons */
 .gold-glow {
   box-shadow: 0 0 25px rgba(182, 141, 76, 0.35);

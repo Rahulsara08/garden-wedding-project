@@ -84,7 +84,7 @@ export const HeroWelcome: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-2xl sm:text-3xl font-serif text-forest tracking-normal my-1 flex items-center justify-center flex-wrap"
+            className="text-2xl sm:text-3xl font-serif text-forest tracking-normal my-1 flex items-center justify-center flex-wrap text-embossed"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             <span>{weddingConfig.couple.brideFirstName}</span>

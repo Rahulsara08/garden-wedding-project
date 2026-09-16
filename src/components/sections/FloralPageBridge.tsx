@@ -16,75 +16,83 @@ export const FloralPageBridge: React.FC = () => {
   });
 
   // Parallax & Reveal animations as user scrolls between Page 1 and Page 2
-  const imageScale = useTransform(scrollYProgress, [0.05, 0.5], [0.95, 1]);
-  const imageOpacity = useTransform(scrollYProgress, [0.05, 0.4], [0, 1]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [-8, 12]);
+  const imageScale = useTransform(scrollYProgress, [0.05, 0.45], [0.92, 1.04]);
+  const imageOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [-15, 20]);
 
   // Floating petal parallax
-  const petalY1 = useTransform(scrollYProgress, [0, 1], [-12, 30]);
-  const petalRotate1 = useTransform(scrollYProgress, [0, 1], [-10, 20]);
-  const petalY2 = useTransform(scrollYProgress, [0, 1], [-8, 38]);
-  const petalRotate2 = useTransform(scrollYProgress, [0, 1], [6, -22]);
+  const petalY1 = useTransform(scrollYProgress, [0, 1], [-16, 45]);
+  const petalRotate1 = useTransform(scrollYProgress, [0, 1], [-15, 25]);
+  const petalY2 = useTransform(scrollYProgress, [0, 1], [-10, 50]);
+  const petalRotate2 = useTransform(scrollYProgress, [0, 1], [10, -30]);
 
   return (
     <div
       ref={bridgeRef}
-      className="relative w-full py-2 bg-ivory paper-texture flex flex-col items-center justify-center overflow-hidden my-0 select-none z-10"
+      className="relative w-full py-6 sm:py-10 bg-ivory paper-texture flex flex-col items-center justify-center overflow-hidden my-0 select-none z-10"
       aria-hidden="true"
     >
-      {/* Soft Gradient Blend Masks for Seamless Integration */}
-      <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-ivory via-ivory/80 to-transparent z-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-ivory via-ivory/80 to-transparent z-20 pointer-events-none" />
+      {/* Soft Gradient Blend Masks for Seamless Transition */}
+      <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-ivory via-ivory/90 to-transparent z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-ivory via-ivory/90 to-transparent z-20 pointer-events-none" />
 
-      {/* Photorealistic Floral Garland Image */}
+      {/* Photorealistic Floral Garland with sway & parallax */}
       <motion.div
         style={{ scale: imageScale, opacity: imageOpacity, y: imageY }}
-        className="relative w-full max-w-[440px] mx-auto px-1 z-10"
+        className="relative w-full max-w-[480px] sm:max-w-[560px] mx-auto px-2 z-10"
       >
-        <div className="relative w-full aspect-[16/9]">
+        <motion.div
+          animate={{
+            y: [0, -5, 0],
+            rotate: [0, 0.4, 0, -0.4, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="relative w-full aspect-[1024/682] filter drop-shadow-[0_8px_16px_rgba(44,56,38,0.08)]"
+        >
           <Image
-            src="/assets/watercolor/floral-garland-bridge.jpg"
-            alt="Hanging floral garland with roses, marigolds, jasmine and green vines"
+            src="/assets/watercolor/floral-garland-bridge.png"
+            alt="Real flower garland with pink roses, marigolds, jasmine and green leafy vines"
             fill
+            priority
             unoptimized
-            sizes="(max-width: 768px) 100vw, 440px"
+            sizes="(max-width: 768px) 100vw, 560px"
             className="object-contain object-top"
           />
-          {/* Soft edge fade to blend naturally into ivory background */}
-          <div className="absolute inset-0 pointer-events-none" style={{
-            boxShadow: "inset 0 0 30px 20px var(--color-ivory, #FAF3E4)",
-          }} />
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Floating Flower Petals with Parallax */}
       <motion.div
         style={{ y: petalY1, rotate: petalRotate1 }}
-        className="absolute left-[15%] top-6 w-3 h-4 text-gold-dark/40 pointer-events-none z-5"
+        className="absolute left-[12%] top-8 w-3.5 h-5 text-gold-dark/40 pointer-events-none z-5"
       >
         <svg viewBox="0 0 20 28" fill="currentColor">
-          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.6" />
+          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.65" />
         </svg>
       </motion.div>
 
       <motion.div
         style={{ y: petalY2, rotate: petalRotate2 }}
-        className="absolute right-[18%] top-10 w-2.5 h-3.5 text-rose-800/30 pointer-events-none z-5"
+        className="absolute right-[14%] top-12 w-3 h-4 text-rose-800/35 pointer-events-none z-5"
       >
         <svg viewBox="0 0 20 28" fill="currentColor">
-          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.45" />
+          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.5" />
         </svg>
       </motion.div>
 
       {/* Center Ornamental Divider below garland */}
       <motion.div
         style={{
-          scale: useTransform(scrollYProgress, [0.3, 0.65], [0.85, 1]),
-          opacity: useTransform(scrollYProgress, [0.3, 0.6], [0, 1]),
+          scale: useTransform(scrollYProgress, [0.25, 0.55], [0.85, 1]),
+          opacity: useTransform(scrollYProgress, [0.25, 0.5], [0, 1]),
         }}
-        className="relative z-30 flex flex-col items-center justify-center px-4 -mt-4"
+        className="relative z-30 flex flex-col items-center justify-center px-4 -mt-2 sm:-mt-4"
       >
-        <div className="flex items-center justify-center gap-3 w-full max-w-[200px]">
+        <div className="flex items-center justify-center gap-3 w-full max-w-[220px]">
           {/* Left Decorative Line */}
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/40 to-gold/70" />
 
