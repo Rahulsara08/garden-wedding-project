@@ -15,13 +15,10 @@ export const FloralPageBridge: React.FC = () => {
   });
 
   // Parallax & Reveal animations as user scrolls between Page 1 and Page 2
-  const leftVineX = useTransform(scrollYProgress, [0.15, 0.55], [-30, 0]);
-  const leftVineOpacity = useTransform(scrollYProgress, [0.15, 0.5], [0, 0.65]);
+  const ropeScaleX = useTransform(scrollYProgress, [0.1, 0.5], [0.88, 1]);
+  const ropeOpacity = useTransform(scrollYProgress, [0.1, 0.45], [0, 1]);
 
-  const rightVineX = useTransform(scrollYProgress, [0.15, 0.55], [30, 0]);
-  const rightVineOpacity = useTransform(scrollYProgress, [0.15, 0.5], [0, 0.65]);
-
-  const centerSealScale = useTransform(scrollYProgress, [0.2, 0.6], [0.88, 1]);
+  const centerSealScale = useTransform(scrollYProgress, [0.2, 0.6], [0.85, 1]);
   const centerSealOpacity = useTransform(scrollYProgress, [0.2, 0.55], [0, 1]);
 
   const petalY1 = useTransform(scrollYProgress, [0, 1], [-15, 35]);
@@ -30,59 +27,163 @@ export const FloralPageBridge: React.FC = () => {
   const petalY2 = useTransform(scrollYProgress, [0, 1], [-10, 45]);
   const petalRotate2 = useTransform(scrollYProgress, [0, 1], [8, -25]);
 
-  const petalY3 = useTransform(scrollYProgress, [0, 1], [-25, 25]);
-  const petalRotate3 = useTransform(scrollYProgress, [0, 1], [0, 35]);
-
   return (
     <div
       ref={bridgeRef}
-      className="relative w-full h-28 sm:h-36 bg-ivory paper-texture flex items-center justify-center overflow-hidden my-0 select-none z-10"
+      className="relative w-full h-36 sm:h-44 bg-ivory paper-texture flex flex-col items-center justify-center overflow-hidden my-0 select-none z-10"
       aria-hidden="true"
     >
       {/* Soft Gradient Blend Masks at Top and Bottom for Seamless Integration */}
       <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-ivory via-ivory/80 to-transparent z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-ivory via-ivory/80 to-transparent z-10 pointer-events-none" />
 
-      {/* Left Delicate Floral Vine SVG */}
+      {/* Main Floral Rope Garland Container */}
       <motion.div
-        style={{ x: leftVineX, opacity: leftVineOpacity }}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-20 sm:w-28 h-auto text-forest/40 pointer-events-none z-0"
+        style={{ scaleX: ropeScaleX, opacity: ropeOpacity }}
+        className="relative w-full max-w-[420px] mx-auto px-2 flex flex-col items-center justify-center z-20"
       >
-        <svg viewBox="0 0 120 160" fill="none" className="w-full h-full stroke-current" strokeWidth="1.2">
-          {/* Main vine stem */}
-          <path d="M-10 140 C 20 110, 40 80, 25 20 C 20 5, 15 -10, 10 -20" strokeLinecap="round" />
-          {/* Leaves */}
-          <path d="M18 100 C 35 95, 45 105, 38 118 C 30 115, 22 105, 18 100 Z" fill="currentColor" fillOpacity="0.12" />
-          <path d="M28 70 C 48 62, 55 75, 46 88 C 38 82, 30 75, 28 70 Z" fill="currentColor" fillOpacity="0.15" />
-          <path d="M24 40 C 42 30, 48 42, 38 52 C 30 48, 25 44, 24 40 Z" fill="currentColor" fillOpacity="0.12" />
-          {/* Small Gold Accent Buds */}
-          <circle cx="48" cy="60" r="2.5" className="fill-gold/60 stroke-none" />
-          <circle cx="38" cy="30" r="2" className="fill-gold/60 stroke-none" />
+        <svg
+          viewBox="0 0 400 120"
+          fill="none"
+          className="w-full h-auto overflow-visible pointer-events-none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* --- 1. BRAIDED RUSTIC GOLD ROPE GARLAND WITH NATURAL CURVE (Image 2 style) --- */}
+          {/* Base Rope Shadow */}
+          <path
+            d="M 0,22 Q 100,36 200,28 Q 300,36 400,22"
+            stroke="#1F2921"
+            strokeWidth="3.5"
+            strokeOpacity="0.25"
+            strokeLinecap="round"
+          />
+          {/* Primary Braided Gold Rope Strand */}
+          <path
+            d="M 0,20 Q 100,34 200,26 Q 300,34 400,20"
+            stroke="#B68D4C"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          {/* Twisted Secondary Rope Accent */}
+          <path
+            d="M 0,20 Q 100,34 200,26 Q 300,34 400,20"
+            stroke="#FAF3E4"
+            strokeWidth="1.2"
+            strokeDasharray="4 4"
+            strokeLinecap="round"
+          />
+
+          {/* --- 2. TIED FLOWERS & LEAVES WRAPPED ALONG THE ROPE (Image 2 style) --- */}
+          {/* Left Flower Bunch (At x=70) */}
+          <g transform="translate(70, 24)">
+            {/* Cluster Green Leaves */}
+            <path d="M-18,-8 C-30,-22 -14,-32 0,-16 Z" fill="#1F2921" fillOpacity="0.75" />
+            <path d="M-8,-16 C10,-30 24,-12 6,-6 Z" fill="#2E4232" fillOpacity="0.8" />
+            <path d="M-22,6 C-34,-4 -28,14 -12,12 Z" fill="#1F2921" fillOpacity="0.65" />
+            
+            {/* Soft Cream Blossom */}
+            <circle cx="-10" cy="-10" r="9" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="-10" cy="-10" r="3.5" fill="#E5A93C" />
+            
+            {/* Marigold Amber Blossom */}
+            <circle cx="8" cy="-6" r="11" fill="#E5A93C" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="8" cy="-6" r="4" fill="#B68D4C" />
+            
+            {/* Rose Pink Blossom */}
+            <circle cx="-2" cy="4" r="10" fill="#D98880" stroke="#FAF3E4" strokeWidth="0.8" />
+            <circle cx="-2" cy="4" r="3.5" fill="#900C3F" />
+          </g>
+
+          {/* Right Flower Bunch (At x=330) */}
+          <g transform="translate(330, 24)">
+            {/* Cluster Green Leaves */}
+            <path d="M18,-8 C30,-22 14,-32 0,-16 Z" fill="#1F2921" fillOpacity="0.75" />
+            <path d="M8,-16 C-10,-30 -24,-12 -6,-6 Z" fill="#2E4232" fillOpacity="0.8" />
+            <path d="M22,6 C34,-4 28,14 12,12 Z" fill="#1F2921" fillOpacity="0.65" />
+            
+            {/* Soft Cream Blossom */}
+            <circle cx="10" cy="-10" r="9" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="10" cy="-10" r="3.5" fill="#E5A93C" />
+            
+            {/* Marigold Amber Blossom */}
+            <circle cx="-8" cy="-6" r="11" fill="#E5A93C" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="-8" cy="-6" r="4" fill="#B68D4C" />
+            
+            {/* Rose Pink Blossom */}
+            <circle cx="2" cy="4" r="10" fill="#D98880" stroke="#FAF3E4" strokeWidth="0.8" />
+            <circle cx="2" cy="4" r="3.5" fill="#900C3F" />
+          </g>
+
+          {/* Center Flanking Flower Ties (At x=140 and x=260) */}
+          <g transform="translate(138, 27)">
+            <path d="M-12,-10 C-22,-18 -8,-24 0,-12 Z" fill="#2E4232" fillOpacity="0.75" />
+            <circle cx="0" cy="0" r="8" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="0" cy="0" r="3" fill="#D98880" />
+          </g>
+
+          <g transform="translate(262, 27)">
+            <path d="M12,-10 C22,-18 8,-24 0,-12 Z" fill="#2E4232" fillOpacity="0.75" />
+            <circle cx="0" cy="0" r="8" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="0" cy="0" r="3" fill="#D98880" />
+          </g>
+
+          {/* --- 3. HANGING REAL FLOWER STRANDS & VINES WITH CURVE (Image 3 style) --- */}
+          {/* Hanging Strand 1 (Far Left, x=50) */}
+          <g transform="translate(50, 24)">
+            {/* Vertical Rope Cord */}
+            <path d="M 0,0 C -4,25 6,55 0,85" stroke="#B68D4C" strokeWidth="1.2" strokeDasharray="3 3" fill="none" />
+            {/* Dangling Flower Buds & Beads */}
+            <circle cx="-2" cy="20" r="3.5" fill="#E5A93C" />
+            <circle cx="2" cy="40" r="4.5" fill="#D98880" />
+            <path d="M -4,58 C -12,50 -2,42 2,58 Z" fill="#1F2921" fillOpacity="0.7" />
+            <circle cx="0" cy="65" r="5" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="-2" cy="85" r="4" fill="#900C3F" />
+          </g>
+
+          {/* Hanging Strand 2 (Mid-Left, x=110) */}
+          <g transform="translate(110, 26)">
+            {/* Vertical Rope Cord */}
+            <path d="M 0,0 C 5,30 -5,65 2,98" stroke="#B68D4C" strokeWidth="1.2" strokeDasharray="3 3" fill="none" />
+            {/* Dangling Cascading Leaves & Lotus Buds */}
+            <circle cx="2" cy="18" r="4" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <path d="M 6,32 C 14,24 4,16 0,32 Z" fill="#2E4232" fillOpacity="0.8" />
+            <circle cx="-2" cy="45" r="5.5" fill="#E5A93C" />
+            <path d="M -6,62 C -14,54 -4,46 0,62 Z" fill="#1F2921" fillOpacity="0.75" />
+            <circle cx="2" cy="78" r="4.5" fill="#D98880" />
+            <circle cx="2" cy="98" r="3.5" fill="#B68D4C" />
+          </g>
+
+          {/* Hanging Strand 3 (Mid-Right, x=290) */}
+          <g transform="translate(290, 26)">
+            {/* Vertical Rope Cord */}
+            <path d="M 0,0 C -5,30 5,65 -2,98" stroke="#B68D4C" strokeWidth="1.2" strokeDasharray="3 3" fill="none" />
+            {/* Dangling Cascading Leaves & Lotus Buds */}
+            <circle cx="-2" cy="18" r="4" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <path d="M -6,32 C -14,24 -4,16 0,32 Z" fill="#2E4232" fillOpacity="0.8" />
+            <circle cx="2" cy="45" r="5.5" fill="#E5A93C" />
+            <path d="M 6,62 C 14,54 4,46 0,62 Z" fill="#1F2921" fillOpacity="0.75" />
+            <circle cx="-2" cy="78" r="4.5" fill="#D98880" />
+            <circle cx="-2" cy="98" r="3.5" fill="#B68D4C" />
+          </g>
+
+          {/* Hanging Strand 4 (Far Right, x=350) */}
+          <g transform="translate(350, 24)">
+            {/* Vertical Rope Cord */}
+            <path d="M 0,0 C 4,25 -6,55 0,85" stroke="#B68D4C" strokeWidth="1.2" strokeDasharray="3 3" fill="none" />
+            {/* Dangling Flower Buds & Beads */}
+            <circle cx="2" cy="20" r="3.5" fill="#E5A93C" />
+            <circle cx="-2" cy="40" r="4.5" fill="#D98880" />
+            <path d="M 4,58 C 12,50 2,42 -2,58 Z" fill="#1F2921" fillOpacity="0.7" />
+            <circle cx="0" cy="65" r="5" fill="#FAF3E4" stroke="#B68D4C" strokeWidth="0.8" />
+            <circle cx="2" cy="85" r="4" fill="#900C3F" />
+          </g>
         </svg>
       </motion.div>
 
-      {/* Right Delicate Floral Vine SVG */}
-      <motion.div
-        style={{ x: rightVineX, opacity: rightVineOpacity }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-20 sm:w-28 h-auto text-forest/40 pointer-events-none z-0"
-      >
-        <svg viewBox="0 0 120 160" fill="none" className="w-full h-full stroke-current" strokeWidth="1.2">
-          {/* Main vine stem */}
-          <path d="M130 140 C 100 110, 80 80, 95 20 C 100 5, 105 -10, 110 -20" strokeLinecap="round" />
-          {/* Leaves */}
-          <path d="M102 100 C 85 95, 75 105, 82 118 C 90 115, 98 105, 102 100 Z" fill="currentColor" fillOpacity="0.12" />
-          <path d="M92 70 C 72 62, 65 75, 74 88 C 82 82, 90 75, 92 70 Z" fill="currentColor" fillOpacity="0.15" />
-          <path d="M96 40 C 78 30, 72 42, 82 52 C 90 48, 95 44, 96 40 Z" fill="currentColor" fillOpacity="0.12" />
-          {/* Small Gold Accent Buds */}
-          <circle cx="72" cy="60" r="2.5" className="fill-gold/60 stroke-none" />
-          <circle cx="82" cy="30" r="2" className="fill-gold/60 stroke-none" />
-        </svg>
-      </motion.div>
-
-      {/* Floating Flower Petals with Gentle Parallax */}
+      {/* Floating Flower Petals with Parallax */}
       <motion.div
         style={{ y: petalY1, rotate: petalRotate1 }}
-        className="absolute left-[22%] top-3 w-3 h-4 text-gold-dark/40 pointer-events-none z-1"
+        className="absolute left-[18%] top-5 w-3 h-4 text-gold-dark/45 pointer-events-none z-1"
       >
         <svg viewBox="0 0 20 28" fill="currentColor">
           <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.65" />
@@ -91,28 +192,19 @@ export const FloralPageBridge: React.FC = () => {
 
       <motion.div
         style={{ y: petalY2, rotate: petalRotate2 }}
-        className="absolute right-[25%] top-6 w-2.5 h-3.5 text-rose-800/30 pointer-events-none z-1"
+        className="absolute right-[20%] top-8 w-2.5 h-3.5 text-rose-800/35 pointer-events-none z-1"
       >
         <svg viewBox="0 0 20 28" fill="currentColor">
           <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.5" />
         </svg>
       </motion.div>
 
-      <motion.div
-        style={{ y: petalY3, rotate: petalRotate3 }}
-        className="absolute left-[48%] top-1 w-2 h-3 text-gold/50 pointer-events-none z-1"
-      >
-        <svg viewBox="0 0 20 28" fill="currentColor">
-          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.6" />
-        </svg>
-      </motion.div>
-
-      {/* Center Antique Gold Ornamental Divider Motif */}
+      {/* Center Antique Gold Lotus / Diamond Ornamental Divider Seal */}
       <motion.div
         style={{ scale: centerSealScale, opacity: centerSealOpacity }}
-        className="relative z-20 flex flex-col items-center justify-center px-4"
+        className="relative z-30 flex flex-col items-center justify-center px-4 -mt-16 sm:-mt-20"
       >
-        <div className="flex items-center justify-center gap-3 w-full max-w-[220px]">
+        <div className="flex items-center justify-center gap-3 w-full max-w-[220px] bg-ivory/90 backdrop-blur-xs py-1 px-3 rounded-full border border-gold/30 shadow-xs">
           {/* Left Decorative Line */}
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/40 to-gold/70" />
 
