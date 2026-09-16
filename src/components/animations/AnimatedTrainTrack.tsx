@@ -51,14 +51,14 @@ export const AnimatedTrainTrack: React.FC<AnimatedTrainTrackProps> = ({ classNam
     let animationFrameId: number;
     let startTime: number | null = null;
 
-    const travelDuration = 4500; // 4.5s smooth travel across screen
-    const pauseDuration = 700; // 0.7s brief pause before next train
+    const travelDuration = 6000; // Increased duration for the longer travel distance
+    const pauseDuration = 800;   // 0.8s brief pause before next train
     const totalCycle = travelDuration + pauseDuration;
 
-    // Train length = Engine(400) + 2 Carts(220 each) + Couplers ~ 900 in local coords
+    // Train length = Engine(400) + 2 Carts(220 each) + Rear Engine(400) + Couplers ~ 1300 in local coords
     const scale = 0.28;
-    const startX = -270; // Offscreen to the left
-    const endX = 325; // Offscreen to the right
+    const startX = -150; // Starts right before entering screen on the left
+    const endX = 600;    // Ends fully off-screen to the right (leftmost point clears 300px)
     const wheelRadius = 23 * scale; // in viewBox units
 
     const animate = (timestamp: number) => {
