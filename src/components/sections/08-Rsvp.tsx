@@ -10,6 +10,8 @@ import { CornerFlourish } from "../motifs/CornerFlourish";
 import { LotusDivider } from "../motifs/LotusDivider";
 import { Heart, Check, Users, Sparkles } from "lucide-react";
 
+import Image from "next/image";
+
 interface RsvpEntry {
   name: string;
   guestCount: number;
@@ -61,7 +63,7 @@ export const Rsvp: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative w-full max-w-sm mx-auto text-center flex flex-col items-center gap-5 py-4"
+          className="relative w-full max-w-sm mx-auto text-center flex flex-col items-center gap-4 py-4"
         >
           {/* Section Top Heading */}
           <div className="flex flex-col items-center w-full pt-1">
@@ -70,7 +72,7 @@ export const Rsvp: React.FC = () => {
             </p>
 
             <h2
-              className="text-2xl font-serif text-forest tracking-tight text-embossed"
+              className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               {weddingConfig.rsvp.heading}
@@ -78,6 +80,37 @@ export const Rsvp: React.FC = () => {
 
             <LotusDivider variant="simple" className="my-1 max-w-[120px]" />
           </div>
+
+          {/* Animated Namaste Couple Greeting Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 15 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-[240px] sm:max-w-[270px] mx-auto my-1"
+          >
+            <motion.div
+              animate={{
+                y: [0, -4, 0],
+                rotate: [0, 0.4, 0, -0.4, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative w-full aspect-[986/901] filter drop-shadow-[0_10px_22px_rgba(182,141,76,0.2)]"
+            >
+              <Image
+                src="/assets/illustrations/namaste-couple.png"
+                alt="Indian Couple Namaste Anjali Mudra Greeting"
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 270px"
+                className="object-contain"
+              />
+            </motion.div>
+          </motion.div>
 
           <div className="w-full my-auto flex-1 flex flex-col justify-center items-center">
             <AnimatePresence mode="wait">

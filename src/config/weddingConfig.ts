@@ -399,7 +399,7 @@ export const weddingConfig = {
   // Section 15: Footer
   footer: {
     hashtag: "#RiyaAaravForever",
-    credit: "Handcrafted with devotion & love for Riya & Aarav",
+    credit: "Crafted with endless love, joy & sacred blessings for Riya & Aarav",
     year: "2027",
   },
 

@@ -44,24 +44,18 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           </linearGradient>
         </defs>
 
-        {/* Faint background track */}
-        <line
-          x1="16"
-          y1="0"
-          x2="16"
-          y2="1000"
+        {/* Faint background S-curve track */}
+        <path
+          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
           stroke="#B68D4C"
           strokeWidth="1.2"
           strokeDasharray="4 6"
-          strokeOpacity="0.25"
+          strokeOpacity="0.3"
         />
 
-        {/* Animated flowing dashed golden line */}
-        <motion.line
-          x1="16"
-          y1="0"
-          x2="16"
-          y2="1000"
+        {/* Animated flowing dashed golden S-curve */}
+        <motion.path
+          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
           stroke="url(#goldStrokeGrad)"
           strokeWidth="2"
           strokeDasharray="6 8"
@@ -75,12 +69,9 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           }}
         />
 
-        {/* Active solid scroll-revealed gold line */}
-        <motion.line
-          x1="16"
-          y1="0"
-          x2="16"
-          y2="1000"
+        {/* Active solid scroll-revealed gold S-curve */}
+        <motion.path
+          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
           stroke="url(#goldStrokeGrad)"
           strokeWidth="3"
           strokeLinecap="round"

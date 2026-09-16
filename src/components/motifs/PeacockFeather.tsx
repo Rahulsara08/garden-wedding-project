@@ -12,7 +12,7 @@ interface PeacockFeatherProps {
 
 export const PeacockFeather: React.FC<PeacockFeatherProps> = ({
   className = "",
-  size = 80,
+  size = 125,
   animated = true,
 }) => {
   return (

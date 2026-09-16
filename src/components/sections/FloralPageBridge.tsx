@@ -5,14 +5,24 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 
-const CASCADE_PETALS = Array.from({ length: 14 }, (_, i) => ({
-  id: i,
-  left: `${8 + (i * 6.5) + (Math.sin(i * 1.5) * 4)}%`,
-  delay: (i * 0.38) % 5.2,
-  duration: 4.8 + (i % 3) * 0.4,
-  size: 8 + (i % 4) * 3,
-  type: i % 3 === 0 ? "rose" : i % 3 === 1 ? "marigold" : "jasmine",
-}));
+const STACKED_PETALS = Array.from({ length: 18 }, (_, i) => {
+  // Horizontal positioning along the garland arc (0% to 100%)
+  const posX = 10 + i * 4.8;
+  // Calculate vertical Y position on the U-shaped garland arc (center is lower, sides are higher)
+  const normX = (posX - 50) / 40; // -1 to 1
+  const garlandCurveY = 22 + (1 - normX * normX) * 22; // Garland ledge Y percentage
+
+  return {
+    id: i,
+    left: `${posX}%`,
+    targetTop: `${garlandCurveY}%`,
+    delay: 0.2 + (i % 6) * 0.45,
+    duration: 2.4 + (i % 4) * 0.3,
+    size: 10 + (i % 4) * 3,
+    type: i % 3 === 0 ? "rose" : i % 3 === 1 ? "marigold" : "jasmine",
+    rotation: -25 + (i * 17) % 50,
+  };
+});
 
 export const FloralPageBridge: React.FC = () => {
   const bridgeRef = useRef<HTMLDivElement>(null);
@@ -46,7 +56,7 @@ export const FloralPageBridge: React.FC = () => {
       >
         <motion.div
           animate={{
-            y: [0, -5, 0],
+            y: [0, -4, 0],
             rotate: [0, 0.4, 0, -0.4, 0],
           }}
           transition={{
@@ -66,35 +76,35 @@ export const FloralPageBridge: React.FC = () => {
             className="object-contain object-top"
           />
 
-          {/* Continuous Petal Cascade Animation Landing & Tumbling Down */}
-          {CASCADE_PETALS.map((p) => (
+          {/* Falling Real Flower Petals that Land & Stack on Garland Ledge */}
+          {STACKED_PETALS.map((p) => (
             <motion.div
               key={p.id}
               style={{ left: p.left, width: p.size, height: p.size * 1.3 }}
-              initial={{ top: "-10%", opacity: 0, rotate: 0 }}
-              animate={{
-                top: ["-5%", "35%", "50%", "105%"],
-                opacity: [0, 0.95, 0.85, 0],
-                rotate: [0, 45, -30, 90],
-                x: [0, 8, -6, 12],
+              initial={{ top: "-15%", opacity: 0, rotate: 0 }}
+              whileInView={{
+                top: ["-10%", p.targetTop, p.targetTop],
+                opacity: [0, 1, 1],
+                rotate: [0, p.rotation, p.rotation + 5, p.rotation],
+                y: [0, 0, -3, 0],
               }}
+              viewport={{ once: true }}
               transition={{
                 duration: p.duration,
-                repeat: Infinity,
                 delay: p.delay,
-                ease: [0.4, 0, 0.2, 1],
+                ease: [0.25, 1, 0.5, 1],
               }}
-              className="absolute z-25 pointer-events-none drop-shadow-2xs"
+              className="absolute z-25 pointer-events-none drop-shadow-xs"
             >
               <svg viewBox="0 0 20 28" fill="currentColor">
                 <path
                   d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z"
                   className={
                     p.type === "rose"
-                      ? "text-rose-700/80"
+                      ? "text-rose-600"
                       : p.type === "marigold"
-                      ? "text-amber-500/80"
-                      : "text-amber-100/90"
+                      ? "text-amber-500"
+                      : "text-amber-100"
                   }
                 />
               </svg>
