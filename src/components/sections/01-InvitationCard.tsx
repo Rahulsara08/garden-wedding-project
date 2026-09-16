@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { useGuestName } from "@/hooks/useGuestName";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { RadhaKrishnaSeal } from "../motifs/RadhaKrishnaSeal";
 
 interface InvitationCardProps {
   onOpen: () => void;
@@ -102,16 +102,13 @@ export const InvitationCard: React.FC<InvitationCardProps> = ({ onOpen, isOpen }
             </span>
           </div>
 
-          {/* Dancing Couple Line Art */}
-          <div className="relative h-12 w-20 my-0.5 flex items-center justify-center">
-            <Image
-              src="/assets/couple_dancing.png"
-              alt="Dancing couple line art"
-              width={100}
-              height={100}
-              priority
-              unoptimized
-              className="h-full w-auto object-contain opacity-90"
+          {/* Seal / Monogram */}
+          <div className="my-1">
+            <RadhaKrishnaSeal
+              size={80}
+              initials={weddingConfig.couple.coupleInitials}
+              animated={false}
+              showRays={false}
             />
           </div>
 
