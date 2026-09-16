@@ -20,6 +20,9 @@ import { Closing } from "@/components/sections/13-Closing";
 import { FinalLoveNote } from "@/components/sections/14-FinalLoveNote";
 import { Footer } from "@/components/sections/15-Footer";
 
+import { PhotoFrameGap } from "@/components/sections/07B-PhotoFrameGap";
+import { CurvedFlowLine } from "@/components/motifs/CurvedFlowLine";
+
 export default function Home() {
   const [showPreloader, setShowPreloader] = useState(true);
 
@@ -50,11 +53,17 @@ export default function Home() {
             {/* 03: Countdown to Forever */}
             <Countdown />
 
+            <CurvedFlowLine />
+
             {/* 04: Our Story */}
             <OurStory />
 
+            <CurvedFlowLine />
+
             {/* 05: Family Union */}
             <FamilyUnion />
+
+            <CurvedFlowLine />
 
             {/* 06: Events Timeline */}
             <EventsTimeline />
@@ -62,8 +71,13 @@ export default function Home() {
             {/* 07: Gallery */}
             <Gallery />
 
+            {/* Photo Gap Section between Gallery (Moments of Wonder) and RSVP */}
+            <PhotoFrameGap />
+
             {/* 08: RSVP */}
             <Rsvp />
+
+            <CurvedFlowLine />
 
             {/* 09: Blessings Wall */}
             <BlessingsWall />

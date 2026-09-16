@@ -13,20 +13,20 @@ export const LotusDivider: React.FC<LotusDividerProps> = ({
 }) => {
   if (variant === "simple") {
     return (
-      <div className={`flex items-center justify-center gap-3 my-4 ${className}`}>
+      <div className={`w-full flex items-center justify-center text-center gap-3 my-3 mx-auto ${className}`}>
         <span className="h-[1px] w-12 bg-gradient-to-r from-transparent via-gold to-gold/40" />
-        <span className="w-1.5 h-1.5 rotate-45 bg-gold" />
+        <span className="w-1.5 h-1.5 rotate-45 bg-gold shrink-0" />
         <span className="h-[1px] w-12 bg-gradient-to-l from-transparent via-gold to-gold/40" />
       </div>
     );
   }
 
   return (
-    <div className={`flex items-center justify-center gap-2 my-4 select-none ${className}`}>
+    <div className={`w-full flex items-center justify-center text-center gap-2 my-4 mx-auto select-none ${className}`}>
       {/* Left hairline */}
       <span className="h-[1px] w-16 sm:w-24 bg-gradient-to-r from-transparent via-gold/60 to-gold" />
       
-      {/* Center geometric knot / diamond flourish (per screenshot) */}
+      {/* Center geometric knot / diamond flourish */}
       <svg
         width="44"
         height="16"

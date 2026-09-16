@@ -182,22 +182,67 @@ export const Rsvp: React.FC = () => {
               {step === "confirmed" && (
                 <motion.div
                   key="step-confirmed"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-2 flex flex-col items-center gap-2 text-center"
+                  initial={{ opacity: 0, scale: 0.85, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative py-4 px-2 flex flex-col items-center gap-3 text-center w-full"
                 >
-                  <div className="w-10 h-10 rounded-full bg-forest text-gold flex items-center justify-center shadow-md border border-gold">
-                    <Check className="w-5 h-5" />
+                  {/* Expanding Golden Radiance Rings */}
+                  <div className="relative flex items-center justify-center mb-1">
+                    <motion.div
+                      initial={{ scale: 0.5, opacity: 0.8 }}
+                      animate={{ scale: 2.2, opacity: 0 }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                      className="absolute w-12 h-12 rounded-full border border-gold/60 pointer-events-none"
+                    />
+                    <motion.div
+                      initial={{ scale: 0.3, opacity: 0.9 }}
+                      animate={{ scale: 1.6, opacity: 0 }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.3 }}
+                      className="absolute w-12 h-12 rounded-full border border-gold/40 pointer-events-none"
+                    />
+
+                    {/* Central Glowing Acceptance Badge */}
+                    <motion.div
+                      initial={{ scale: 0, rotate: -45 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      className="relative w-12 h-12 rounded-full bg-forest text-gold flex items-center justify-center shadow-lg border-2 border-gold z-10"
+                    >
+                      <Check className="w-6 h-6 stroke-[2.5]" />
+                    </motion.div>
                   </div>
-                  <h3 className="font-serif text-xl text-forest font-semibold">
+
+                  {/* Confirmed Heading & Sanskrit Blessing */}
+                  <motion.h3
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="font-serif text-xl sm:text-2xl text-forest font-semibold text-embossed"
+                  >
                     {weddingConfig.rsvp.successHeading}
-                  </h3>
-                  <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
+                  </motion.h3>
+
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-xs text-sage/90 font-sans leading-relaxed max-w-[260px] mx-auto"
+                  >
                     {weddingConfig.rsvp.successMessage}
-                  </p>
-                  <p className="font-serif italic text-xs text-gold-dark mt-1">
-                    See you in Vrindavan on 12 Feb 2027!
-                  </p>
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mt-1 px-4 py-2 rounded-xl bg-ivory-dark/60 border border-gold/30 flex items-center gap-2"
+                  >
+                    <Heart className="w-4 h-4 text-gold fill-gold animate-bounce" />
+                    <span className="font-serif italic text-xs text-gold-dark font-medium">
+                      See you in Vrindavan on 12 Feb 2027!
+                    </span>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>
