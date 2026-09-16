@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Preloader } from "@/components/sections/00-Preloader";
 import { PhoneMockupFrame } from "@/components/layout/PhoneMockupFrame";
 import { InvitationCard } from "@/components/sections/01-InvitationCard";
 import { HeroWelcome } from "@/components/sections/02-HeroWelcome";
@@ -20,18 +21,26 @@ import { FinalLoveNote } from "@/components/sections/14-FinalLoveNote";
 import { Footer } from "@/components/sections/15-Footer";
 
 export default function Home() {
+  const [showPreloader, setShowPreloader] = useState(true);
+
   const handleReplay = (scrollRef?: React.RefObject<HTMLDivElement | null>) => {
     if (scrollRef?.current) {
       scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setShowPreloader(true);
   };
 
   return (
-    <PhoneMockupFrame>
-      {(scrollContainerRef) => (
-        <main className="relative min-h-full w-full bg-ivory text-sage overflow-x-hidden selection:bg-gold/20 selection:text-forest">
-          {/* 02: Hero / Welcome (Pic 1 at the top of the application) */}
+    <>
+      <AnimatePresence>
+        {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      </AnimatePresence>
+
+      <PhoneMockupFrame>
+        {(scrollContainerRef) => (
+          <main className="relative min-h-full w-full bg-ivory text-sage overflow-x-hidden selection:bg-gold/20 selection:text-forest">
+            {/* 02: Hero / Welcome (Pic 1 at the top of the application) */}
           <HeroWelcome />
 
           {/* 03: Countdown to Forever */}
@@ -75,5 +84,6 @@ export default function Home() {
         </main>
       )}
     </PhoneMockupFrame>
+    </>
   );
 }
