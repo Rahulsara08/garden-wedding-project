@@ -44,18 +44,18 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           </linearGradient>
         </defs>
 
-        {/* Faint background S-curve track */}
+        {/* Faint background snake-like S-curve track weaving left and right */}
         <path
-          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
+          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
           stroke="#B68D4C"
-          strokeWidth="1.2"
+          strokeWidth="1.5"
           strokeDasharray="4 6"
           strokeOpacity="0.3"
         />
 
-        {/* Animated flowing dashed golden S-curve */}
+        {/* Animated flowing dashed golden snake curve */}
         <motion.path
-          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
+          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
           stroke="url(#goldStrokeGrad)"
           strokeWidth="2"
           strokeDasharray="6 8"
@@ -63,15 +63,15 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           initial={{ strokeDashoffset: 100 }}
           animate={{ strokeDashoffset: [100, 0, -100] }}
           transition={{
-            duration: 8,
+            duration: 7,
             repeat: Infinity,
             ease: "linear",
           }}
         />
 
-        {/* Active solid scroll-revealed gold S-curve */}
+        {/* Active solid scroll-revealed gold snake curve */}
         <motion.path
-          d="M 16,0 C 26,120 6,240 16,360 C 26,480 6,600 16,720 C 26,840 6,920 16,1000"
+          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
           stroke="url(#goldStrokeGrad)"
           strokeWidth="3"
           strokeLinecap="round"

@@ -81,26 +81,15 @@ export const Rsvp: React.FC = () => {
             <LotusDivider variant="simple" className="my-1 max-w-[120px]" />
           </div>
 
-          {/* Animated Namaste Couple Greeting Image */}
+          {/* Animated Namaste Couple Greeting Image (Standing Still in Namaste Pose) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 15 }}
+            initial={{ opacity: 0, scale: 0.92, y: 25 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-[240px] sm:max-w-[270px] mx-auto my-1"
           >
-            <motion.div
-              animate={{
-                y: [0, -4, 0],
-                rotate: [0, 0.4, 0, -0.4, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="relative w-full aspect-[986/901] filter drop-shadow-[0_10px_22px_rgba(182,141,76,0.2)]"
-            >
+            <div className="relative w-full aspect-[986/901] filter drop-shadow-[0_10px_22px_rgba(182,141,76,0.22)]">
               <Image
                 src="/assets/illustrations/namaste-couple.png"
                 alt="Indian Couple Namaste Anjali Mudra Greeting"
@@ -109,7 +98,7 @@ export const Rsvp: React.FC = () => {
                 sizes="(max-width: 768px) 100vw, 270px"
                 className="object-contain"
               />
-            </motion.div>
+            </div>
           </motion.div>
 
           <div className="w-full my-auto flex-1 flex flex-col justify-center items-center">

@@ -53,13 +53,8 @@ export const HeroWelcome: React.FC = () => {
 
 
 
-      {/* Layer 3: Delicate Watermark Peacock Feather on Top-Right */}
-      <div className="absolute top-4 right-3 pointer-events-none select-none opacity-45 z-10">
-        <PeacockFeather size={68} animated />
-      </div>
-
-      {/* Bottom Blur & Soft Gradient Transition Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-ivory via-ivory/85 to-transparent backdrop-blur-xs z-15 pointer-events-none" />
+      {/* Bottom Soft Gradient Mask for Seamless Integration (No Sharp Blur Lines) */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory via-ivory/70 to-transparent pointer-events-none z-15" />
 
       {/* Center Foreground Content (No Card Box - Merged with Background) */}
       <motion.div

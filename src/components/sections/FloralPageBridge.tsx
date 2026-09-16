@@ -2,30 +2,44 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 
-const STACKED_PETALS = Array.from({ length: 18 }, (_, i) => {
-  // Horizontal positioning along the garland arc (0% to 100%)
-  const posX = 10 + i * 4.8;
-  // Calculate vertical Y position on the U-shaped garland arc (center is lower, sides are higher)
+// Real wedding flower types with their images
+const FLOWER_TYPES = [
+  { src: "/assets/watercolor/rose-petal.jpg", label: "rose", size: 18 },
+  { src: "/assets/watercolor/marigold-flower.jpg", label: "marigold", size: 22 },
+  { src: "/assets/watercolor/jasmine-flower.jpg", label: "jasmine", size: 14 },
+];
+
+// Generate flower drops — they fall from above and stack at the garland arc
+const STACKED_FLOWERS = Array.from({ length: 22 }, (_, i) => {
+  // Spread horizontally across the garland (10% – 90%)
+  const posX = 10 + i * 3.7;
+  // U-shaped garland arc: center hangs lower, sides are higher
   const normX = (posX - 50) / 40; // -1 to 1
-  const garlandCurveY = 22 + (1 - normX * normX) * 22; // Garland ledge Y percentage
+  const stackY = 20 + (1 - normX * normX) * 24; // Landing Y% on garland
+
+  const flowerType = FLOWER_TYPES[i % 3];
 
   return {
     id: i,
     left: `${posX}%`,
-    targetTop: `${garlandCurveY}%`,
-    delay: 0.2 + (i % 6) * 0.45,
-    duration: 2.4 + (i % 4) * 0.3,
-    size: 10 + (i % 4) * 3,
-    type: i % 3 === 0 ? "rose" : i % 3 === 1 ? "marigold" : "jasmine",
-    rotation: -25 + (i * 17) % 50,
+    landingTop: `${stackY}%`,
+    delay: 0.15 + (i % 7) * 0.38,
+    duration: 1.8 + (i % 5) * 0.25,
+    size: flowerType.size + (i % 3) * 2,
+    src: flowerType.src,
+    label: flowerType.label,
+    rotation: -30 + (i * 23) % 60,
+    // Slight horizontal drift for natural feel
+    driftX: ((i % 5) - 2) * 6,
   };
 });
 
 export const FloralPageBridge: React.FC = () => {
   const bridgeRef = useRef<HTMLDivElement>(null);
+  const garlandRef = useRef<HTMLDivElement>(null);
   const { containerRef: scrollContainer } = useScrollContainer();
 
   const { scrollYProgress } = useScroll({
@@ -38,6 +52,9 @@ export const FloralPageBridge: React.FC = () => {
   const imageScale = useTransform(scrollYProgress, [0.05, 0.45], [0.92, 1.04]);
   const imageOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
   const imageY = useTransform(scrollYProgress, [0, 1], [-15, 20]);
+
+  // Trigger flower-drop animation when garland is in view
+  const isInView = useInView(garlandRef, { once: true, margin: "-50px" });
 
   return (
     <div
@@ -55,6 +72,7 @@ export const FloralPageBridge: React.FC = () => {
         className="relative w-full max-w-[480px] sm:max-w-[560px] mx-auto px-2 z-10"
       >
         <motion.div
+          ref={garlandRef}
           animate={{
             y: [0, -4, 0],
             rotate: [0, 0.4, 0, -0.4, 0],
@@ -76,38 +94,61 @@ export const FloralPageBridge: React.FC = () => {
             className="object-contain object-top"
           />
 
-          {/* Falling Real Flower Petals that Land & Stack on Garland Ledge */}
-          {STACKED_PETALS.map((p) => (
+          {/* Falling Real Wedding Flowers that Drop & Stack on Garland */}
+          {STACKED_FLOWERS.map((flower) => (
             <motion.div
-              key={p.id}
-              style={{ left: p.left, width: p.size, height: p.size * 1.3 }}
-              initial={{ top: "-15%", opacity: 0, rotate: 0 }}
-              whileInView={{
-                top: ["-10%", p.targetTop, p.targetTop],
-                opacity: [0, 1, 1],
-                rotate: [0, p.rotation, p.rotation + 5, p.rotation],
-                y: [0, 0, -3, 0],
+              key={flower.id}
+              style={{
+                left: flower.left,
+                width: flower.size,
+                height: flower.size,
+                position: "absolute",
+                zIndex: 25,
+                pointerEvents: "none",
               }}
-              viewport={{ once: true }}
+              initial={{
+                top: "-20%",
+                opacity: 0,
+                rotate: 0,
+                x: 0,
+              }}
+              animate={
+                isInView
+                  ? {
+                      top: ["-18%", flower.landingTop, flower.landingTop],
+                      opacity: [0, 1, 1],
+                      rotate: [0, flower.rotation, flower.rotation + 3, flower.rotation],
+                      x: [0, flower.driftX, flower.driftX],
+                      // Tiny bounce when landing
+                      y: [0, 0, -4, 0],
+                    }
+                  : {
+                      top: "-20%",
+                      opacity: 0,
+                      rotate: 0,
+                      x: 0,
+                    }
+              }
               transition={{
-                duration: p.duration,
-                delay: p.delay,
-                ease: [0.25, 1, 0.5, 1],
+                duration: flower.duration,
+                delay: flower.delay,
+                ease: [0.22, 1, 0.36, 1],
+                y: {
+                  delay: flower.delay + flower.duration * 0.75,
+                  duration: 0.4,
+                  ease: "easeOut",
+                },
               }}
-              className="absolute z-25 pointer-events-none drop-shadow-xs"
             >
-              <svg viewBox="0 0 20 28" fill="currentColor">
-                <path
-                  d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z"
-                  className={
-                    p.type === "rose"
-                      ? "text-rose-600"
-                      : p.type === "marigold"
-                      ? "text-amber-500"
-                      : "text-amber-100"
-                  }
-                />
-              </svg>
+              <Image
+                src={flower.src}
+                alt={flower.label}
+                fill
+                unoptimized
+                sizes={`${flower.size}px`}
+                className="object-contain drop-shadow-sm"
+                style={{ mixBlendMode: "multiply" }}
+              />
             </motion.div>
           ))}
         </motion.div>

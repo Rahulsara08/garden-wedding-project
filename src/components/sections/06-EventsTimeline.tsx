@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { weddingConfig, EventCeremony } from "@/config/weddingConfig";
 import { SvgFollowScroll } from "../animations/SvgFollowScroll";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { MapPin, Clock, Sparkles, Sun, Music, Heart } from "lucide-react";
+import { MapPin, Clock, Sparkles, Sun, Music, Flame } from "lucide-react";
 
 export const EventsTimeline: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ export const EventsTimeline: React.FC = () => {
         return <Music className="w-5 h-5 text-gold" />;
       case "wedding":
       default:
-        return <Heart className="w-5 h-5 text-gold" />;
+        return <Flame className="w-5 h-5 text-gold fill-gold/20" />;
     }
   };
 
