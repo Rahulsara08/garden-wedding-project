@@ -51,15 +51,13 @@ export const AnimatedFlightPath: React.FC<AnimatedFlightPathProps> = ({ classNam
     trail2.style.opacity = "0";
 
     let animationFrameId: number;
-    let startTime: number | null = null;
-    const flightDuration = 4400; // 4.4s flight
-    const pauseDuration = 1300; // 1.3s rest at destination
-    const fadeDuration = 400; // 0.4s fade reset
-    const totalCycle = flightDuration + pauseDuration + fadeDuration;
+    const flightDuration = 5000; // 5.0s synchronized flight
+    const pauseDuration = 1000;  // 1.0s synchronized rest at destination
+    const fadeDuration = 400;    // 0.4s synchronized fade reset
+    const totalCycle = flightDuration + pauseDuration + fadeDuration; // 6.4s total cycle
 
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = (timestamp - startTime) % totalCycle;
+      const elapsed = timestamp % totalCycle;
 
       let progress = 0;
       let opacity = 1;

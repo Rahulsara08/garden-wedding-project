@@ -49,32 +49,38 @@ export const AnimatedTrainTrack: React.FC<AnimatedTrainTrackProps> = ({ classNam
     if (!trainGroup || !ew1 || !ew2 || !ew3 || !erw1 || !erw2 || !erw3 || !c1w1 || !c1w2 || !c2w1 || !c2w2) return;
 
     let animationFrameId: number;
-    let startTime: number | null = null;
 
-    const travelDuration = 6000; // Increased duration for the longer travel distance
-    const pauseDuration = 800;   // 0.8s brief pause before next train
-    const totalCycle = travelDuration + pauseDuration;
+    const travelDuration = 5000; // 5.0s synchronized travel across screen
+    const pauseDuration = 1000;  // 1.0s synchronized rest at destination
+    const fadeDuration = 400;    // 0.4s synchronized fade reset
+    const totalCycle = travelDuration + pauseDuration + fadeDuration; // 6.4s total cycle
 
     // Train length = Engine(400) + 2 Carts(220 each) + Rear Engine(400) + Couplers ~ 1300 in local coords
     const scale = 0.28;
     const startX = -150; // Starts right before entering screen on the left
-    const endX = 600;    // Ends fully off-screen to the right (leftmost point clears 300px)
+    const endX = 600;    // Ends fully off-screen to the right
     const wheelRadius = 23 * scale; // in viewBox units
 
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = (timestamp - startTime) % totalCycle;
+      const elapsed = timestamp % totalCycle;
 
       let x = startX;
       let opacity = 1;
 
       if (elapsed <= travelDuration) {
+        // Phase 1: Travel across track
         const t = elapsed / travelDuration;
         x = startX + t * (endX - startX);
         opacity = 1;
+      } else if (elapsed <= travelDuration + pauseDuration) {
+        // Phase 2: Hold at destination
+        x = endX;
+        opacity = 1;
       } else {
-        x = endX + 150;
-        opacity = 0;
+        // Phase 3: Fade out reset
+        x = endX;
+        const fadeElapsed = elapsed - (travelDuration + pauseDuration);
+        opacity = Math.max(0, 1 - fadeElapsed / fadeDuration);
       }
 
       trainGroup.setAttribute("transform", "translate(" + x + ", 21) scale(" + scale + ")");
