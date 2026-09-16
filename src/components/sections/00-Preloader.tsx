@@ -127,10 +127,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               : { scale: 1, opacity: 1, y: 0, filter: "blur(0px)" }
           }
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[340px] mx-auto px-3.5 py-2 my-auto"
+          className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[300px] sm:max-w-[340px] mx-auto px-3 py-2 my-auto"
         >
           {/* Handcrafted Royal Card Container */}
-          <div className="relative w-full bg-ivory/88 backdrop-blur-md border border-gold/40 shadow-2xl rounded-3xl p-4 sm:p-5 flex flex-col items-center text-center overflow-hidden">
+          <div className="relative w-full bg-ivory/88 backdrop-blur-md border border-gold/40 shadow-2xl rounded-3xl p-3 sm:p-4 flex flex-col items-center text-center overflow-hidden">
             {/* Corner Flourishes */}
             <CornerFlourish
               position="top-left"
@@ -154,7 +154,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             />
 
             {/* Inner Antique Gold Rule Box */}
-            <div className="w-full border border-gold/25 rounded-2xl p-3 flex flex-col items-center justify-center">
+            <div className="w-full border border-gold/25 rounded-2xl p-2 sm:p-3 flex flex-col items-center justify-center">
               {/* Eyebrow */}
               <motion.p
                 initial={{ opacity: 0, y: -8 }}
@@ -177,7 +177,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 className="mb-2 relative"
               >
                 <RadhaKrishnaSeal
-                  size={128}
+                  size={110}
                   initials={weddingConfig.couple.coupleInitials}
                   animated
                   showRays
@@ -189,11 +189,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.35 }}
-                className="text-2xl sm:text-3xl font-serif text-forest tracking-normal mb-2 flex items-center justify-center flex-wrap"
+                className="text-xl sm:text-2xl font-serif text-forest tracking-normal mb-1.5 flex items-center justify-center flex-wrap"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 <span>{weddingConfig.couple.brideFirstName}</span>
-                <span className="font-script italic text-gold font-normal px-2 text-2xl sm:text-3xl">
+                  <span className="font-script italic text-gold font-normal px-2 text-xl sm:text-2xl">
                   &
                 </span>
                 <span>{weddingConfig.couple.groomFirstName}</span>
@@ -248,7 +248,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.85 }}
-                className="font-script text-lg sm:text-xl text-gold-dark mt-2.5 mb-1 max-w-[240px] mx-auto text-center leading-relaxed select-none"
+                className="font-script text-base sm:text-lg text-gold-dark mt-2 mb-1 max-w-[220px] mx-auto text-center leading-relaxed select-none"
               >
                 &ldquo;{weddingConfig.couple.tagline}&rdquo;
               </motion.p>

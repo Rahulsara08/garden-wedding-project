@@ -28,7 +28,7 @@ export const HeroWelcome: React.FC = () => {
     <section
       ref={containerRef}
       id="welcome-hero"
-      className="relative min-h-[660px] sm:min-h-[740px] w-full flex flex-col items-center justify-center overflow-hidden bg-ivory paper-texture pt-10 pb-6 px-3"
+      className="relative min-h-screen sm:min-h-full h-full w-full flex flex-col items-center justify-center overflow-hidden bg-ivory paper-texture pb-6 px-3"
     >
       {/* Background Layer 1: Vrindavan Temple Ghat Watercolor */}
       <motion.div
@@ -51,12 +51,7 @@ export const HeroWelcome: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Layer 2: Palm Frond Botanical Sketch at Top Center (from Pic 1) */}
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-64 h-32 pointer-events-none select-none opacity-25 z-10">
-        <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" className="text-forest w-full h-full">
-          <path d="M100 0 C 100 35, 75 65, 30 85 M100 5 C 90 40, 50 70, 15 85 M100 0 C 100 35, 125 65, 170 85 M100 5 C 110 40, 150 70, 185 85 M100 15 C 95 48, 65 75, 40 95 M100 15 C 105 48, 135 75, 160 95" strokeWidth="1.2" strokeLinecap="round" />
-        </svg>
-      </div>
+
 
       {/* Layer 3: Delicate Watermark Peacock Feather on Top-Right */}
       <div className="absolute top-4 right-3 pointer-events-none select-none opacity-35 z-10">
