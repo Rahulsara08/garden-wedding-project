@@ -97,10 +97,10 @@ export const AnimatedTrainTrack: React.FC<AnimatedTrainTrackProps> = ({ classNam
       c2w1.setAttribute("transform", "translate(48, 161) rotate(" + rotDeg + ")");
       c2w2.setAttribute("transform", "translate(172, 161) rotate(" + rotDeg + ")");
 
-      // Rotate rear engine wheels
-      erw1.setAttribute("transform", "translate(42.5, 161) rotate(" + rotDeg + ")");
-      erw2.setAttribute("transform", "translate(151.5, 161) rotate(" + rotDeg + ")");
-      erw3.setAttribute("transform", "translate(260.5, 161) rotate(" + rotDeg + ")");
+      // Rotate rear engine wheels (mirrored, so we invert the rotation angle to maintain visual clockwise rotation)
+      erw1.setAttribute("transform", "translate(42.5, 161) rotate(" + (-rotDeg) + ")");
+      erw2.setAttribute("transform", "translate(151.5, 161) rotate(" + (-rotDeg) + ")");
+      erw3.setAttribute("transform", "translate(260.5, 161) rotate(" + (-rotDeg) + ")");
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -130,8 +130,8 @@ export const AnimatedTrainTrack: React.FC<AnimatedTrainTrackProps> = ({ classNam
         <g ref={trainGroupRef} transform="translate(-270, 21) scale(0.28)">
           
           {/* --- REAR ENGINE (facing backward, mirrored) --- */}
-          {/* translate(-730,0) moves it behind Cart2; scale(-1,1) flips horizontally */}
-          <g transform="translate(-730, 0) scale(-1, 1) translate(-400, 0)">
+          {/* translate(-504, 0) puts the flat back at -504, extending left to -904 */}
+          <g transform="translate(-504, 0) scale(-1, 1)">
             {/* Rear Engine Wheels */}
             <g ref={eRearW1Ref} transform="translate(42.5, 161)">
               <circle r="23" fill="#1F2921" />
@@ -159,12 +159,12 @@ export const AnimatedTrainTrack: React.FC<AnimatedTrainTrackProps> = ({ classNam
           </g>
 
           {/* Coupler between Rear Engine and Cart 2 */}
-          <rect x="-508" y="146" width="14" height="12" rx="2" fill="#1F2921" />
+          <rect x="-504" y="146" width="20" height="12" rx="2" fill="#1F2921" />
 
           {/* --- PASSENGER CART 2 (REAR) --- */}
           <g transform="translate(-484, 0)">
             {/* Coupler between Cart 2 and Cart 1 */}
-            <rect x="220" y="146" width="14" height="12" rx="2" fill="#1F2921" />
+            <rect x="220" y="146" width="24" height="12" rx="2" fill="#1F2921" />
 
             {/* Cart 2 Wheels */}
             <g ref={c2W1Ref} transform="translate(48, 161)">
