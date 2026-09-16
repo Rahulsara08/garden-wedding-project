@@ -3,7 +3,7 @@
 > **Last updated:** 2026-09-16  
 > **Repo:** https://github.com/Rahulsara08/garden-wedding-project  
 > **Branch:** `main`  
-> **Latest commit:** `eb497da`  
+> **Latest commit:** `a90ffd5`  
 > **Stack:** Next.js (App Router), React, TypeScript, Tailwind CSS
 
 ---
