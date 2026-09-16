@@ -6,9 +6,10 @@ import { ScrollContainerProvider } from "@/context/ScrollContainerContext";
 
 interface PhoneMockupFrameProps {
   children: (scrollContainerRef: React.RefObject<HTMLDivElement | null>) => React.ReactNode;
+  preloader?: React.ReactNode;
 }
 
-export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children }) => {
+export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, preloader }) => {
   const phoneScrollRef = useRef<HTMLDivElement>(null);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
@@ -67,6 +68,9 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children }) 
 
               {/* Inner Screen Bezel */}
               <div className="relative w-full h-full bg-ivory rounded-[42px] overflow-hidden flex flex-col border border-gold/15">
+                {/* Preloader / Seal Screen Overlay inside Phone Chassis */}
+                {preloader}
+
                 {/* Top Dynamic Island Pill */}
                 <div className="absolute top-0 left-0 right-0 h-10 z-50 flex items-center justify-center pointer-events-none select-none">
                   <div className="flex items-center justify-between px-3 w-28 h-6 bg-black rounded-full shadow-md">
@@ -100,7 +104,8 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children }) 
           </div>
         ) : (
           /* Native Full Screen View on Actual Mobile Devices */
-          <div className="w-full min-h-screen flex-1 overflow-x-hidden">
+          <div className="relative w-full min-h-screen flex-1 overflow-x-hidden">
+            {preloader}
             {children(phoneScrollRef)}
           </div>
         )}

@@ -4,8 +4,8 @@ import React, { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Preloader } from "@/components/sections/00-Preloader";
 import { PhoneMockupFrame } from "@/components/layout/PhoneMockupFrame";
-import { InvitationCard } from "@/components/sections/01-InvitationCard";
 import { HeroWelcome } from "@/components/sections/02-HeroWelcome";
+import { FloralPageBridge } from "@/components/sections/FloralPageBridge";
 import { Countdown } from "@/components/sections/03-Countdown";
 import { OurStory } from "@/components/sections/04-OurStory";
 import { FamilyUnion } from "@/components/sections/05-FamilyUnion";
@@ -32,16 +32,20 @@ export default function Home() {
   };
 
   return (
-    <>
-      <AnimatePresence>
-        {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
-      </AnimatePresence>
-
-      <PhoneMockupFrame>
-        {(scrollContainerRef) => (
-          <main className="relative min-h-full w-full bg-ivory text-sage overflow-x-hidden selection:bg-gold/20 selection:text-forest">
-            {/* 02: Hero / Welcome */}
+    <PhoneMockupFrame
+      preloader={
+        <AnimatePresence>
+          {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+        </AnimatePresence>
+      }
+    >
+      {(scrollContainerRef) => (
+        <main className="relative min-h-full w-full bg-ivory text-sage overflow-x-hidden selection:bg-gold/20 selection:text-forest">
+          {/* 02: Hero / Welcome */}
             <HeroWelcome />
+
+            {/* Decorative Floral Page Bridge Transition */}
+            <FloralPageBridge />
 
             {/* 03: Countdown to Forever */}
             <Countdown />
@@ -84,6 +88,5 @@ export default function Home() {
           </main>
         )}
       </PhoneMockupFrame>
-    </>
   );
 }

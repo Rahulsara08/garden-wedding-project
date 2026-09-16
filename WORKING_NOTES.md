@@ -14,9 +14,12 @@ A luxury Indian garden wedding invitation web app. It runs inside a phone mockup
 
 ---
 
-## Completed Work
+### 1. Preloader / Seal Invitation Screen — Inside Phone Frame
+**Files:** `src/components/sections/00-Preloader.tsx`, `src/app/page.tsx`
+- Moved the `Preloader` seal invitation screen inside the `PhoneMockupFrame` (`absolute inset-0 z-40`)
+- Now the initial invitation screen (RadhaKrishna seal, couple names, date, tagline, and "Tap anywhere to enter") displays inside the smartphone frame rather than full screen on desktop
 
-### 1. Hero Section Cleanup
+### 2. Hero Section Cleanup
 **File:** `src/components/sections/02-HeroWelcome.tsx`
 - Removed the animated scroll cue bar (vertical gradient line at the bottom)
 - Removed the corner lotus blossom overlay image

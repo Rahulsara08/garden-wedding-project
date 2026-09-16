@@ -1,0 +1,66 @@
+# Dependencies & package management
+node_modules/
+
+# Version control & IDE internal files
+.git/
+.idea/
+
+# Build & output directories
+dist/
+build/
+.next/
+.nuxt/
+out/
+coverage/
+.cache/
+.parcel-cache/
+.turbo/
+.vite/
+.eslintcache/
+.stylelintcache/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Temporary directories & logs
+tmp/
+temp/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# OS metadata files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large archives & media files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.psd
+*.ai
+
+# Large datasets & databases
+*.parquet
+*.jsonl
+*.sqlite
+*.sqlite3
+
+# Environment files & secret key files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
