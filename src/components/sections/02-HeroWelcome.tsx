@@ -54,9 +54,12 @@ export const HeroWelcome: React.FC = () => {
 
 
       {/* Layer 3: Delicate Watermark Peacock Feather on Top-Right */}
-      <div className="absolute top-4 right-3 pointer-events-none select-none opacity-35 z-10">
+      <div className="absolute top-4 right-3 pointer-events-none select-none opacity-45 z-10">
         <PeacockFeather size={68} animated />
       </div>
+
+      {/* Bottom Blur & Soft Gradient Transition Overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-ivory via-ivory/85 to-transparent backdrop-blur-xs z-15 pointer-events-none" />
 
       {/* Center Foreground Content (No Card Box - Merged with Background) */}
       <motion.div
@@ -70,7 +73,7 @@ export const HeroWelcome: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-1 select-none"
+            className="text-[11px] uppercase tracking-[0.25em] text-forest font-sans font-bold mb-1 select-none drop-shadow-2xs"
           >
             {weddingConfig.invitation.eyebrow}
           </motion.p>
@@ -84,12 +87,12 @@ export const HeroWelcome: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-2xl sm:text-3xl font-serif text-forest tracking-normal my-1 flex items-center justify-center flex-wrap text-embossed"
+            className="text-2xl sm:text-3xl font-serif text-forest font-semibold tracking-normal my-1 flex items-center justify-center flex-wrap text-embossed"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             <span>{weddingConfig.couple.brideFirstName}</span>
-            <span className="font-script italic text-gold font-normal px-2 text-2xl sm:text-3xl">
-              &
+            <span className="font-script italic text-gold-dark font-semibold px-2 text-2xl sm:text-3xl">
+              &amp;
             </span>
             <span>{weddingConfig.couple.groomFirstName}</span>
           </motion.h1>
@@ -105,35 +108,35 @@ export const HeroWelcome: React.FC = () => {
             <LotusDivider variant="diamond" className="my-1" />
           </motion.div>
 
-          {/* Date */}
+          {/* Date - Bright, Bold & Easy to See */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[11px] uppercase tracking-[0.2em] text-gold font-sans font-semibold mt-1"
+            className="text-xs uppercase tracking-[0.22em] text-gold-dark font-sans font-bold mt-1 text-embossed-gold"
           >
             {weddingConfig.date.displayDate}
           </motion.p>
 
-          {/* Venue */}
+          {/* Venue - Crisp & Easy to Read */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-[11px] text-sage/90 font-sans tracking-wide mt-0.5 max-w-[240px] mx-auto"
+            className="text-xs text-forest font-sans font-medium tracking-wide mt-1 max-w-[250px] mx-auto"
           >
             {weddingConfig.date.venue}, {weddingConfig.date.city}
           </motion.p>
 
-          {/* Script Tagline */}
+          {/* Script Tagline - Vibrant & Distinct */}
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-script text-lg sm:text-xl text-gold-dark mt-3 mb-2 max-w-[250px] mx-auto text-center leading-relaxed select-none"
+            className="font-script text-xl sm:text-2xl text-forest-deep font-medium mt-3 mb-2 max-w-[260px] mx-auto text-center leading-relaxed select-none drop-shadow-2xs"
           >
             &ldquo;{weddingConfig.couple.tagline}&rdquo;
           </motion.p>
