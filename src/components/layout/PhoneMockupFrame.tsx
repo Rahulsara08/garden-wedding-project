@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ScrollContainerProvider } from "@/context/ScrollContainerContext";
 
 interface PhoneMockupFrameProps {
@@ -31,19 +32,109 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, pr
       isFramed={showPhoneFrame}
     >
       <div className="relative min-h-screen w-full bg-ivory flex flex-col items-center justify-center selection:bg-gold/20 selection:text-forest overflow-x-hidden">
-        {/* Desktop Ambient Wallpaper Background */}
+        {/* Desktop Ambient Animated Flowers & Birds Wallpaper Background */}
         {showPhoneFrame && (
           <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-0">
-            <Image
-              src="/assets/watercolor/desktop-ambient-wallpaper.jpg"
-              alt="Vrindavan Royal Waterscape Wallpaper"
-              fill
-              className="object-cover object-center filter brightness-[0.99] contrast-[1.02]"
-              priority
-              unoptimized
-            />
-            {/* Soft ivory-gold tint overlay to create subtle depth behind the phone casing */}
-            <div className="absolute inset-0 bg-[#F6EEDD]/20 backdrop-blur-[1px]" />
+            {/* Animated Floating Wallpaper */}
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                x: [0, -14, 0],
+                y: [0, -8, 0],
+              }}
+              transition={{
+                duration: 26,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src="/assets/watercolor/flowers-birds-wallpaper.jpg"
+                alt="Royal Vrindavan Flowers and Birds Watercolor Wallpaper"
+                fill
+                className="object-cover object-center filter brightness-[0.99] contrast-[1.02]"
+                priority
+                unoptimized
+              />
+            </motion.div>
+
+            {/* Subtle Overlay Tint */}
+            <div className="absolute inset-0 bg-[#F6EEDD]/15 backdrop-blur-[0.5px]" />
+
+            {/* Animated Drifting Songbird 1 (Top Left to Right) */}
+            <motion.div
+              initial={{ x: "-10vw", y: "15vh", opacity: 0 }}
+              animate={{
+                x: ["-5vw", "105vw"],
+                y: ["15vh", "22vh", "12vh"],
+                opacity: [0, 0.65, 0.7, 0],
+              }}
+              transition={{
+                duration: 28,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+              className="absolute pointer-events-none z-1 text-forest/40"
+            >
+              <svg viewBox="0 0 40 25" className="w-8 h-5 fill-current">
+                <path d="M0 12 C 10 5, 20 12, 25 10 C 30 8, 35 2, 40 0 C 36 8, 30 18, 22 20 C 14 22, 5 18, 0 12 Z" />
+              </svg>
+            </motion.div>
+
+            {/* Animated Drifting Songbird 2 (Top Right to Left) */}
+            <motion.div
+              initial={{ x: "105vw", y: "35vh", opacity: 0 }}
+              animate={{
+                x: ["105vw", "-10vw"],
+                y: ["35vh", "28vh", "38vh"],
+                opacity: [0, 0.5, 0.6, 0],
+              }}
+              transition={{
+                duration: 34,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 10,
+              }}
+              className="absolute pointer-events-none z-1 text-forest/35 -scale-x-100"
+            >
+              <svg viewBox="0 0 40 25" className="w-7 h-4 fill-current">
+                <path d="M0 12 C 10 5, 20 12, 25 10 C 30 8, 35 2, 40 0 C 36 8, 30 18, 22 20 C 14 22, 5 18, 0 12 Z" />
+              </svg>
+            </motion.div>
+
+            {/* Floating Petals Drifting Downward */}
+            {[
+              { left: "12%", delay: 0, duration: 18, scale: 0.8 },
+              { left: "32%", delay: 6, duration: 22, scale: 1.1 },
+              { left: "68%", delay: 3, duration: 20, scale: 0.9 },
+              { left: "86%", delay: 9, duration: 24, scale: 1.0 },
+            ].map((p, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ y: "-10vh", x: 0, rotate: 0, opacity: 0 }}
+                animate={{
+                  y: ["-5vh", "110vh"],
+                  x: [0, idx % 2 === 0 ? 40 : -40, 0],
+                  rotate: [0, idx % 2 === 0 ? 180 : -180],
+                  opacity: [0, 0.6, 0.6, 0],
+                }}
+                transition={{
+                  duration: p.duration,
+                  repeat: Infinity,
+                  delay: p.delay,
+                  ease: "linear",
+                }}
+                style={{ left: p.left }}
+                className="absolute top-0 text-gold-dark/40 pointer-events-none z-1"
+              >
+                <svg viewBox="0 0 20 28" className="w-3.5 h-5 fill-current">
+                  <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.6" />
+                </svg>
+              </motion.div>
+            ))}
           </div>
         )}
 
