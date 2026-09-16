@@ -10,16 +10,18 @@ interface PreloaderProps {
   onComplete: () => void;
 }
 
-// 8 Burst Petals for Royal Unlocking Transition
+// 10 Burst Petals with organic parabolic trajectories for smooth dispersal
 const PETAL_BURSTS = [
-  { x: -85, y: -95, r: -45, scale: 0.9, color: "text-gold" },
-  { x: 90, y: -85, r: 60, scale: 1.1, color: "text-rose-800/60" },
-  { x: -115, y: 25, r: -90, scale: 0.85, color: "text-gold-dark/70" },
-  { x: 110, y: 35, r: 75, scale: 1.0, color: "text-gold" },
-  { x: -65, y: 115, r: -120, scale: 0.95, color: "text-rose-900/50" },
-  { x: 75, y: 120, r: 110, scale: 0.9, color: "text-gold-dark" },
-  { x: -35, y: -135, r: -20, scale: 1.05, color: "text-gold/80" },
-  { x: 40, y: -130, r: 35, scale: 0.8, color: "text-rose-800/70" },
+  { x: -95, y: -105, r: -55, scale: 0.95, color: "text-gold" },
+  { x: 100, y: -95, r: 70, scale: 1.15, color: "text-rose-800/60" },
+  { x: -125, y: 15, r: -95, scale: 0.85, color: "text-gold-dark/70" },
+  { x: 120, y: 25, r: 85, scale: 1.05, color: "text-gold" },
+  { x: -75, y: 125, r: -130, scale: 0.95, color: "text-rose-900/50" },
+  { x: 85, y: 130, r: 120, scale: 0.9, color: "text-gold-dark" },
+  { x: -45, y: -145, r: -25, scale: 1.1, color: "text-gold/80" },
+  { x: 50, y: -140, r: 40, scale: 0.85, color: "text-rose-800/70" },
+  { x: -135, y: -50, r: -70, scale: 0.9, color: "text-gold/90" },
+  { x: 130, y: -45, r: 65, scale: 1.0, color: "text-rose-900/60" },
 ];
 
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
@@ -36,21 +38,25 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     setIsOpening(true);
     setTimeout(() => {
       onComplete();
-    }, 1100);
+    }, 1350);
   };
 
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] } }}
+        exit={{ opacity: 0, transition: { duration: 1.35, ease: [0.16, 1, 0.3, 1] } }}
         onClick={handleOpen}
         className="absolute inset-0 z-40 flex flex-col items-center justify-center overflow-hidden bg-ivory cursor-pointer select-none h-full w-full"
       >
         {/* Vrindavan Lotus Sanctuary Watercolor Background */}
         <motion.div
-          animate={isOpening ? { scale: 1.08, opacity: 0 } : { scale: 1, opacity: 0.95 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
+          animate={
+            isOpening
+              ? { scale: 1.1, opacity: 0, filter: "blur(6px)" }
+              : { scale: 1, opacity: 0.95, filter: "blur(0px)" }
+          }
+          transition={{ duration: 1.35, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 z-0 pointer-events-none"
         >
           <img
@@ -73,24 +79,24 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center">
             {/* Outer Gold Expanding Ring */}
             <motion.div
-              initial={{ scale: 0.3, opacity: 0.9 }}
-              animate={{ scale: 2.8, opacity: 0 }}
-              transition={{ duration: 1.0, ease: "easeOut" }}
-              className="w-64 h-64 rounded-full border-2 border-gold/70 shadow-[0_0_40px_rgba(182,141,76,0.5)]"
+              initial={{ scale: 0.3, opacity: 0.95 }}
+              animate={{ scale: 3.2, opacity: 0 }}
+              transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
+              className="w-64 h-64 rounded-full border-2 border-gold/80 shadow-[0_0_50px_rgba(182,141,76,0.6)]"
             />
             {/* Inner Radial Sunburst Flash */}
             <motion.div
-              initial={{ scale: 0.2, opacity: 0.8 }}
-              animate={{ scale: 2.2, opacity: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="w-48 h-48 rounded-full bg-radial from-gold/40 via-gold/10 to-transparent"
+              initial={{ scale: 0.2, opacity: 0.9 }}
+              animate={{ scale: 2.5, opacity: 0 }}
+              transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+              className="w-48 h-48 rounded-full bg-radial from-gold/50 via-gold/15 to-transparent"
             />
 
-            {/* Floating Petal Burst */}
+            {/* Floating Petal Dispersal */}
             {PETAL_BURSTS.map((p, idx) => (
               <motion.div
                 key={idx}
-                initial={{ x: 0, y: 0, opacity: 0.9, scale: 0.4, rotate: 0 }}
+                initial={{ x: 0, y: 0, opacity: 0.95, scale: 0.3, rotate: 0 }}
                 animate={{
                   x: p.x,
                   y: p.y,
@@ -98,11 +104,15 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   scale: p.scale,
                   rotate: p.r,
                 }}
-                transition={{ duration: 1.0, ease: "easeOut", delay: idx * 0.03 }}
+                transition={{
+                  duration: 1.25,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: idx * 0.02,
+                }}
                 className={`absolute ${p.color} pointer-events-none`}
               >
                 <svg viewBox="0 0 20 28" className="w-5 h-7 fill-current">
-                  <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.8" />
+                  <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.85" />
                 </svg>
               </motion.div>
             ))}
@@ -113,10 +123,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         <motion.div
           animate={
             isOpening
-              ? { scale: 1.06, opacity: 0, y: -12, filter: "blur(5px)" }
+              ? { scale: 1.08, opacity: 0, y: -18, filter: "blur(8px)" }
               : { scale: 1, opacity: 1, y: 0, filter: "blur(0px)" }
           }
-          transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[340px] mx-auto px-3.5 py-2 my-auto"
         >
           {/* Handcrafted Royal Card Container */}
@@ -160,7 +170,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={
                   isOpening
-                    ? { scale: 1.18, rotate: 6, transition: { duration: 0.5 } }
+                    ? { scale: 1.22, rotate: 8, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
                     : { scale: 1, opacity: 1, rotate: 0 }
                 }
                 transition={{ duration: 1.0, delay: 0.4, type: "spring", stiffness: 90 }}
