@@ -40,50 +40,50 @@ export default function Home() {
       <PhoneMockupFrame>
         {(scrollContainerRef) => (
           <main className="relative min-h-full w-full bg-ivory text-sage overflow-x-hidden selection:bg-gold/20 selection:text-forest">
-            {/* 02: Hero / Welcome (Pic 1 at the top of the application) */}
-          <HeroWelcome />
+            {/* 02: Hero / Welcome */}
+            <HeroWelcome />
 
-          {/* 03: Countdown to Forever */}
-          <Countdown />
+            {/* 03: Countdown to Forever */}
+            <Countdown />
 
-          {/* 04: Our Story (Card Stack Scroll with Polaroid Photos) */}
-          <OurStory />
+            {/* 04: Our Story */}
+            <OurStory />
 
-          {/* 05: Family Union (Two Square Cards) */}
-          <FamilyUnion />
+            {/* 05: Family Union */}
+            <FamilyUnion />
 
-          {/* 06: Events Timeline (Day-wise Celebrations) */}
-          <EventsTimeline />
+            {/* 06: Events Timeline */}
+            <EventsTimeline />
 
-          {/* 07: Gallery (Photo Cards with Lightbox) */}
-          <Gallery />
+            {/* 07: Gallery */}
+            <Gallery />
 
-          {/* 08: RSVP (Accept-only with Confetti) */}
-          <Rsvp />
+            {/* 08: RSVP */}
+            <Rsvp />
 
-          {/* 09: Blessings Wall (Notebook Input with Sticky Notes) */}
-          <BlessingsWall />
+            {/* 09: Blessings Wall */}
+            <BlessingsWall />
 
-          {/* 10: Venue (Framed Watercolor Art & Directions) */}
-          <Venue />
+            {/* 10: Venue */}
+            <Venue />
 
-          {/* 11: Travel & Stay (Airports, Stations & Hotels) */}
-          <TravelStay />
+            {/* 11: Travel & Stay */}
+            <TravelStay />
 
-          {/* 12: Get in Touch (Call & WhatsApp Quick Actions) */}
-          <GetInTouch />
+            {/* 12: Get in Touch */}
+            <GetInTouch />
 
-          {/* 13: Closing (Save the Date & Replay) */}
-          <Closing onReplay={() => handleReplay(scrollContainerRef)} />
+            {/* 13: Closing */}
+            <Closing onReplay={() => handleReplay(scrollContainerRef)} />
 
-          {/* 14: Final Love Note (Ganga River Watercolor Wash) */}
-          <FinalLoveNote />
+            {/* 14: Final Love Note */}
+            <FinalLoveNote />
 
-          {/* 15: Footer */}
-          <Footer />
-        </main>
-      )}
-    </PhoneMockupFrame>
+            {/* 15: Footer */}
+            <Footer />
+          </main>
+        )}
+      </PhoneMockupFrame>
     </>
   );
 }

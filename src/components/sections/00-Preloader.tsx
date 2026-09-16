@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
+import { RadhaKrishnaSeal } from "../motifs/RadhaKrishnaSeal";
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -52,10 +53,25 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-3 select-none"
+            className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-4 select-none"
           >
-            {weddingConfig.invitation.eyebrow}
+            {weddingConfig.couple.sanskritInvocation}
           </motion.p>
+
+          {/* Animated Seal */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.0, delay: 0.4, type: "spring", stiffness: 90 }}
+            className="mb-4"
+          >
+            <RadhaKrishnaSeal
+              size={148}
+              initials={weddingConfig.couple.coupleInitials}
+              animated
+              showRays
+            />
+          </motion.div>
 
           {/* Couple Names */}
           <motion.h1
