@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
-import { RadhaKrishnaSeal } from "../motifs/RadhaKrishnaSeal";
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -31,101 +30,103 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       <motion.div
         initial={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } }}
-        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ivory select-none"
+        onClick={handleOpen}
+        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ivory cursor-pointer select-none"
       >
-        {/* Bright Watercolor Background (same as phone background) */}
-        <div className="absolute inset-0 z-0">
+        {/* Temple Ghat Watercolor Background — same as HeroWelcome */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <img
-            src="/assets/watercolor/desktop-ambient-wallpaper.jpg"
-            alt="Watercolor Background"
-            className="w-full h-full object-cover opacity-80"
+            src="/assets/watercolor/temple-ghat.jpg"
+            alt="Temple Watercolor"
+            className="w-full h-full object-cover object-center opacity-90"
           />
-          <div className="absolute inset-0 bg-ivory/30 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ivory/50 via-transparent to-ivory/75" />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(250,243,228,0.4) 100%)" }} />
         </div>
 
-        {/* Floating Envelope Flap / Card (Light Theme) */}
-        <motion.div
-          animate={
-            isOpening
-              ? { scale: 1.15, opacity: 0, y: -60 }
-              : { scale: 1, opacity: 1, y: 0 }
-          }
-          transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
-          className="relative z-10 flex flex-col items-center justify-center max-w-sm w-full px-6 py-12 cursor-pointer"
-          onClick={handleOpen}
-        >
-          {/* Frosted Glass Ivory Card */}
-          <div className="absolute inset-0 bg-ivory/80 backdrop-blur-md rounded-[28px] border border-gold/40 shadow-2xl overflow-hidden">
-            {/* Top flap illusion */}
-            <div className="absolute -top-[50%] left-1/2 -translate-x-1/2 w-[150%] aspect-square bg-white/40 rounded-full border-b border-gold/30" />
-          </div>
+        {/* Centered Content */}
+        <div className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[340px] mx-auto px-4">
 
-          <div className="relative z-20 flex flex-col items-center w-full">
-            {/* Sanskrit Invocation */}
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-8 text-center"
-            >
-              {weddingConfig.couple.sanskritInvocation}
-            </motion.p>
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-3 select-none"
+          >
+            {weddingConfig.invitation.eyebrow}
+          </motion.p>
 
-            {/* Tap-to-break Seal */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0, rotate: -15 }}
-              animate={{ scale: 1, opacity: 1, rotate: 0 }}
-              whileHover={isReady && !isOpening ? { scale: 1.05, rotate: 5 } : {}}
-              whileTap={isReady && !isOpening ? { scale: 0.95 } : {}}
-              transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 100 }}
-              className="relative mb-8"
-            >
-              <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full" />
-              <div className={isOpening ? "animate-ping opacity-0 transition-opacity duration-700" : ""}>
-                <RadhaKrishnaSeal
-                  size={160}
-                  initials={weddingConfig.couple.coupleInitials}
-                  animated={false}
-                  showRays={true}
-                />
-              </div>
-            </motion.div>
+          {/* Couple Names */}
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35 }}
+            className="text-3xl sm:text-4xl font-serif text-forest tracking-normal mb-3 flex items-center justify-center flex-wrap"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            <span>{weddingConfig.couple.brideFirstName}</span>
+            <span className="font-script italic text-gold font-normal px-2 text-3xl sm:text-4xl">
+              &
+            </span>
+            <span>{weddingConfig.couple.groomFirstName}</span>
+          </motion.h1>
 
-            {/* Formal Names */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-col items-center"
-            >
-              <p className="text-[11px] uppercase tracking-[0.2em] text-sage/90 font-sans mb-3">
-                The Wedding Of
-              </p>
-              <h1
-                className="text-3xl sm:text-4xl font-serif text-forest tracking-normal mb-1 flex items-center justify-center flex-wrap gap-2"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                <span>{weddingConfig.couple.brideFirstName}</span>
-                <span className="font-script italic text-gold font-normal text-4xl sm:text-5xl -mt-2">
-                  &
-                </span>
-                <span>{weddingConfig.couple.groomFirstName}</span>
-              </h1>
-            </motion.div>
+          {/* Gold Diamond Divider */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.6 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex items-center justify-center gap-2 my-2 w-full max-w-[160px]"
+          >
+            <div className="flex-1 h-px bg-gold/50" />
+            <svg viewBox="0 0 28 14" className="w-7 h-4 text-gold fill-current shrink-0">
+              <polygon points="14,1 27,7 14,13 1,7" fill="none" stroke="currentColor" strokeWidth="1.2" />
+              <polygon points="14,4 23,7 14,10 5,7" fill="currentColor" fillOpacity="0.25" />
+            </svg>
+            <div className="flex-1 h-px bg-gold/50" />
+          </motion.div>
 
-            {/* Interaction Hint */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isReady && !isOpening ? 1 : 0 }}
-              transition={{ duration: 0.8 }}
-              className="mt-12"
-            >
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold/90 font-sans font-semibold border-b border-gold/40 pb-1 animate-pulse">
-                Tap to break the seal
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
+          {/* Date */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-[11px] uppercase tracking-[0.2em] text-gold font-sans font-semibold mt-1"
+          >
+            {weddingConfig.date.displayDate}
+          </motion.p>
+
+          {/* Venue */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-[11px] text-sage/90 font-sans tracking-wide mt-0.5"
+          >
+            {weddingConfig.date.venue}, {weddingConfig.date.city}
+          </motion.p>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.85 }}
+            className="font-script text-xl sm:text-2xl text-gold-dark mt-4 mb-2 max-w-[250px] mx-auto text-center leading-relaxed select-none"
+          >
+            &ldquo;{weddingConfig.couple.tagline}&rdquo;
+          </motion.p>
+
+          {/* Tap Hint */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isReady && !isOpening ? 0.7 : 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-8 text-[10px] tracking-widest uppercase text-sage/70 font-sans animate-pulse"
+          >
+            Tap anywhere to enter
+          </motion.p>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
