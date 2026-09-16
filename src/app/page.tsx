@@ -12,6 +12,7 @@ import { FamilyUnion } from "@/components/sections/05-FamilyUnion";
 import { EventsTimeline } from "@/components/sections/06-EventsTimeline";
 import { Gallery } from "@/components/sections/07-Gallery";
 import { Rsvp } from "@/components/sections/08-Rsvp";
+import { NamasteCoupleGreeting } from "@/components/sections/NamasteCoupleGreeting";
 import { BlessingsWall } from "@/components/sections/09-BlessingsWall";
 import { Venue } from "@/components/sections/10-Venue";
 import { TravelStay } from "@/components/sections/11-TravelStay";
@@ -64,6 +65,9 @@ export default function Home() {
 
             {/* 08: RSVP */}
             <Rsvp />
+
+            {/* Namaste Couple Greeting Illustration */}
+            <NamasteCoupleGreeting />
 
             {/* 09: Blessings Wall */}
             <BlessingsWall />

@@ -5,6 +5,15 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 
+const CASCADE_PETALS = Array.from({ length: 14 }, (_, i) => ({
+  id: i,
+  left: `${8 + (i * 6.5) + (Math.sin(i * 1.5) * 4)}%`,
+  delay: (i * 0.38) % 5.2,
+  duration: 4.8 + (i % 3) * 0.4,
+  size: 8 + (i % 4) * 3,
+  type: i % 3 === 0 ? "rose" : i % 3 === 1 ? "marigold" : "jasmine",
+}));
+
 export const FloralPageBridge: React.FC = () => {
   const bridgeRef = useRef<HTMLDivElement>(null);
   const { containerRef: scrollContainer } = useScrollContainer();
@@ -19,12 +28,6 @@ export const FloralPageBridge: React.FC = () => {
   const imageScale = useTransform(scrollYProgress, [0.05, 0.45], [0.92, 1.04]);
   const imageOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
   const imageY = useTransform(scrollYProgress, [0, 1], [-15, 20]);
-
-  // Floating petal parallax
-  const petalY1 = useTransform(scrollYProgress, [0, 1], [-16, 45]);
-  const petalRotate1 = useTransform(scrollYProgress, [0, 1], [-15, 25]);
-  const petalY2 = useTransform(scrollYProgress, [0, 1], [-10, 50]);
-  const petalRotate2 = useTransform(scrollYProgress, [0, 1], [10, -30]);
 
   return (
     <div
@@ -62,26 +65,42 @@ export const FloralPageBridge: React.FC = () => {
             sizes="(max-width: 768px) 100vw, 560px"
             className="object-contain object-top"
           />
+
+          {/* Continuous Petal Cascade Animation Landing & Tumbling Down */}
+          {CASCADE_PETALS.map((p) => (
+            <motion.div
+              key={p.id}
+              style={{ left: p.left, width: p.size, height: p.size * 1.3 }}
+              initial={{ top: "-10%", opacity: 0, rotate: 0 }}
+              animate={{
+                top: ["-5%", "35%", "50%", "105%"],
+                opacity: [0, 0.95, 0.85, 0],
+                rotate: [0, 45, -30, 90],
+                x: [0, 8, -6, 12],
+              }}
+              transition={{
+                duration: p.duration,
+                repeat: Infinity,
+                delay: p.delay,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              className="absolute z-25 pointer-events-none drop-shadow-2xs"
+            >
+              <svg viewBox="0 0 20 28" fill="currentColor">
+                <path
+                  d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z"
+                  className={
+                    p.type === "rose"
+                      ? "text-rose-700/80"
+                      : p.type === "marigold"
+                      ? "text-amber-500/80"
+                      : "text-amber-100/90"
+                  }
+                />
+              </svg>
+            </motion.div>
+          ))}
         </motion.div>
-      </motion.div>
-
-      {/* Floating Flower Petals with Parallax */}
-      <motion.div
-        style={{ y: petalY1, rotate: petalRotate1 }}
-        className="absolute left-[12%] top-8 w-3.5 h-5 text-gold-dark/40 pointer-events-none z-5"
-      >
-        <svg viewBox="0 0 20 28" fill="currentColor">
-          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.65" />
-        </svg>
-      </motion.div>
-
-      <motion.div
-        style={{ y: petalY2, rotate: petalRotate2 }}
-        className="absolute right-[14%] top-12 w-3 h-4 text-rose-800/35 pointer-events-none z-5"
-      >
-        <svg viewBox="0 0 20 28" fill="currentColor">
-          <path d="M10 0 C 18 10, 20 20, 10 28 C 0 20, 2 10, 10 0 Z" opacity="0.5" />
-        </svg>
       </motion.div>
 
       {/* Center Ornamental Divider below garland */}
