@@ -14,15 +14,13 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isOpening, setIsOpening] = useState(false);
 
   useEffect(() => {
-    // Small delay before allowing interaction so it feels deliberate
-    const readyTimer = setTimeout(() => setIsReady(true), 1200);
+    const readyTimer = setTimeout(() => setIsReady(true), 800);
     return () => clearTimeout(readyTimer);
   }, []);
 
   const handleOpen = () => {
     if (!isReady || isOpening) return;
     setIsOpening(true);
-    // Break seal and fade out after short delay
     setTimeout(() => {
       onComplete();
     }, 1200);
@@ -32,20 +30,20 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
-        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-forest select-none"
+        exit={{ opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } }}
+        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ivory select-none"
       >
-        {/* Background Watercolor Wrap */}
+        {/* Bright Watercolor Background (same as phone background) */}
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/watercolor/desktop-ambient-wallpaper.jpg"
-            alt="Envelope Background"
-            className="w-full h-full object-cover opacity-30 blur-[4px]"
+            alt="Watercolor Background"
+            className="w-full h-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-forest/90 via-forest/80 to-[#121813]" />
+          <div className="absolute inset-0 bg-ivory/30 backdrop-blur-sm" />
         </div>
 
-        {/* Floating Envelope Flap / Card */}
+        {/* Floating Envelope Flap / Card (Light Theme) */}
         <motion.div
           animate={
             isOpening
@@ -56,10 +54,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           className="relative z-10 flex flex-col items-center justify-center max-w-sm w-full px-6 py-12 cursor-pointer"
           onClick={handleOpen}
         >
-          {/* Frosted Glass Envelope Backing */}
-          <div className="absolute inset-0 bg-ivory/5 backdrop-blur-md rounded-[2rem] border border-gold/20 shadow-2xl overflow-hidden">
+          {/* Frosted Glass Ivory Card */}
+          <div className="absolute inset-0 bg-ivory/80 backdrop-blur-md rounded-[28px] border border-gold/40 shadow-2xl overflow-hidden">
             {/* Top flap illusion */}
-            <div className="absolute -top-[50%] left-1/2 -translate-x-1/2 w-[150%] aspect-square bg-ivory/5 rounded-full border-b border-gold/10" />
+            <div className="absolute -top-[50%] left-1/2 -translate-x-1/2 w-[150%] aspect-square bg-white/40 rounded-full border-b border-gold/30" />
           </div>
 
           <div className="relative z-20 flex flex-col items-center w-full">
@@ -68,7 +66,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-[9px] uppercase tracking-[0.3em] text-gold/80 font-serif mb-8 text-center"
+              className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-8 text-center"
             >
               {weddingConfig.couple.sanskritInvocation}
             </motion.p>
@@ -82,10 +80,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 100 }}
               className="relative mb-8"
             >
-              <div className="absolute inset-0 bg-gold/10 blur-xl rounded-full" />
+              <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full" />
               <div className={isOpening ? "animate-ping opacity-0 transition-opacity duration-700" : ""}>
                 <RadhaKrishnaSeal
-                  size={150}
+                  size={160}
                   initials={weddingConfig.couple.coupleInitials}
                   animated={false}
                   showRays={true}
@@ -100,11 +98,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               transition={{ duration: 1, delay: 0.8 }}
               className="flex flex-col items-center"
             >
-              <p className="text-[10px] uppercase tracking-[0.25em] text-ivory/60 font-sans mb-3">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-sage/90 font-sans mb-3">
                 The Wedding Of
               </p>
               <h1
-                className="text-3xl sm:text-4xl font-serif text-ivory tracking-wide mb-1 flex items-center justify-center flex-wrap gap-2"
+                className="text-3xl sm:text-4xl font-serif text-forest tracking-normal mb-1 flex items-center justify-center flex-wrap gap-2"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 <span>{weddingConfig.couple.brideFirstName}</span>
@@ -122,7 +120,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               transition={{ duration: 0.8 }}
               className="mt-12"
             >
-              <p className="text-[10px] tracking-[0.2em] uppercase text-gold/80 font-sans border-b border-gold/30 pb-1 animate-pulse">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-gold/90 font-sans font-semibold border-b border-gold/40 pb-1 animate-pulse">
                 Tap to break the seal
               </p>
             </motion.div>
