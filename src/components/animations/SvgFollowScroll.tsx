@@ -55,14 +55,14 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
       const cx = cWidth / 2;
       let d = "";
 
-      // 1. Entry line from top down behind the very first icon (Sun)
+      // 1. Path starts directly at the first sign (Sun icon) — NO vertical line above cutting header text
       const firstIconRect = iconEls[0].getBoundingClientRect();
       const firstIconCenterY =
         firstIconRect.top + firstIconRect.height / 2 - containerRect.top;
 
-      d += `M ${cx} 0 L ${cx} ${firstIconCenterY}`;
+      d += `M ${cx} ${firstIconCenterY}`;
 
-      // 2. Weave through each pair of events in a single, continuous sweeping arc
+      // 2. Weave through each pair of events in a wide, fluid sweeping arc that completely clears all text
       for (let i = 0; i < iconEls.length - 1; i++) {
         const currIcon = iconEls[i];
         const nextIcon = iconEls[i + 1];
@@ -75,31 +75,51 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           currRect.top + currRect.height / 2 - containerRect.top;
         const nextCenterY =
           nextRect.top + nextRect.height / 2 - containerRect.top;
-        const dy = nextCenterY - currCenterY;
 
-        // Alternate sides: Event 0 (Haldi) curves LEFT, Event 1 (Mehndi) curves RIGHT, Event 2 curves LEFT...
+        // Alternate sides: Event 0 (Haldi) curves LEFT, Event 1 (Mehndi) curves RIGHT...
         const isLeft = i % 2 === 0;
 
         let sideX: number;
+        let cardTop = currCenterY + 36;
+        let cardBottom = nextCenterY - 36;
+
         if (card) {
           const cardRect = card.getBoundingClientRect();
           const cLeft = cardRect.left - containerRect.left;
           const cRight = cardRect.right - containerRect.left;
+          cardTop = cardRect.top - containerRect.top;
+          cardBottom = cardRect.bottom - containerRect.top;
 
-          // Push safely outside all card text & chips
+          // Push widely to the outer margin (36px clear of title, subtitle & chips)
           if (isLeft) {
-            sideX = Math.max(12, cLeft - 28);
+            sideX = Math.max(10, cLeft - 36);
           } else {
-            sideX = Math.min(cWidth - 12, cRight + 28);
+            sideX = Math.min(cWidth - 10, cRight + 36);
           }
         } else {
-          sideX = isLeft ? Math.max(12, cx - 148) : Math.min(cWidth - 12, cx + 148);
+          sideX = isLeft ? Math.max(10, cx - 152) : Math.min(cWidth - 10, cx + 152);
         }
 
-        // Single continuous, fluid arc sweeping from current icon center out to sideX and back into next icon center
-        const cp1_y = currCenterY + dy * 0.18;
-        const cp2_y = nextCenterY - dy * 0.18;
-        d += ` C ${sideX} ${cp1_y}, ${sideX} ${cp2_y}, ${cx} ${nextCenterY}`;
+        // Transition Y points:
+        // yOut: reaches sideX BEFORE cardTop (above title)
+        // yIn: leaves sideX AFTER cardBottom (below "Get Directions →")
+        const yOut = Math.min(cardTop - 4, currCenterY + (nextCenterY - currCenterY) * 0.2);
+        const yIn = Math.max(cardBottom + 8, nextCenterY - (nextCenterY - currCenterY) * 0.22);
+        const dyMid = Math.max(10, yIn - yOut);
+
+        // Belly bulge X for a wide, fluid, rounded arc
+        const sideBellyX = isLeft
+          ? Math.max(6, sideX - 8)
+          : Math.min(cWidth - 6, sideX + 8);
+
+        // Arc 1: Outward from icon center to sideX before reaching cardTop (above title)
+        d += ` C ${cx} ${currCenterY + 16}, ${sideX} ${yOut - 12}, ${sideX} ${yOut}`;
+
+        // Arc 2: Wide, continuous bowed curve down outer margin clearing all card text & chips
+        d += ` C ${sideBellyX} ${yOut + dyMid * 0.3}, ${sideBellyX} ${yIn - dyMid * 0.3}, ${sideX} ${yIn}`;
+
+        // Arc 3: Inward below cardBottom into next icon center
+        d += ` C ${sideX} ${yIn + 12}, ${cx} ${nextCenterY - 16}, ${cx} ${nextCenterY}`;
       }
 
       // The path terminates right at the center of the last icon (Heart sign) behind it.
