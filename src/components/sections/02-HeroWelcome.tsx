@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { PeacockFeather } from "../motifs/PeacockFeather";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 
 export const HeroWelcome: React.FC = () => {
@@ -28,7 +27,7 @@ export const HeroWelcome: React.FC = () => {
     <section
       ref={containerRef}
       id="welcome-hero"
-      className="relative min-h-screen sm:min-h-full h-full w-full flex flex-col items-center justify-center overflow-hidden bg-ivory paper-texture pb-6 px-3"
+      className="relative min-h-screen sm:min-h-full h-full w-full flex flex-col items-center justify-center overflow-hidden bg-ivory paper-texture pt-12 pb-6 px-3"
     >
       {/* Background Layer 1: Vrindavan Temple Ghat Watercolor */}
       <motion.div
@@ -59,10 +58,10 @@ export const HeroWelcome: React.FC = () => {
       {/* Center Foreground Content (No Card Box - Merged with Background) */}
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
-        className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[340px] mx-auto px-4 pt-6 pb-6 my-auto"
+        className="relative z-20 flex flex-col items-center justify-center text-center w-full max-w-[340px] mx-auto px-4 pt-12 pb-6 my-auto"
       >
         {/* Top Eyebrow */}
-        <div>
+        <div className="pt-3">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
