@@ -51,10 +51,10 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, pr
               className="relative w-full h-full"
             >
               <Image
-                src="/assets/watercolor/flowers-birds-wallpaper.jpg"
-                alt="Royal Vrindavan Flowers and Birds Watercolor Wallpaper"
+                src="/assets/watercolor/desktop-ambient-wallpaper.jpg"
+                alt="Soft Vrindavan Lotus Watercolor Ambient Wallpaper"
                 fill
-                className="object-cover object-center filter brightness-[0.99] contrast-[1.02]"
+                className="object-cover object-center opacity-90 filter brightness-[0.98] contrast-[1.01]"
                 priority
                 unoptimized
               />
