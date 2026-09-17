@@ -91,28 +91,31 @@ export const EventsTimeline: React.FC = () => {
                       className="relative flex flex-col items-center justify-center"
                     >
                       {/* Event Node Center Icon */}
-                      <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true, margin: "-30px" }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20,
-                        }}
-                        className="w-9 h-9 mb-3 rounded-full bg-ivory-light border-2 border-gold flex items-center justify-center shadow-md z-20"
-                      >
-                        {getEventIcon(event.iconType)}
-                      </motion.div>
+                      <div data-timeline-icon className="w-10 h-10 mb-3 flex items-center justify-center relative z-20">
+                        <motion.div
+                          initial={{ scale: 0, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          viewport={{ once: true, margin: "-30px" }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                          }}
+                          className="w-10 h-10 rounded-full bg-ivory-light border-2 border-gold flex items-center justify-center shadow-md"
+                        >
+                          {getEventIcon(event.iconType)}
+                        </motion.div>
+                      </div>
 
                       {/* Event Content (No Boxed Card) */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-30px" }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full max-w-[300px] sm:max-w-[325px] mx-auto text-center flex flex-col items-center gap-2 py-1"
-                      >
+                      <div data-timeline-card className="w-full max-w-[300px] sm:max-w-[325px] mx-auto text-center">
+                        <motion.div
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-30px" }}
+                          transition={{ duration: 0.5 }}
+                          className="w-full flex flex-col items-center gap-2 py-1"
+                        >
                         <div>
                           <h3 className="text-xl font-serif text-forest font-semibold">
                             {event.name}
@@ -162,6 +165,7 @@ export const EventsTimeline: React.FC = () => {
                         </div>
                       </motion.div>
                     </div>
+                  </div>
                   );
                 })}
               </div>
