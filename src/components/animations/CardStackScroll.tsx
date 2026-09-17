@@ -42,8 +42,8 @@ export const CardStackScroll: React.FC<CardStackScrollProps> = ({ moments }) => 
             </div>
 
             {/* Caption area directly on background */}
-            <div className="w-full flex flex-col justify-center items-center px-2 pt-3 text-center">
-              <div className="flex items-center justify-center gap-1.5">
+            <div className="w-full flex flex-col justify-center items-center px-2 pt-2.5 text-center">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
                 <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">
                   {moment.date}
                 </span>
@@ -52,6 +52,12 @@ export const CardStackScroll: React.FC<CardStackScrollProps> = ({ moments }) => 
                   {moment.title}
                 </span>
               </div>
+
+              {moment.quote && (
+                <p className="font-script text-lg sm:text-xl text-gold-dark italic leading-snug max-w-[260px] mx-auto">
+                  &ldquo;{moment.quote}&rdquo;
+                </p>
+              )}
             </div>
           </motion.div>
         );
@@ -59,4 +65,5 @@ export const CardStackScroll: React.FC<CardStackScrollProps> = ({ moments }) => 
     </div>
   );
 };
+
 
