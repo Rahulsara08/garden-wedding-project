@@ -20,17 +20,17 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
     height: 1200,
   });
 
-  // Fast & responsive scroll tracking
+  // Fast & responsive scroll tracking — starts early and follows scroll instantly
   const { scrollYProgress } = useScroll({
     target: containerRef,
     container: scrollContainer || undefined,
-    offset: ["start 75%", "end 25%"],
+    offset: ["start 85%", "end 15%"],
   });
 
-  // High stiffness + tuned damping for fast, instant scroll-following animation
+  // Ultra-responsive spring: high stiffness + low damping for immediate scroll response
   const pathLength = useSpring(scrollYProgress, {
-    stiffness: 800,
-    damping: 35,
+    stiffness: 1200,
+    damping: 28,
   });
 
   useEffect(() => {
@@ -55,14 +55,14 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
       const cx = cWidth / 2;
       let d = "";
 
-      // 1. Path starts directly at the first sign (Sun icon) — NO vertical line above
+      // 1. Path starts directly at the first sign (Sun icon) — NO line above cutting header text
       const firstIconRect = iconEls[0].getBoundingClientRect();
       const firstIconCenterY =
         firstIconRect.top + firstIconRect.height / 2 - containerRect.top;
 
       d += `M ${cx} ${firstIconCenterY}`;
 
-      // 2. Weave through each pair of events in a pure, continuous "(" or ")" parenthesis arc curve
+      // 2. Weave through each pair of events in a wide, fluid outer margin arc that completely clears all text & headers
       for (let i = 0; i < iconEls.length - 1; i++) {
         const currIcon = iconEls[i];
         const nextIcon = iconEls[i + 1];
@@ -75,35 +75,38 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           currRect.top + currRect.height / 2 - containerRect.top;
         const nextCenterY =
           nextRect.top + nextRect.height / 2 - containerRect.top;
-        const dy = nextCenterY - currCenterY;
 
-        // Alternate sides: Event 0 (Haldi) curves LEFT "(", Event 1 (Mehndi) curves RIGHT ")"...
+        // Alternate sides: Event 0 (Haldi) curves LEFT, Event 1 (Mehndi) curves RIGHT...
         const isLeft = i % 2 === 0;
 
-        let sideX: number;
+        let cardTop = currCenterY + 32;
+        let cardBottom = nextCenterY - 32;
+
         if (card) {
           const cardRect = card.getBoundingClientRect();
-          const cLeft = cardRect.left - containerRect.left;
-          const cRight = cardRect.right - containerRect.left;
-
-          // Push peak safely outside all card text & chips
-          if (isLeft) {
-            sideX = Math.max(10, cLeft - 32);
-          } else {
-            sideX = Math.min(cWidth - 10, cRight + 32);
-          }
-        } else {
-          sideX = isLeft ? Math.max(10, cx - 150) : Math.min(cWidth - 10, cx + 150);
+          cardTop = cardRect.top - containerRect.top;
+          cardBottom = cardRect.bottom - containerRect.top;
         }
 
-        // Pure parabolic control points forming smooth "(" or ")" parenthesis arcs
-        const dxDist = Math.abs(cx - sideX);
-        const cpX = isLeft ? cx - dxDist * 1.35 : cx + dxDist * 1.35;
-        const cp1_y = currCenterY + dy * 0.28;
-        const cp2_y = nextCenterY - dy * 0.28;
+        // Push arc peak into the outer screen margin (10px from edge) so it never touches any text or chips
+        const sideX = isLeft ? 10 : cWidth - 10;
+        const sideBellyX = isLeft ? 5 : cWidth - 5;
 
-        // Single continuous cubic bezier parenthesis arc
-        d += ` C ${cpX} ${cp1_y}, ${cpX} ${cp2_y}, ${cx} ${nextCenterY}`;
+        // Transition Y points:
+        // yOut: reaches sideX ABOVE cardTop (above title)
+        // yIn: leaves sideX AFTER cardBottom (below "Get Directions →")
+        const yOut = Math.min(cardTop - 8, currCenterY + 22);
+        const yIn = Math.max(cardBottom + 8, nextCenterY - 22);
+        const dyMid = Math.max(10, yIn - yOut);
+
+        // Segment 1: Arc out from icon center to sideX ABOVE title
+        d += ` C ${cx + (sideX - cx) * 0.65} ${currCenterY + 4}, ${sideX} ${currCenterY + 12}, ${sideX} ${yOut}`;
+
+        // Segment 2: Continuous wide bowed arc down outer margin clearing all card text, chips & Day headers
+        d += ` C ${sideBellyX} ${yOut + dyMid * 0.3}, ${sideBellyX} ${yIn - dyMid * 0.3}, ${sideX} ${yIn}`;
+
+        // Segment 3: Arc from sideX below cardBottom into next icon center
+        d += ` C ${sideX} ${nextCenterY - 12}, ${cx + (sideX - cx) * 0.65} ${nextCenterY - 4}, ${cx} ${nextCenterY}`;
       }
 
       // Path terminates right at the center of the last icon (Heart sign) behind it.
@@ -171,7 +174,7 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           strokeLinecap="round"
         />
 
-        {/* Animated fast flowing dashed golden line */}
+        {/* Fast animated flowing dashed golden line */}
         <motion.path
           d={pathD}
           stroke="url(#timelineGoldGrad)"
@@ -181,13 +184,13 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           initial={{ strokeDashoffset: 100 }}
           animate={{ strokeDashoffset: [100, 0, -100] }}
           transition={{
-            duration: 3.5,
+            duration: 2.2,
             repeat: Infinity,
             ease: "linear",
           }}
         />
 
-        {/* Active solid fast scroll-revealed gold line */}
+        {/* Active solid ultra-fast scroll-revealed gold line */}
         <motion.path
           d={pathD}
           stroke="url(#timelineGoldGrad)"
