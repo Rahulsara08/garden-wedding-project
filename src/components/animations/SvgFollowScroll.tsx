@@ -20,15 +20,17 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
     height: 1200,
   });
 
+  // Fast & responsive scroll tracking
   const { scrollYProgress } = useScroll({
     target: containerRef,
     container: scrollContainer || undefined,
-    offset: ["start center", "end center"],
+    offset: ["start 75%", "end 25%"],
   });
 
+  // High stiffness + tuned damping for fast, instant scroll-following animation
   const pathLength = useSpring(scrollYProgress, {
-    stiffness: 400,
-    damping: 90,
+    stiffness: 800,
+    damping: 35,
   });
 
   useEffect(() => {
@@ -60,7 +62,7 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
 
       d += `M ${cx} 0 L ${cx} ${firstIconCenterY}`;
 
-      // 2. Weave through each pair of events
+      // 2. Weave through each pair of events in a single, continuous sweeping arc
       for (let i = 0; i < iconEls.length - 1; i++) {
         const currIcon = iconEls[i];
         const nextIcon = iconEls[i + 1];
@@ -73,60 +75,38 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           currRect.top + currRect.height / 2 - containerRect.top;
         const nextCenterY =
           nextRect.top + nextRect.height / 2 - containerRect.top;
+        const dy = nextCenterY - currCenterY;
 
         // Alternate sides: Event 0 (Haldi) curves LEFT, Event 1 (Mehndi) curves RIGHT, Event 2 curves LEFT...
         const isLeft = i % 2 === 0;
 
         let sideX: number;
-        let cardTop = currCenterY + 35;
-        let cardBottom = nextCenterY - 35;
-
         if (card) {
           const cardRect = card.getBoundingClientRect();
           const cLeft = cardRect.left - containerRect.left;
           const cRight = cardRect.right - containerRect.left;
-          cardTop = cardRect.top - containerRect.top;
-          cardBottom = cardRect.bottom - containerRect.top;
 
-          // Push safely to the outer side (at least 26px outside all text and chips)
+          // Push safely outside all card text & chips
           if (isLeft) {
-            sideX = Math.max(14, cLeft - 26);
+            sideX = Math.max(12, cLeft - 28);
           } else {
-            sideX = Math.min(cWidth - 14, cRight + 26);
+            sideX = Math.min(cWidth - 12, cRight + 28);
           }
         } else {
-          sideX = isLeft ? Math.max(14, cx - 145) : Math.min(cWidth - 14, cx + 145);
+          sideX = isLeft ? Math.max(12, cx - 148) : Math.min(cWidth - 12, cx + 148);
         }
 
-        // Key heights for smooth S-curve transition
-        const yLeave = currCenterY + 12; // leaves icon circle bottom
-        const yReachSide = Math.min(cardTop + 5, yLeave + (nextCenterY - yLeave) * 0.22);
-        const yLeaveSide = Math.max(cardBottom + 5, nextCenterY - (nextCenterY - yLeave) * 0.25);
-
-        // Arc outward from icon center behind the icon to sideX before the text starts
-        const cp1_y = yLeave + (yReachSide - yLeave) * 0.45;
-        const cp2_y = yReachSide - (yReachSide - yLeave) * 0.25;
-        d += ` C ${cx} ${cp1_y}, ${sideX} ${cp2_y}, ${sideX} ${yReachSide}`;
-
-        // Continuous bowed curve along the outer margin (no straight flat lines - curves smoothly at every edge)
-        const sideBellyX = isLeft ? Math.max(10, sideX - 10) : Math.min(cWidth - 10, sideX + 10);
-        const dyBelly = yLeaveSide - yReachSide;
-        d += ` C ${sideBellyX} ${yReachSide + dyBelly * 0.3}, ${sideBellyX} ${yLeaveSide - dyBelly * 0.3}, ${sideX} ${yLeaveSide}`;
-
-        // Arc smoothly inward below the text into the exact center of the next icon
-        const cp3_y = yLeaveSide + (nextCenterY - yLeaveSide) * 0.35;
-        const cp4_y = nextCenterY - (nextCenterY - yLeaveSide) * 0.45;
-        d += ` C ${sideX} ${cp3_y}, ${cx} ${cp4_y}, ${cx} ${nextCenterY}`;
+        // Single continuous, fluid arc sweeping from current icon center out to sideX and back into next icon center
+        const cp1_y = currCenterY + dy * 0.18;
+        const cp2_y = nextCenterY - dy * 0.18;
+        d += ` C ${sideX} ${cp1_y}, ${sideX} ${cp2_y}, ${cx} ${nextCenterY}`;
       }
 
       // The path terminates right at the center of the last icon (Heart sign) behind it.
-      // It does NOT continue down past the last icon, keeping all bottom text clean.
-
       setSvgDimensions({ width: cWidth, height: cHeight });
       setPathD(d);
     };
 
-    // Calculate immediately and after short delay for fonts and dynamic layouts
     calculatePath();
     const timer1 = setTimeout(calculatePath, 60);
     const timer2 = setTimeout(calculatePath, 350);
@@ -187,7 +167,7 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           strokeLinecap="round"
         />
 
-        {/* Animated flowing dashed golden line */}
+        {/* Animated fast flowing dashed golden line */}
         <motion.path
           d={pathD}
           stroke="url(#timelineGoldGrad)"
@@ -197,13 +177,13 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           initial={{ strokeDashoffset: 100 }}
           animate={{ strokeDashoffset: [100, 0, -100] }}
           transition={{
-            duration: 8,
+            duration: 3.5,
             repeat: Infinity,
             ease: "linear",
           }}
         />
 
-        {/* Active solid scroll-revealed gold line */}
+        {/* Active solid fast scroll-revealed gold line */}
         <motion.path
           d={pathD}
           stroke="url(#timelineGoldGrad)"
