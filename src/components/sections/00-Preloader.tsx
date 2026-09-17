@@ -46,7 +46,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         initial={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 0.8, ease: smoothEase } }}
         onClick={handleOpen}
-        className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-ivory cursor-pointer select-none w-full h-full"
+        className="fixed md:absolute inset-0 z-[9999] md:z-50 flex flex-col items-center justify-center overflow-hidden bg-ivory cursor-pointer select-none w-full h-full min-h-screen md:min-h-full"
       >
         {/* Vrindavan Lotus Sanctuary Watercolor Background */}
         <motion.div
