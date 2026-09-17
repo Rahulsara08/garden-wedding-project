@@ -108,8 +108,10 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
         const cp2_y = yReachSide - (yReachSide - yLeave) * 0.25;
         d += ` C ${cx} ${cp1_y}, ${sideX} ${cp2_y}, ${sideX} ${yReachSide}`;
 
-        // Straight path along the safe outer margin completely clear of all text
-        d += ` L ${sideX} ${yLeaveSide}`;
+        // Continuous bowed curve along the outer margin (no straight flat lines - curves smoothly at every edge)
+        const sideBellyX = isLeft ? Math.max(10, sideX - 10) : Math.min(cWidth - 10, sideX + 10);
+        const dyBelly = yLeaveSide - yReachSide;
+        d += ` C ${sideBellyX} ${yReachSide + dyBelly * 0.3}, ${sideBellyX} ${yLeaveSide - dyBelly * 0.3}, ${sideX} ${yLeaveSide}`;
 
         // Arc smoothly inward below the text into the exact center of the next icon
         const cp3_y = yLeaveSide + (nextCenterY - yLeaveSide) * 0.35;
