@@ -13,22 +13,25 @@ const FLOWER_SRCS = [
 ];
 
 /**
- * Flowers stack gracefully at the top arc of the mala,
- * then fly outward from the left & right edges, cascading down and vanishing seamlessly.
+ * Single Mala Flower Physics:
+ * 1. Stacking Flowers: Pour down and settle strictly along the top arc curve of the mala.
+ * 2. Overflow Flowers: Once stacked at the top arc, overflow outward from the left & right top corners.
+ * ZERO flowers drop across the front or bottom of the mala.
  */
-const FLOWER_PETALS = Array.from({ length: 26 }, (_, i) => {
-  const isFlyOut = i % 2 === 1;
+const MALA_FLOWERS = Array.from({ length: 28 }, (_, i) => {
+  const isOverflow = i % 2 === 1;
   const isLeft = i % 4 === 1;
   const flowerSrc = FLOWER_SRCS[i % 3];
   const size = 18 + (i % 3) * 6; // 18px, 24px, 30px
 
-  if (!isFlyOut) {
-    // STACKING FLOWERS: Land and rest gracefully along the top arc curve of the mala
-    const posX = 20 + (i * 4.8) % 60; // 20% to 80% along top arc
-    const normX = (posX - 50) / 30; // -1 to 1
-    const landingTop = 26 + (1 - normX * normX) * 16; // 26% sides to 42% center arc pile
-    const delay = 0.1 + (i % 6) * 0.35;
-    const duration = 2.0 + (i % 4) * 0.4;
+  if (!isOverflow) {
+    // STACKING: Settle strictly on the top curve arc of the mala (posX 20% to 80%)
+    const posX = 18 + (i * 4.6) % 64; // 18% to 82%
+    const normX = (posX - 50) / 32; // -1 to 1
+    // Mala top arc curve: 26% at corners, 42% at center arc
+    const landingTop = 26 + (1 - normX * normX) * 16;
+    const delay = 0.1 + (i % 7) * 0.35;
+    const duration = 1.8 + (i % 4) * 0.4;
     const rotation = -35 + ((i * 37) % 70);
 
     return {
@@ -41,27 +44,29 @@ const FLOWER_PETALS = Array.from({ length: 26 }, (_, i) => {
       delay,
       duration,
       rotation,
-      driftX: ((i % 5) - 2) * 4,
+      driftX: ((i % 5) - 2) * 3,
     };
   } else {
-    // FLY OUT FLOWERS: Stack at top arc then fly outward from left/right edges & cascade down
-    const startX = 28 + (i % 5) * 11; // Starts near top mala arc
-    const flyOutX = isLeft ? -25 - (i % 4) * 12 : 25 + (i % 4) * 12; // Flies outward past left/right edges
-    const delay = 0.3 + (i % 6) * 0.45;
-    const duration = 3.8 + (i % 4) * 0.5;
-    const rotation = -45 + ((i * 43) % 90);
+    // OVERFLOW: Stack at top arc then overflow outward from left/right corners
+    const startX = isLeft ? 22 + (i % 3) * 5 : 78 - (i % 3) * 5;
+    const normX = (startX - 50) / 32;
+    const topY = 26 + (1 - normX * normX) * 16;
+    const overflowX = isLeft ? -35 - (i % 4) * 14 : 35 + (i % 4) * 14; // Fly sideways off edges
+    const delay = 0.35 + (i % 6) * 0.4;
+    const duration = 2.8 + (i % 4) * 0.4;
+    const rotation = -50 + ((i * 43) % 100);
 
     return {
       id: i,
-      type: "flyout" as const,
+      type: "overflow" as const,
       posX: startX,
-      landingTop: 100, // Cascades past bottom
+      landingTop: topY,
       src: flowerSrc,
       size,
       delay,
       duration,
       rotation,
-      flyOutX,
+      overflowX,
     };
   }
 });
@@ -102,36 +107,36 @@ export const FloralPageBridge: React.FC = () => {
         >
           {/* Left Corner Support Rope */}
           <svg
-            className="absolute top-0 left-[6%] w-[24%] h-[38%] pointer-events-none z-0"
+            className="absolute top-0 left-[5%] w-[25%] h-[40%] pointer-events-none z-0"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
             <path
-              d="M 0 0 Q 40 45, 100 100"
+              d="M 0 0 Q 35 45, 100 100"
               fill="none"
               stroke="#B68D4C"
               strokeWidth="3.5"
               strokeLinecap="round"
               strokeDasharray="6 4"
             />
-            <circle cx="2" cy="2" r="4" fill="#8F6E36" />
+            <circle cx="3" cy="3" r="4.5" fill="#8F6E36" />
           </svg>
 
           {/* Right Corner Support Rope */}
           <svg
-            className="absolute top-0 right-[6%] w-[24%] h-[38%] pointer-events-none z-0"
+            className="absolute top-0 right-[5%] w-[25%] h-[40%] pointer-events-none z-0"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
             <path
-              d="M 100 0 Q 60 45, 0 100"
+              d="M 100 0 Q 65 45, 0 100"
               fill="none"
               stroke="#B68D4C"
               strokeWidth="3.5"
               strokeLinecap="round"
               strokeDasharray="6 4"
             />
-            <circle cx="98" cy="2" r="4" fill="#8F6E36" />
+            <circle cx="97" cy="3" r="4.5" fill="#8F6E36" />
           </svg>
 
           {/* Main Single Traditional Indian Flower Mala Image (Toran) */}
@@ -147,19 +152,19 @@ export const FloralPageBridge: React.FC = () => {
             />
           </div>
 
-          {/* Pouring, Stacking & Edge Flying-out Flowers */}
-          {FLOWER_PETALS.map((petal) => {
-            if (petal.type === "stack") {
-              // Flowers landing & stacking along the top arc curve of mala
+          {/* Flowers Stacking strictly on top arc & Overflowing sideways from edges */}
+          {MALA_FLOWERS.map((flower) => {
+            if (flower.type === "stack") {
+              // Settle & stack strictly on the top arc curve of mala
               return (
                 <motion.div
-                  key={petal.id}
+                  key={flower.id}
                   className="absolute pointer-events-none rounded-full overflow-hidden"
                   style={{
-                    left: `${petal.posX}%`,
-                    width: petal.size,
-                    height: petal.size,
-                    zIndex: 25, // Directly on top edge of mala arc
+                    left: `${flower.posX}%`,
+                    width: flower.size,
+                    height: flower.size,
+                    zIndex: 25, // Rests on top edge of mala arc
                   }}
                   initial={{
                     top: "-15%",
@@ -170,10 +175,10 @@ export const FloralPageBridge: React.FC = () => {
                   animate={
                     isInView
                       ? {
-                          top: `${petal.landingTop}%`,
+                          top: `${flower.landingTop}%`,
                           opacity: [0, 0.9, 1, 1],
-                          rotate: petal.rotation,
-                          x: petal.driftX,
+                          rotate: flower.rotation,
+                          x: flower.driftX,
                         }
                       : {
                           top: "-15%",
@@ -184,21 +189,21 @@ export const FloralPageBridge: React.FC = () => {
                   }
                   transition={{
                     top: {
-                      duration: petal.duration,
-                      delay: petal.delay,
+                      duration: flower.duration,
+                      delay: flower.delay,
                       ease: [0.22, 1, 0.36, 1],
                     },
-                    opacity: { duration: 0.4, delay: petal.delay },
-                    rotate: { duration: petal.duration, delay: petal.delay },
-                    x: { duration: petal.duration, delay: petal.delay },
+                    opacity: { duration: 0.4, delay: flower.delay },
+                    rotate: { duration: flower.duration, delay: flower.delay },
+                    x: { duration: flower.duration, delay: flower.delay },
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={petal.src}
-                    alt="stacking flower"
-                    width={petal.size}
-                    height={petal.size}
+                    src={flower.src}
+                    alt="top arc flower"
+                    width={flower.size}
+                    height={flower.size}
                     className="w-full h-full object-cover rounded-full mix-blend-multiply"
                     style={{
                       filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.18))",
@@ -207,19 +212,19 @@ export const FloralPageBridge: React.FC = () => {
                 </motion.div>
               );
             } else {
-              // Flowers stacking at top arc then flying out from left/right edges
+              // Flowers overflowing outward from left/right top corners (sideways fly out)
               return (
                 <motion.div
-                  key={petal.id}
+                  key={flower.id}
                   className="absolute pointer-events-none rounded-full overflow-hidden"
                   style={{
-                    left: `${petal.posX}%`,
-                    width: petal.size,
-                    height: petal.size,
-                    zIndex: 15,
+                    left: `${flower.posX}%`,
+                    width: flower.size,
+                    height: flower.size,
+                    zIndex: 26,
                   }}
                   initial={{
-                    top: "-12%",
+                    top: "-15%",
                     opacity: 0,
                     rotate: 0,
                     x: 0,
@@ -227,32 +232,32 @@ export const FloralPageBridge: React.FC = () => {
                   animate={
                     isInView
                       ? {
-                          top: ["-12%", "28%", "68%", "100%"],
-                          opacity: [0, 1, 0.9, 0], // Smooth fade out
-                          rotate: [0, petal.rotation, petal.rotation * 1.8],
-                          x: [0, petal.flyOutX * 0.4, petal.flyOutX, petal.flyOutX * 1.3],
+                          top: ["-15%", `${flower.landingTop}%`, `${flower.landingTop + 15}%`],
+                          opacity: [0, 1, 0.85, 0], // Smooth fade out as it flies off edges
+                          rotate: [0, flower.rotation, flower.rotation * 1.6],
+                          x: [0, flower.overflowX * 0.4, flower.overflowX],
                         }
                       : {
-                          top: "-12%",
+                          top: "-15%",
                           opacity: 0,
                           rotate: 0,
                           x: 0,
                         }
                   }
                   transition={{
-                    duration: petal.duration,
-                    delay: petal.delay,
+                    duration: flower.duration,
+                    delay: flower.delay,
                     repeat: Infinity,
-                    repeatDelay: 0.5,
+                    repeatDelay: 0.6,
                     ease: "easeInOut",
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={petal.src}
-                    alt="flying out flower"
-                    width={petal.size}
-                    height={petal.size}
+                    src={flower.src}
+                    alt="overflow flower"
+                    width={flower.size}
+                    height={flower.size}
                     className="w-full h-full object-cover rounded-full mix-blend-multiply"
                     style={{
                       filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.15))",
@@ -279,6 +284,7 @@ export const FloralPageBridge: React.FC = () => {
     </section>
   );
 };
+
 
 
 

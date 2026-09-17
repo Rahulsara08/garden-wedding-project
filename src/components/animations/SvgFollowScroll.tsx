@@ -62,7 +62,7 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
 
       d += `M ${cx} ${firstIconCenterY}`;
 
-      // 2. Weave through each pair of events in a wide, fluid outer margin arc that completely clears all text & headers
+      // 2. Weave through each pair of events staying strictly in outer margins (8px from edge), clearing all card text
       for (let i = 0; i < iconEls.length - 1; i++) {
         const currIcon = iconEls[i];
         const nextIcon = iconEls[i + 1];
@@ -71,16 +71,14 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
         const currRect = currIcon.getBoundingClientRect();
         const nextRect = nextIcon.getBoundingClientRect();
 
-        const currCenterY =
-          currRect.top + currRect.height / 2 - containerRect.top;
-        const nextCenterY =
-          nextRect.top + nextRect.height / 2 - containerRect.top;
+        const currCenterY = currRect.top + currRect.height / 2 - containerRect.top;
+        const nextCenterY = nextRect.top + nextRect.height / 2 - containerRect.top;
 
-        // Alternate sides: Event 0 (Haldi) curves LEFT, Event 1 (Mehndi) curves RIGHT...
+        // Alternate sides: Event 0 curves LEFT, Event 1 curves RIGHT...
         const isLeft = i % 2 === 0;
 
-        let cardTop = currCenterY + 32;
-        let cardBottom = nextCenterY - 32;
+        let cardTop = currCenterY + 28;
+        let cardBottom = nextCenterY - 28;
 
         if (card) {
           const cardRect = card.getBoundingClientRect();
@@ -88,25 +86,21 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
           cardBottom = cardRect.bottom - containerRect.top;
         }
 
-        // Push arc peak into the outer screen margin (10px from edge) so it never touches any text or chips
-        const sideX = isLeft ? 10 : cWidth - 10;
-        const sideBellyX = isLeft ? 5 : cWidth - 5;
+        // Extremely safe side margin (8px from edge) — far outside any card text
+        const sideX = isLeft ? 8 : cWidth - 8;
 
-        // Transition Y points:
-        // yOut: reaches sideX ABOVE cardTop (above title)
-        // yIn: leaves sideX AFTER cardBottom (below "Get Directions →")
-        const yOut = Math.min(cardTop - 8, currCenterY + 22);
-        const yIn = Math.max(cardBottom + 8, nextCenterY - 22);
-        const dyMid = Math.max(10, yIn - yOut);
+        // Transition Y bounds: reach sideX BEFORE cardTop (above title), leave sideX AFTER cardBottom
+        const yOut = Math.min(cardTop - 10, currCenterY + 20);
+        const yIn = Math.max(cardBottom + 10, nextCenterY - 20);
 
-        // Segment 1: Arc out from icon center to sideX ABOVE title
-        d += ` C ${cx + (sideX - cx) * 0.65} ${currCenterY + 4}, ${sideX} ${currCenterY + 12}, ${sideX} ${yOut}`;
+        // Segment 1: Quick sharp arc from icon center to side margin ABOVE card title
+        d += ` C ${cx + (sideX - cx) * 0.9} ${currCenterY + 2}, ${sideX} ${currCenterY + 8}, ${sideX} ${yOut}`;
 
-        // Segment 2: Continuous wide bowed arc down outer margin clearing all card text, chips & Day headers
-        d += ` C ${sideBellyX} ${yOut + dyMid * 0.3}, ${sideBellyX} ${yIn - dyMid * 0.3}, ${sideX} ${yIn}`;
+        // Segment 2: Vertical track down the outer margin (8px from edge) completely clear of all card text
+        d += ` L ${sideX} ${yIn}`;
 
-        // Segment 3: Arc from sideX below cardBottom into next icon center
-        d += ` C ${sideX} ${nextCenterY - 12}, ${cx + (sideX - cx) * 0.65} ${nextCenterY - 4}, ${cx} ${nextCenterY}`;
+        // Segment 3: Sharp arc from side margin below card bottom into next icon center
+        d += ` C ${sideX} ${nextCenterY - 8}, ${cx + (sideX - cx) * 0.9} ${nextCenterY - 2}, ${cx} ${nextCenterY}`;
       }
 
       // Path terminates right at the center of the last icon (Heart sign) behind it.
