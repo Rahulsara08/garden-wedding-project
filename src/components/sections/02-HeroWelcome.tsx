@@ -46,11 +46,8 @@ export const HeroWelcome: React.FC = () => {
           />
           {/* Gentle edge blend to merge watercolor naturally into warm ivory paper */}
           <div className="absolute inset-0 bg-gradient-to-b from-ivory/50 via-transparent to-ivory/75" />
-          <div className="absolute inset-0 bg-radial from-transparent via-transparent to-ivory/40" />
         </div>
       </motion.div>
-
-
 
       {/* Bottom Soft Gradient Mask for Seamless Integration (No Sharp Blur Lines) */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory via-ivory/70 to-transparent pointer-events-none z-15" />

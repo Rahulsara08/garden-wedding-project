@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { weddingConfig, EventCeremony } from "@/config/weddingConfig";
 import { SvgFollowScroll } from "../animations/SvgFollowScroll";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { MapPin, Clock, Sparkles, Sun, Music, Flame } from "lucide-react";
+import { MapPin, Clock, Sparkles, Sun, Music, Flame, Heart } from "lucide-react";
 
 export const EventsTimeline: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getEventIcon = (type: EventCeremony["iconType"]) => {
+  const getEventIcon = (type: string) => {
     switch (type) {
       case "haldi":
         return <Sun className="w-5 h-5 text-gold" />;
@@ -18,6 +18,8 @@ export const EventsTimeline: React.FC = () => {
         return <Sparkles className="w-5 h-5 text-gold" />;
       case "sangeet":
         return <Music className="w-5 h-5 text-gold" />;
+      case "pheras":
+        return <Heart className="w-5 h-5 text-gold fill-gold/20" />;
       case "wedding":
       default:
         return <Flame className="w-5 h-5 text-gold fill-gold/20" />;

@@ -17,7 +17,7 @@ export interface EventCeremony {
   mapLink: string;
   note: string;
   dressCode?: string;
-  iconType: "haldi" | "mehndi" | "sangeet" | "wedding";
+  iconType: "haldi" | "mehndi" | "sangeet" | "wedding" | "pheras";
 }
 
 export interface EventDay {
@@ -213,7 +213,7 @@ export const weddingConfig = {
             mapLink: "https://maps.google.com/?q=Vrindavan",
             note: "Followed by a royal dinner banquet under starry skies",
             dressCode: "Traditional Formal / Raw Silk & Gold",
-            iconType: "wedding",
+            iconType: "pheras",
           },
         ],
       },

@@ -26,12 +26,14 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
     damping: 90,
   });
 
-  // Calculate height-based path or standard vertical path
+  // Winding golden path weaving around each event card, hitting each node circle center (Image 2 reference)
+  const pathD = "M 50,0 L 50,60 C 10,130 10,200 50,270 C 90,340 90,410 50,480 C 10,550 10,620 50,690 C 90,755 90,825 50,890 L 50,1000";
+
   return (
-    <div className={`absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 pointer-events-none ${className}`}>
+    <div className={`absolute inset-0 w-full h-full pointer-events-none z-10 ${className}`}>
       <svg
         className="w-full h-full"
-        viewBox="0 0 32 1000"
+        viewBox="0 0 100 1000"
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -46,20 +48,22 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
 
         {/* Faint background snake-like S-curve track weaving left and right */}
         <path
-          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
+          d={pathD}
           stroke="#B68D4C"
-          strokeWidth="1.5"
+          strokeWidth="1.8"
           strokeDasharray="4 6"
-          strokeOpacity="0.3"
+          strokeOpacity="0.35"
+          vectorEffect="non-scaling-stroke"
         />
 
         {/* Animated flowing dashed golden snake curve */}
         <motion.path
-          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
+          d={pathD}
           stroke="url(#goldStrokeGrad)"
-          strokeWidth="2"
+          strokeWidth="2.2"
           strokeDasharray="6 8"
           strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
           initial={{ strokeDashoffset: 100 }}
           animate={{ strokeDashoffset: [100, 0, -100] }}
           transition={{
@@ -71,10 +75,11 @@ export const SvgFollowScroll: React.FC<SvgFollowScrollProps> = ({
 
         {/* Active solid scroll-revealed gold snake curve */}
         <motion.path
-          d="M 16,0 Q 28,120 16,250 T 16,500 T 16,750 T 16,1000"
+          d={pathD}
           stroke="url(#goldStrokeGrad)"
-          strokeWidth="3"
+          strokeWidth="3.2"
           strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
           style={{ pathLength }}
         />
       </svg>
