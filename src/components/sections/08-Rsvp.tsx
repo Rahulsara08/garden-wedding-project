@@ -6,7 +6,6 @@ import { weddingConfig } from "@/config/weddingConfig";
 import { useGuestName } from "@/hooks/useGuestName";
 import { useStorageState } from "@/hooks/useStorageState";
 import { fireWeddingConfetti } from "../animations/ConfettiBurst";
-import { CornerFlourish } from "../motifs/CornerFlourish";
 import { LotusDivider } from "../motifs/LotusDivider";
 import { Heart, Check, Sparkles } from "lucide-react";
 import Image from "next/image";
@@ -61,16 +60,8 @@ export const Rsvp: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative w-full max-w-sm mx-auto text-center flex flex-col items-center gap-4 p-5 sm:p-6 rounded-3xl bg-gradient-to-b from-[#FFFDF7] via-[#FFFBF2] to-[#FFF6E5] border-2 border-gold/40 shadow-xl"
-          style={{
-            boxShadow: "0 12px 35px -8px rgba(186, 141, 60, 0.25), 0 4px 12px rgba(0,0,0,0.04)",
-          }}
+          className="relative w-full max-w-sm mx-auto text-center flex flex-col items-center gap-4 py-2"
         >
-          {/* Corner Ornamental Flourishes */}
-          <CornerFlourish position="top-left" size={24} className="text-gold/60" />
-          <CornerFlourish position="top-right" size={24} className="text-gold/60" />
-          <CornerFlourish position="bottom-left" size={24} className="text-gold/60" />
-          <CornerFlourish position="bottom-right" size={24} className="text-gold/60" />
 
           {/* Section Top Heading */}
           <div className="flex flex-col items-center w-full pt-1">

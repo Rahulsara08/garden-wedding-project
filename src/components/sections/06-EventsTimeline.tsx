@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { weddingConfig, EventCeremony } from "@/config/weddingConfig";
-import { SvgFollowScroll } from "../animations/SvgFollowScroll";
 import { LotusDivider } from "../motifs/LotusDivider";
 import { MapPin, Clock, Sparkles, Sun, Music, Flame, Heart } from "lucide-react";
 
 export const EventsTimeline: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const getEventIcon = (type: string) => {
     switch (type) {
@@ -66,10 +64,8 @@ export const EventsTimeline: React.FC = () => {
         </motion.p>
       </div>
 
-      {/* Main Timeline Container with Golden Line */}
-      <div ref={containerRef} className="relative max-w-3xl mx-auto py-4">
-        {/* Scroll-scrubbed SVG follow line */}
-        <SvgFollowScroll containerRef={containerRef} />
+      {/* Main Timeline Container */}
+      <div className="relative max-w-3xl mx-auto py-4">
 
         {/* Days and Events */}
         <div className="space-y-12">
