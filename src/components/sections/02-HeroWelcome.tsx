@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { LotusDivider } from "../motifs/LotusDivider";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
+import { HeroFlock } from "../animations/HeroFlock";
 
 export const HeroWelcome: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -20,6 +21,7 @@ export const HeroWelcome: React.FC = () => {
   // Independent multi-layer parallax transformations
   const templeY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const templeScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const birdsY = useTransform(scrollYProgress, [0, 1], [0, 95]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
@@ -47,6 +49,14 @@ export const HeroWelcome: React.FC = () => {
           {/* Gentle edge blend to merge watercolor naturally into warm ivory paper */}
           <div className="absolute inset-0 bg-gradient-to-b from-ivory/50 via-transparent to-ivory/75" />
         </div>
+      </motion.div>
+
+      {/* Background Layer 1.5: Flying Birds Flock (Loose Diagonal V, Morphing Wings, Drifting Across Top Sky) */}
+      <motion.div
+        style={{ y: birdsY }}
+        className="absolute inset-0 pointer-events-none select-none z-10"
+      >
+        <HeroFlock />
       </motion.div>
 
       {/* Bottom Soft Gradient Mask for Seamless Integration (No Sharp Blur Lines) */}

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { weddingConfig } from "@/config/weddingConfig";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { WatercolorBottomGarden } from "../motifs/WatercolorBottomGarden";
 
 interface TimeLeft {
   days: number;
@@ -66,16 +67,19 @@ export const Countdown: React.FC = () => {
         className="relative w-full max-w-[440px] mx-auto flex flex-col items-center"
         style={{ aspectRatio: "923 / 1006" }}
       >
-        {/* Background illustration with corner flowers seamlessly attached to the floral ropes */}
+        {/* Clean Jhula Swing Couple (High-res original without composite corner bouquets) */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
           <Image
-            src="/assets/illustrations/countdown-jhula-bg.png"
+            src="/assets/illustrations/couple-jhula-transparent.png"
             alt="Couple on Floral Jhula Swing"
             fill
             priority
             className="object-contain object-top"
           />
         </div>
+
+        {/* Handcrafted Watercolor Bottom Garden (Pure SVG & CSS, zero raster images, soft Vrindavan meadow) */}
+        <WatercolorBottomGarden className="absolute -bottom-4 sm:-bottom-6 left-0 right-0 z-15 pointer-events-none" />
 
         {/* Countdown details layered in open space between the two floral ropes with ample margin */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-7 sm:pt-9 px-4 pointer-events-auto">

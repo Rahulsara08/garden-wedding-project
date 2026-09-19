@@ -7,8 +7,8 @@ import { useGuestName } from "@/hooks/useGuestName";
 import { useStorageState } from "@/hooks/useStorageState";
 import { fireWeddingConfetti } from "../animations/ConfettiBurst";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { NamasteScrollSequence } from "../animations/NamasteScrollSequence";
 import { Heart, Check, Sparkles } from "lucide-react";
-import Image from "next/image";
 
 interface RsvpEntry {
   name: string;
@@ -79,25 +79,8 @@ export const Rsvp: React.FC = () => {
             <LotusDivider variant="simple" className="my-1 max-w-[110px]" />
           </div>
 
-          {/* Animated Namaste Couple Greeting Illustration */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="relative w-full max-w-[210px] sm:max-w-[240px] mx-auto my-0.5"
-          >
-            <div className="relative w-full aspect-[986/901] filter drop-shadow-[0_8px_18px_rgba(186,141,60,0.28)]">
-              <Image
-                src="/assets/illustrations/namaste-couple.png"
-                alt="Indian Couple Namaste Anjali Mudra Greeting"
-                fill
-                unoptimized
-                sizes="(max-width: 768px) 100vw, 240px"
-                className="object-contain"
-              />
-            </div>
-          </motion.div>
+          {/* Scroll-Driven Namaste Couple Greeting Animation (Smooth 95-frame sequence) */}
+          <NamasteScrollSequence className="my-1" />
 
           <div className="w-full flex flex-col justify-center items-center">
             <AnimatePresence mode="wait">
