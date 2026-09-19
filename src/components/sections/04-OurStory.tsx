@@ -3,100 +3,33 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { weddingConfig } from "@/config/weddingConfig";
-import { CardStackScroll } from "../animations/CardStackScroll";
-import { LotusDivider } from "../motifs/LotusDivider";
 
 export const OurStory: React.FC = () => {
   return (
-    <section id="story-section" className="relative py-12 px-3 bg-ivory paper-texture overflow-hidden">
-      {/* Top Left Botanical Foliage Accent */}
-      <div className="absolute -top-6 -left-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85">
+    <section id="story-section" className="relative py-8 sm:py-14 px-2 bg-ivory paper-texture overflow-hidden flex justify-center items-center">
+      {/* Full Our Story Image matching Reference Image 2 */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full max-w-[460px] sm:max-w-[520px] aspect-[580/1024] select-none"
+      >
         <Image
-          src="/assets/illustrations/floral-corner-left.png"
-          alt="Top Left Botanical Accent"
+          src="/assets/illustrations/our-story-full.jpg"
+          alt="Our Journey - How Love Unfolded"
           fill
-          className="object-contain object-top-left"
+          priority
+          unoptimized
+          sizes="(max-width: 768px) 100vw, 520px"
+          className="object-contain mix-blend-multiply"
+          style={{
+            maskImage: "radial-gradient(ellipse 96% 96% at 50% 50%, black 85%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 96% 96% at 50% 50%, black 85%, transparent 100%)",
+          }}
         />
-      </div>
-
-      {/* Top Right Botanical Foliage Accent */}
-      <div className="absolute -top-6 -right-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85">
-        <Image
-          src="/assets/illustrations/floral-corner-right.png"
-          alt="Top Right Botanical Accent"
-          fill
-          className="object-contain object-top-right"
-        />
-      </div>
-
-      {/* Bottom Left Botanical Foliage Accent */}
-      <div className="absolute -bottom-6 -left-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85 transform scale-y-[-1]">
-        <Image
-          src="/assets/illustrations/floral-corner-right.png"
-          alt="Bottom Left Botanical Accent"
-          fill
-          className="object-contain object-bottom-left"
-        />
-      </div>
-
-      {/* Bottom Right Botanical Foliage Accent */}
-      <div className="absolute -bottom-6 -right-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85 transform scale-y-[-1]">
-        <Image
-          src="/assets/illustrations/floral-corner-left.png"
-          alt="Bottom Right Botanical Accent"
-          fill
-          className="object-contain object-bottom-right"
-        />
-      </div>
-
-      {/* Section Header */}
-      <div className="relative z-20 text-center max-w-lg mx-auto mb-6 flex flex-col items-center">
-        {/* Top Flower Motif Icon matching Image 2 */}
-        <div className="mb-1.5 opacity-80 select-none">
-          <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-gold-dark stroke-[1.5]">
-            <path d="M12 3 C10 7, 7 10, 3 12 C7 14, 10 17, 12 21 C14 17, 17 14, 21 12 C17 10, 14 7, 12 3 Z" fill="#B68D4C" fillOpacity="0.25" />
-            <circle cx="12" cy="12" r="2" fill="#B68D4C" />
-          </svg>
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans font-semibold mb-1"
-        >
-          {weddingConfig.story.sectionEyebrow}
-        </motion.p>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          {weddingConfig.story.heading}
-        </motion.h2>
-
-        <LotusDivider variant="simple" className="my-2 max-w-[120px]" />
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto"
-        >
-          {weddingConfig.story.subtitle}
-        </motion.p>
-      </div>
-
-      {/* Story Moment Cards Crafted to Match Reference Image */}
-      <div className="relative z-20">
-        <CardStackScroll moments={weddingConfig.story.moments} />
-      </div>
+      </motion.div>
     </section>
   );
 };
+
