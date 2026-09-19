@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export const OurStory: React.FC = () => {
   return (
-    <section id="story-section" className="relative py-8 sm:py-14 px-2 bg-ivory paper-texture overflow-hidden flex justify-center items-center">
+    <section id="story-section" className="relative mt-6 sm:mt-10 py-8 sm:py-14 px-2 bg-ivory paper-texture overflow-hidden flex justify-center items-center">
       {/* Full Our Story Elements directly on Application Theme Background */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

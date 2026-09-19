@@ -59,15 +59,15 @@ export const Countdown: React.FC = () => {
   return (
     <section
       id="countdown-section"
-      className="relative w-full bg-ivory paper-texture pt-0 pb-8 px-0 flex flex-col items-center select-none overflow-visible"
+      className="relative w-full bg-ivory paper-texture pt-2 pb-10 sm:pb-14 px-0 flex flex-col items-center select-none overflow-hidden"
     >
-      {/* Main Jhula & Countdown Canvas - Full width to mobile screen */}
+      {/* Main Jhula & Countdown Canvas */}
       <div
         className="relative w-full max-w-[440px] mx-auto flex flex-col items-center"
         style={{ aspectRatio: "923 / 1006" }}
       >
-        {/* Top-Left Real Watercolor Floral Corner (Attaches seamlessly to top left swing rope) */}
-        <div className="absolute -top-3 -left-3 sm:-left-5 w-28 sm:w-36 aspect-square z-15 pointer-events-none select-none">
+        {/* Top-Left Real Watercolor Floral Corner */}
+        <div className="absolute -top-3 -left-3 sm:-left-5 w-26 sm:w-34 aspect-square z-15 pointer-events-none select-none">
           <Image
             src="/assets/illustrations/floral-corner-left.png"
             alt="Top Left Floral Corner"
@@ -76,8 +76,8 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Top-Right Real Watercolor Floral Corner (Attaches seamlessly to top right swing rope) */}
-        <div className="absolute -top-3 -right-3 sm:-right-5 w-28 sm:w-36 aspect-square z-15 pointer-events-none select-none">
+        {/* Top-Right Real Watercolor Floral Corner */}
+        <div className="absolute -top-3 -right-3 sm:-right-5 w-26 sm:w-34 aspect-square z-15 pointer-events-none select-none">
           <Image
             src="/assets/illustrations/floral-corner-right.png"
             alt="Top Right Floral Corner"
@@ -86,7 +86,7 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Clean Jhula Swing Couple (High-res original with floral ropes) */}
+        {/* Clean Jhula Swing Couple */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
           <Image
             src="/assets/illustrations/couple-jhula-transparent.png"
@@ -97,7 +97,7 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Bottom Flowers matching Reference Image 2 (Bottom Left & Right Watercolor Botanical Sprigs) */}
+        {/* Bottom Flowers matching Reference Image 2 */}
         <div className="absolute -bottom-6 sm:-bottom-8 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
           {/* Bottom Left Watercolor Wildflowers Sprig */}
           <div className="relative w-36 sm:w-48 aspect-[220/214] -ml-2 sm:-ml-4 -mb-1">
@@ -122,8 +122,8 @@ export const Countdown: React.FC = () => {
           </div>
         </div>
 
-        {/* Countdown details layered in open space between the two floral ropes with ample margin */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-7 sm:pt-9 px-4 pointer-events-auto">
+        {/* Countdown details layered in open space between ropes */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-6 sm:pt-8 px-4 pointer-events-auto">
           {/* Header copy */}
           <div className="flex flex-col items-center text-center w-full max-w-[230px] sm:max-w-[250px]">
             <p className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.24em] text-gold font-sans font-semibold mb-0.5">
@@ -140,11 +140,11 @@ export const Countdown: React.FC = () => {
               Countdown to Our Forever
             </h2>
 
-            <LotusDivider variant="simple" className="my-1 max-w-[95px] sm:max-w-[115px]" />
+            <LotusDivider variant="simple" className="my-1 max-w-[90px] sm:max-w-[110px]" />
           </div>
 
-          {/* Live Counter Boxes - Perfectly sized with generous clearance from the ropes */}
-          <div className="w-full max-w-[216px] sm:max-w-[236px] my-1.5 sm:my-2">
+          {/* Live Counter Boxes */}
+          <div className="w-full max-w-[216px] sm:max-w-[236px] my-1 sm:my-1.5">
             {isHydrated ? (
               timeLeft.isPast ? (
                 <div className="py-2 bg-ivory/95 rounded-xl border border-gold/30 shadow-2xs text-center">
@@ -189,11 +189,13 @@ export const Countdown: React.FC = () => {
             )}
           </div>
 
-          {/* Date info - clean and airy above couple's heads */}
-          <div className="mt-0.5 sm:mt-1">
-            <p className="text-[8px] sm:text-[9px] text-sage/90 font-sans tracking-[0.20em] uppercase font-semibold">
-              {weddingConfig.date.displayDate} · {weddingConfig.date.city}
-            </p>
+          {/* Date info in clean, legible golden pill badge */}
+          <div className="mt-1 sm:mt-1.5">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-ivory/95 border border-gold/45 shadow-2xs backdrop-blur-xs">
+              <span className="text-[8.5px] sm:text-[9.5px] text-gold-dark font-sans tracking-[0.20em] uppercase font-bold">
+                {weddingConfig.date.displayDate} · {weddingConfig.date.city}
+              </span>
+            </div>
           </div>
         </div>
       </div>

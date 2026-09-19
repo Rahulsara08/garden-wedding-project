@@ -219,12 +219,27 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
 
               {/* Inner Antique Gold Rule Box */}
               <div className="w-full border border-gold/25 rounded-2xl p-2 sm:p-3 flex flex-col items-center justify-center">
+                {/* Dear Guest Welcoming Note */}
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.15 }}
+                  className="mb-2 text-center"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.24em] text-gold-dark font-sans font-bold">
+                    Dear Guest
+                  </p>
+                  <p className="font-script text-xs sm:text-sm text-forest-deep italic leading-relaxed mt-0.5 max-w-[230px]">
+                    &ldquo;With joyous hearts, we warmly invite you to step into our wedding celebration.&rdquo;
+                  </p>
+                </motion.div>
+
                 {/* Eyebrow */}
                 <motion.p
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-[10px] uppercase tracking-[0.24em] text-forest/80 font-sans font-semibold mb-2 select-none"
+                  transition={{ duration: 0.8, delay: 0.25 }}
+                  className="text-[9.5px] uppercase tracking-[0.24em] text-forest/75 font-sans font-semibold mb-2 select-none"
                 >
                   {weddingConfig.couple.sanskritInvocation}
                 </motion.p>
