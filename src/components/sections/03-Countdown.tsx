@@ -67,7 +67,27 @@ export const Countdown: React.FC = () => {
         className="relative w-full max-w-[440px] mx-auto flex flex-col items-center"
         style={{ aspectRatio: "923 / 1006" }}
       >
-        {/* Clean Jhula Swing Couple (High-res original without composite corner bouquets) */}
+        {/* Top-Left Real Watercolor Floral Corner (Attaches seamlessly to top left swing rope) */}
+        <div className="absolute -top-3 -left-3 sm:-left-5 w-28 sm:w-36 aspect-square z-15 pointer-events-none select-none">
+          <Image
+            src="/assets/illustrations/floral-corner-left.png"
+            alt="Top Left Floral Corner"
+            fill
+            className="object-contain object-top-left"
+          />
+        </div>
+
+        {/* Top-Right Real Watercolor Floral Corner (Attaches seamlessly to top right swing rope) */}
+        <div className="absolute -top-3 -right-3 sm:-right-5 w-28 sm:w-36 aspect-square z-15 pointer-events-none select-none">
+          <Image
+            src="/assets/illustrations/floral-corner-right.png"
+            alt="Top Right Floral Corner"
+            fill
+            className="object-contain object-top-right"
+          />
+        </div>
+
+        {/* Clean Jhula Swing Couple (High-res original with floral ropes) */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
           <Image
             src="/assets/illustrations/couple-jhula-transparent.png"
@@ -78,8 +98,34 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Handcrafted Watercolor Bottom Garden (Pure SVG & CSS, zero raster images, soft Vrindavan meadow) */}
-        <WatercolorBottomGarden className="absolute -bottom-4 sm:-bottom-6 left-0 right-0 z-15 pointer-events-none" />
+        {/* Real Watercolor Garden Base (Bottom Left & Right Real Garden Flowers) */}
+        <div className="absolute -bottom-4 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
+          {/* Bottom Left Real Garden Flowers */}
+          <div className="relative w-32 sm:w-44 aspect-square -ml-3 sm:-ml-5 -mb-2 transform rotate-12 scale-y-[-1]">
+            <Image
+              src="/assets/illustrations/floral-corner-right.png"
+              alt="Bottom Left Real Garden Flowers"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          {/* Bottom Right Real Garden Flowers */}
+          <div className="relative w-32 sm:w-44 aspect-square -mr-3 sm:-mr-5 -mb-2 transform -rotate-12 scale-y-[-1]">
+            <Image
+              src="/assets/illustrations/floral-corner-left.png"
+              alt="Bottom Right Real Garden Flowers"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Handcrafted Watercolor Bottom Meadow (Subtle SVG greenery wash) */}
+        <WatercolorBottomGarden className="absolute -bottom-4 sm:-bottom-6 left-0 right-0 z-14 pointer-events-none opacity-85" />
+
+        {/* Soft Bottom Blur & Gradient Wash - Merges the garden seamlessly into the background theme */}
+        <div className="absolute -bottom-7 left-0 right-0 h-16 sm:h-20 bg-gradient-to-t from-ivory via-ivory/80 to-transparent pointer-events-none z-20 backdrop-blur-[1px]" />
 
         {/* Countdown details layered in open space between the two floral ropes with ample margin */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-7 sm:pt-9 px-4 pointer-events-auto">

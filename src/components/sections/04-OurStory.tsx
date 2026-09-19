@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { CardStackScroll } from "../animations/CardStackScroll";
@@ -9,8 +10,48 @@ import { LotusDivider } from "../motifs/LotusDivider";
 export const OurStory: React.FC = () => {
   return (
     <section id="story-section" className="relative py-12 px-3 bg-ivory paper-texture overflow-hidden">
+      {/* Top Left Botanical Foliage Accent */}
+      <div className="absolute -top-6 -left-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85">
+        <Image
+          src="/assets/illustrations/floral-corner-left.png"
+          alt="Top Left Botanical Accent"
+          fill
+          className="object-contain object-top-left"
+        />
+      </div>
+
+      {/* Top Right Botanical Foliage Accent */}
+      <div className="absolute -top-6 -right-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85">
+        <Image
+          src="/assets/illustrations/floral-corner-right.png"
+          alt="Top Right Botanical Accent"
+          fill
+          className="object-contain object-top-right"
+        />
+      </div>
+
+      {/* Bottom Left Botanical Foliage Accent */}
+      <div className="absolute -bottom-6 -left-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85 transform scale-y-[-1]">
+        <Image
+          src="/assets/illustrations/floral-corner-right.png"
+          alt="Bottom Left Botanical Accent"
+          fill
+          className="object-contain object-bottom-left"
+        />
+      </div>
+
+      {/* Bottom Right Botanical Foliage Accent */}
+      <div className="absolute -bottom-6 -right-6 w-32 sm:w-40 aspect-square z-10 pointer-events-none select-none opacity-85 transform scale-y-[-1]">
+        <Image
+          src="/assets/illustrations/floral-corner-left.png"
+          alt="Bottom Right Botanical Accent"
+          fill
+          className="object-contain object-bottom-right"
+        />
+      </div>
+
       {/* Section Header */}
-      <div className="text-center max-w-lg mx-auto mb-8">
+      <div className="relative z-20 text-center max-w-lg mx-auto mb-6">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,8 +85,10 @@ export const OurStory: React.FC = () => {
         </motion.p>
       </div>
 
-      {/* Polaroid Card Stack Scroll */}
-      <CardStackScroll moments={weddingConfig.story.moments} />
+      {/* Story Moment Cards Crafted to Match Reference Image */}
+      <div className="relative z-20">
+        <CardStackScroll moments={weddingConfig.story.moments} />
+      </div>
     </section>
   );
 };
