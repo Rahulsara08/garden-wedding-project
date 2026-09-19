@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { weddingConfig } from "@/config/weddingConfig";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { WatercolorBottomGarden } from "../motifs/WatercolorBottomGarden";
 
 interface TimeLeft {
   days: number;
@@ -98,34 +97,30 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Real Watercolor Garden Base (Bottom Left & Right Real Garden Flowers) */}
-        <div className="absolute -bottom-4 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
-          {/* Bottom Left Real Garden Flowers */}
-          <div className="relative w-32 sm:w-44 aspect-square -ml-3 sm:-ml-5 -mb-2 transform rotate-12 scale-y-[-1]">
+        {/* Bottom Flowers matching Reference Image 2 (Bottom Left & Right Watercolor Botanical Sprigs) */}
+        <div className="absolute -bottom-6 sm:-bottom-8 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
+          {/* Bottom Left Watercolor Wildflowers Sprig */}
+          <div className="relative w-36 sm:w-48 aspect-[220/214] -ml-2 sm:-ml-4 -mb-1">
             <Image
-              src="/assets/illustrations/floral-corner-right.png"
-              alt="Bottom Left Real Garden Flowers"
+              src="/assets/illustrations/bottom-flower-left.png"
+              alt="Bottom Left Watercolor Flowers"
               fill
-              className="object-contain"
+              unoptimized
+              className="object-contain object-bottom-left"
             />
           </div>
 
-          {/* Bottom Right Real Garden Flowers */}
-          <div className="relative w-32 sm:w-44 aspect-square -mr-3 sm:-mr-5 -mb-2 transform -rotate-12 scale-y-[-1]">
+          {/* Bottom Right Watercolor Wildflowers Sprig */}
+          <div className="relative w-40 sm:w-52 aspect-[250/184] -mr-2 sm:-mr-4 -mb-1">
             <Image
-              src="/assets/illustrations/floral-corner-left.png"
-              alt="Bottom Right Real Garden Flowers"
+              src="/assets/illustrations/bottom-flower-right.png"
+              alt="Bottom Right Watercolor Flowers"
               fill
-              className="object-contain"
+              unoptimized
+              className="object-contain object-bottom-right"
             />
           </div>
         </div>
-
-        {/* Handcrafted Watercolor Bottom Meadow (Subtle SVG greenery wash) */}
-        <WatercolorBottomGarden className="absolute -bottom-4 sm:-bottom-6 left-0 right-0 z-14 pointer-events-none opacity-85" />
-
-        {/* Soft Bottom Blur & Gradient Wash - Merges the garden seamlessly into the background theme */}
-        <div className="absolute -bottom-7 left-0 right-0 h-16 sm:h-20 bg-gradient-to-t from-ivory via-ivory/80 to-transparent pointer-events-none z-20 backdrop-blur-[1px]" />
 
         {/* Countdown details layered in open space between the two floral ropes with ample margin */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-7 sm:pt-9 px-4 pointer-events-auto">
