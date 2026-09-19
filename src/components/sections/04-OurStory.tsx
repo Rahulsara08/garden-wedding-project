@@ -51,7 +51,15 @@ export const OurStory: React.FC = () => {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-20 text-center max-w-lg mx-auto mb-6">
+      <div className="relative z-20 text-center max-w-lg mx-auto mb-6 flex flex-col items-center">
+        {/* Top Flower Motif Icon matching Image 2 */}
+        <div className="mb-1.5 opacity-80 select-none">
+          <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-gold-dark stroke-[1.5]">
+            <path d="M12 3 C10 7, 7 10, 3 12 C7 14, 10 17, 12 21 C14 17, 17 14, 21 12 C17 10, 14 7, 12 3 Z" fill="#B68D4C" fillOpacity="0.25" />
+            <circle cx="12" cy="12" r="2" fill="#B68D4C" />
+          </svg>
+        </div>
+
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
