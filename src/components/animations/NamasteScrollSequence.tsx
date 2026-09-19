@@ -129,11 +129,12 @@ export const NamasteScrollSequence: React.FC<NamasteScrollSequenceProps> = ({
       <div
         className="relative w-full aspect-[640/540] flex items-center justify-center overflow-hidden"
         style={{
-          // Feather sides and softly dissolve the bottom hemline into the ivory background
+          // Multi-edge radial ellipse mask: eliminates all 4 rectangular frame lines (left, right, top, bottom)
+          // so ONLY the couple figures are visible, dissolving seamlessly into the ivory background
           WebkitMaskImage:
-            "linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,0.75) 76%, rgba(0,0,0,0.35) 86%, rgba(0,0,0,0.05) 95%, transparent 100%)",
+            "radial-gradient(ellipse 66% 76% at 50% 46%, black 40%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.35) 78%, transparent 92%)",
           maskImage:
-            "linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,0.75) 76%, rgba(0,0,0,0.35) 86%, rgba(0,0,0,0.05) 95%, transparent 100%)",
+            "radial-gradient(ellipse 66% 76% at 50% 46%, black 40%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.35) 78%, transparent 92%)",
         }}
       >
         <canvas
