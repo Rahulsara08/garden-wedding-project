@@ -63,8 +63,8 @@ export const Countdown: React.FC = () => {
     >
       {/* Main Jhula & Countdown Canvas */}
       <div
-        className="relative w-full max-w-[440px] mx-auto flex flex-col items-center"
-        style={{ aspectRatio: "923 / 1006" }}
+        className="relative w-full max-w-[420px] mx-auto flex flex-col items-center"
+        style={{ aspectRatio: "608 / 1080" }}
       >
         {/* Top-Left Real Watercolor Floral Corner */}
         <div className="absolute -top-3 -left-3 sm:-left-5 w-26 sm:w-34 aspect-square z-15 pointer-events-none select-none">
@@ -86,21 +86,26 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Clean Jhula Swing Couple */}
-        <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-          <Image
-            src="/assets/illustrations/couple-jhula-transparent.png"
-            alt="Couple on Floral Jhula Swing"
-            fill
-            priority
-            className="object-contain object-top"
-          />
+        {/* Animated Jhula Swing Video */}
+        <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/assets/videos/couple-jhula-poster.png"
+            className="w-full h-full object-contain object-top pointer-events-none select-none"
+            aria-label="Animated couple on floral swing"
+          >
+            <source src="/assets/videos/couple-jhula.webm" type="video/webm" />
+            <source src="/assets/videos/couple-jhula.mp4" type="video/mp4" />
+          </video>
         </div>
 
-        {/* Bottom Flowers matching Reference Image 2 */}
-        <div className="absolute -bottom-6 sm:-bottom-8 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
+        {/* Bottom Flowers matching Reference Image 2 (Authentic clean watercolor botanicals) */}
+        <div className="absolute -bottom-4 sm:-bottom-6 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-0">
           {/* Bottom Left Watercolor Wildflowers Sprig */}
-          <div className="relative w-36 sm:w-48 aspect-[220/214] -ml-2 sm:-ml-4 -mb-1">
+          <div className="relative w-28 sm:w-36 aspect-[280/394] -ml-2 sm:-ml-3">
             <Image
               src="/assets/illustrations/bottom-flower-left.png"
               alt="Bottom Left Watercolor Flowers"
@@ -111,7 +116,7 @@ export const Countdown: React.FC = () => {
           </div>
 
           {/* Bottom Right Watercolor Wildflowers Sprig */}
-          <div className="relative w-40 sm:w-52 aspect-[250/184] -mr-2 sm:-mr-4 -mb-1">
+          <div className="relative w-28 sm:w-36 aspect-[292/304] -mr-2 sm:-mr-3">
             <Image
               src="/assets/illustrations/bottom-flower-right.png"
               alt="Bottom Right Watercolor Flowers"
@@ -123,15 +128,15 @@ export const Countdown: React.FC = () => {
         </div>
 
         {/* Countdown details layered in open space between ropes */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-6 sm:pt-8 px-4 pointer-events-auto">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-4 sm:pt-5 px-4 pointer-events-auto">
           {/* Header copy */}
-          <div className="flex flex-col items-center text-center w-full max-w-[230px] sm:max-w-[250px]">
+          <div className="flex flex-col items-center text-center w-full max-w-[240px] sm:max-w-[260px]">
             <p className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.24em] text-gold font-sans font-semibold mb-0.5">
               UNTIL WE SAY I DO
             </p>
 
             <h2
-              className="font-script text-xl sm:text-2xl text-forest text-embossed leading-tight"
+              className="font-script text-lg sm:text-xl text-forest text-embossed leading-tight"
               style={{
                 fontFamily: "var(--font-playfair), serif",
                 fontStyle: "italic",
@@ -140,11 +145,20 @@ export const Countdown: React.FC = () => {
               Countdown to Our Forever
             </h2>
 
-            <LotusDivider variant="simple" className="my-1 max-w-[90px] sm:max-w-[110px]" />
+            {/* Date info in clean, legible golden pill badge - perfectly elevated above couple's heads */}
+            <div className="my-1 sm:my-1.5">
+              <div className="inline-flex items-center px-3 py-0.5 rounded-full bg-ivory/95 border border-gold/45 shadow-2xs backdrop-blur-xs">
+                <span className="text-[8.5px] sm:text-[9.5px] text-gold-dark font-sans tracking-[0.20em] uppercase font-bold">
+                  {weddingConfig.date.displayDate} · {weddingConfig.date.city}
+                </span>
+              </div>
+            </div>
+
+            <LotusDivider variant="simple" className="mb-1 max-w-[85px] sm:max-w-[100px]" />
           </div>
 
           {/* Live Counter Boxes */}
-          <div className="w-full max-w-[216px] sm:max-w-[236px] my-1 sm:my-1.5">
+          <div className="w-full max-w-[210px] sm:max-w-[228px] mt-0.5">
             {isHydrated ? (
               timeLeft.isPast ? (
                 <div className="py-2 bg-ivory/95 rounded-xl border border-gold/30 shadow-2xs text-center">
@@ -163,7 +177,7 @@ export const Countdown: React.FC = () => {
                     return (
                       <div
                         key={unit.label}
-                        className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-0.5 rounded-xl bg-ivory/95 border border-gold/35 shadow-xs backdrop-blur-xs"
+                        className="flex flex-col items-center justify-center py-1.5 px-0.5 rounded-xl bg-ivory/95 border border-gold/35 shadow-xs backdrop-blur-xs"
                       >
                         <span className="text-sm sm:text-base font-serif text-forest font-bold tracking-tight">
                           {displayVal}
@@ -182,20 +196,11 @@ export const Countdown: React.FC = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="h-11 sm:h-12 bg-ivory/80 rounded-xl border border-gold/20 animate-pulse"
+                    className="h-10 sm:h-11 bg-ivory/80 rounded-xl border border-gold/20 animate-pulse"
                   />
                 ))}
               </div>
             )}
-          </div>
-
-          {/* Date info in clean, legible golden pill badge */}
-          <div className="mt-1 sm:mt-1.5">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-ivory/95 border border-gold/45 shadow-2xs backdrop-blur-xs">
-              <span className="text-[8.5px] sm:text-[9.5px] text-gold-dark font-sans tracking-[0.20em] uppercase font-bold">
-                {weddingConfig.date.displayDate} · {weddingConfig.date.city}
-              </span>
-            </div>
           </div>
         </div>
       </div>
