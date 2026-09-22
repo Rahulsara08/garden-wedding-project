@@ -113,8 +113,8 @@ export const weddingConfig = {
         quote: "Where two quiet paths gently met and became one.",
         extraText:
           "A quiet coffee shop in Delhi, crisp autumn air, and two souls who were supposed to have a brief conversation. Three hours later, amidst unfinished lattes and shared smiles, neither of us wanted the evening to end.",
-        photo: "/assets/photos/story-1.jpg",
-        rotation: -2.5,
+        photo: "/assets/photos/story-first-hello.png",
+        rotation: 0,
       },
       {
         id: "moment-2",
@@ -125,20 +125,20 @@ export const weddingConfig = {
         quote: "Countless conversations, quiet glances, and knowing our souls had found home.",
         extraText:
           "Under the blossoming jacaranda trees and winding evening walks, between laughter, cherished secrets, and spontaneous road trips, we realized that the simplest moments together were the ones that felt most like forever.",
-        photo: "/assets/photos/story-middle.jpg",
-        rotation: 2.0,
+        photo: "/assets/photos/story-chai-moment.png",
+        rotation: 0,
       },
       {
         id: "moment-3",
-        title: "The Sunset Proposal",
+        title: "The Proposal",
         date: "Winter 2024",
         dateDetail: "14/11/24 · Nov 2024",
         iconEmoji: "💍",
         quote: "Under golden skies, she said yes to a lifetime of love.",
         extraText:
           "Against the timeless sandstone ramparts of Udaipur, as the golden sun dipped gently into the tranquil waters of Lake Pichola, Aarav asked the question that changed everything. With tearful joy and overflowing hearts, she said yes.",
-        photo: "/assets/photos/story-2.jpg",
-        rotation: -2.0,
+        photo: "/assets/photos/story-proposal.png",
+        rotation: 0,
       },
     ] as StoryMoment[],
   },

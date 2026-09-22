@@ -20,6 +20,9 @@
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-jost), sans-serif;
   --font-script: var(--font-script), cursive;
+  --font-cinzel: var(--font-cinzel-deco), serif;
+  --font-cormorant: var(--font-cormorant), serif;
+  --font-calligraphy: var(--font-great-vibes), cursive;
 }
 
 :root {

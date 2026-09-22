@@ -87,10 +87,15 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Animated Jhula Swing Video Overlay - clip top 28px so rope emerges strictly from underneath the flowers */}
+        {/* Animated Jhula Swing Video Overlay - masked top and bottom so it seamlessly blends with zero hard border lines */}
         <div
           className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden"
-          style={{ clipPath: "inset(28px 0 0 0)" }}
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 35px, black calc(100% - 65px), transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 35px, black calc(100% - 65px), transparent 100%)",
+          }}
         >
           <SwingScrollOverlay
             src="/assets/videos/swing-overlay.mp4"
@@ -100,6 +105,10 @@ export const Countdown: React.FC = () => {
             loops={1}
           />
         </div>
+
+        {/* Soft Top & Bottom Seamless Blending Overlays */}
+        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-ivory to-transparent z-12 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory via-ivory/80 to-transparent z-12 pointer-events-none" />
 
         {/* Bottom Flowers matching Reference Image (Authentic clean watercolor botanicals) */}
         <div className="absolute bottom-0 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-1 sm:px-2">

@@ -66,6 +66,10 @@ export const SwingScrollOverlay: React.FC<SwingScrollOverlayProps> = ({
       style={{
         mixBlendMode: blendMode,
         objectFit: objectFit,
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent 0%, black 40px, black calc(100% - 60px), transparent 100%)",
+        maskImage:
+          "linear-gradient(to bottom, transparent 0%, black 40px, black calc(100% - 60px), transparent 100%)",
         ...style,
       }}
       aria-label="Couple enjoying swing with floral garlands"

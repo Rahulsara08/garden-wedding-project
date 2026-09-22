@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Jost, Alex_Brush } from "next/font/google";
+import { Playfair_Display, Jost, Alex_Brush, Cinzel_Decorative, Cormorant_Garamond, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -17,6 +17,28 @@ const jost = Jost({
 
 const alexBrush = Alex_Brush({
   variable: "--font-script",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+});
+
+const cinzelDeco = Cinzel_Decorative({
+  variable: "--font-cinzel-deco",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-great-vibes",
   subsets: ["latin"],
   display: "swap",
   weight: ["400"],
@@ -48,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${jost.variable} ${alexBrush.variable} h-full antialiased`}
+      className={`${playfair.variable} ${jost.variable} ${alexBrush.variable} ${cinzelDeco.variable} ${cormorant.variable} ${greatVibes.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ivory text-sage paper-texture selection:bg-gold/20 selection:text-forest">
         {children}
