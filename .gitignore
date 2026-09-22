@@ -23,6 +23,9 @@
 # misc
 .DS_Store
 *.pem
+scratch/
+render_v3.py
+test_*.py
 
 # debug
 npm-debug.log*

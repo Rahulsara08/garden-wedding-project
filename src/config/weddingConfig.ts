@@ -2,6 +2,8 @@ export interface StoryMoment {
   id: string;
   title: string;
   date: string;
+  dateDetail?: string;
+  iconEmoji?: string;
   quote: string;
   extraText?: string;
   photo: string;
@@ -106,17 +108,37 @@ export const weddingConfig = {
         id: "moment-1",
         title: "The First Hello",
         date: "October 2023",
+        dateDetail: "12/10/23 · Oct 2023",
+        iconEmoji: "☕",
         quote: "Where two quiet paths gently met and became one.",
+        extraText:
+          "A quiet coffee shop in Delhi, crisp autumn air, and two souls who were supposed to have a brief conversation. Three hours later, amidst unfinished lattes and shared smiles, neither of us wanted the evening to end.",
         photo: "/assets/photos/story-1.jpg",
         rotation: -2.5,
       },
       {
         id: "moment-2",
+        title: "A Shared Cup of Chai",
+        date: "Spring 2024",
+        dateDetail: "18/04/24 · Apr 2024",
+        iconEmoji: "🫖",
+        quote: "Countless conversations, quiet glances, and knowing our souls had found home.",
+        extraText:
+          "Under the blossoming jacaranda trees and winding evening walks, between laughter, cherished secrets, and spontaneous road trips, we realized that the simplest moments together were the ones that felt most like forever.",
+        photo: "/assets/photos/story-middle.jpg",
+        rotation: 2.0,
+      },
+      {
+        id: "moment-3",
         title: "The Sunset Proposal",
-        date: "Rajasthan 2024",
+        date: "Winter 2024",
+        dateDetail: "14/11/24 · Nov 2024",
+        iconEmoji: "💍",
         quote: "Under golden skies, she said yes to a lifetime of love.",
+        extraText:
+          "Against the timeless sandstone ramparts of Udaipur, as the golden sun dipped gently into the tranquil waters of Lake Pichola, Aarav asked the question that changed everything. With tearful joy and overflowing hearts, she said yes.",
         photo: "/assets/photos/story-2.jpg",
-        rotation: 3,
+        rotation: -2.0,
       },
     ] as StoryMoment[],
   },

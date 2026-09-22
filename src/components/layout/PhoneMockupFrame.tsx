@@ -177,7 +177,7 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, pr
                 {/* Inner Scrollable Website Container */}
                 <div
                   ref={phoneScrollRef}
-                  className="flex-1 w-full h-full overflow-y-auto overflow-x-hidden pt-0 pb-4 select-text scroll-smooth"
+                  className="flex-1 w-full h-full overflow-y-auto overflow-x-hidden pt-0 pb-4 select-text scroll-smooth no-scrollbar"
                   style={{
                     scrollbarWidth: "none",
                     msOverflowStyle: "none",

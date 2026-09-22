@@ -89,22 +89,30 @@ body {
   box-shadow: 0 0 35px rgba(182, 141, 76, 0.55);
 }
 
-/* Custom scrollbar matching the parchment theme */
+/* Custom scrollbar matching the parchment theme / Hidden inside phone frame */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
+  height: 0px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF3E4;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C4B598;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #B68D4C;
+  background: transparent;
 }
 
 /* Hide Next.js dev overlay toast & badge indicators */
