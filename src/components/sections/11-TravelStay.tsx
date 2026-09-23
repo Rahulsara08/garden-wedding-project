@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { Plane, Train, Hotel, Clock } from "lucide-react";
+import { Plane, Train, Hotel } from "lucide-react";
 import { AnimatedFlightPath } from "../animations/AnimatedFlightPath";
 import { AnimatedTrainTrack } from "../animations/AnimatedTrainTrack";
 
@@ -123,7 +123,7 @@ export const TravelStay: React.FC = () => {
             </div>
 
             {/* Single Unique Heritage Fort / Hotel Artwork below Accommodations heading */}
-            <div className="relative w-full h-36 sm:h-40 overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory my-1">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory my-1">
               <Image
                 src="/assets/watercolor/royal-palace-suite.jpg"
                 alt="Royal Palace Suites Accommodations in Vrindavan"
@@ -135,19 +135,25 @@ export const TravelStay: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-ivory/30 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Clean Hotel Information Cards (Same as before, zero duplicate photos) */}
-            <div className="space-y-2">
-              {travel.accommodations.map((hotel) => (
-                <div key={hotel.name} className="p-2.5 rounded-xl bg-ivory/80 border border-gold/20 shadow-xs">
-                  <div className="flex justify-between items-start">
-                    <h4 className="text-xs font-semibold text-forest font-serif">
+            {/* Hotel Information rendered directly on background - No Boxed Cards */}
+            <div className="w-full flex flex-col gap-2 pt-1">
+              {travel.accommodations.map((hotel, idx) => (
+                <div
+                  key={hotel.name}
+                  className={`w-full ${idx > 0 ? "border-t border-gold/15 pt-2.5" : "pt-1"}`}
+                >
+                  <div className="flex justify-between items-baseline gap-2">
+                    <h4
+                      className="text-xs sm:text-[13px] font-semibold text-forest font-serif"
+                      style={{ fontFamily: "var(--font-playfair)" }}
+                    >
                       {hotel.name}
                     </h4>
-                    <span className="text-[9px] text-gold font-sans font-medium px-1.5 py-0.5 rounded-full bg-gold/10">
+                    <span className="text-[10px] text-gold font-sans font-semibold tracking-wide shrink-0">
                       {hotel.distanceFromVenue}
                     </span>
                   </div>
-                  <p className="text-[10px] text-sage/80 font-sans mt-0.5">{hotel.area}</p>
+                  <p className="text-[10px] text-sage/85 font-sans mt-0.5">{hotel.area}</p>
                 </div>
               ))}
             </div>

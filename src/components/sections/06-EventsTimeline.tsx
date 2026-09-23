@@ -1,444 +1,469 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
-import { Sun, Sparkles, Music, Flame, Heart, Clock, MapPin } from "lucide-react";
+import { useScrollContainer } from "@/context/ScrollContainerContext";
+import { LotusDivider } from "../motifs/LotusDivider";
+import { MapPin, Clock, Sparkles, Sun, Music, Flame, Heart } from "lucide-react";
+
+interface EventSignBadgeProps {
+  iconType: string;
+  isLeft: boolean;
+  index: number;
+}
+
+const EventSignBadge: React.FC<EventSignBadgeProps> = ({ iconType, index }) => {
+  const renderIcon = () => {
+    switch (iconType) {
+      case "haldi":
+        return (
+          <motion.div
+            animate={{ rotate: [0, 14, 0, -14, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Sun className="w-5 h-5 text-gold transition-colors" />
+          </motion.div>
+        );
+      case "mehndi":
+        return (
+          <motion.div
+            animate={{ scale: [1, 1.15, 1], rotate: [0, 10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Sparkles className="w-5 h-5 text-gold transition-colors" />
+          </motion.div>
+        );
+      case "sangeet":
+        return (
+          <motion.div
+            animate={{ rotate: [0, -8, 8, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Music className="w-5 h-5 text-gold transition-colors" />
+          </motion.div>
+        );
+      case "pheras":
+        return (
+          <motion.div
+            animate={{ scale: [1, 1.14, 1] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Heart className="w-5 h-5 text-gold fill-gold/20 transition-colors" />
+          </motion.div>
+        );
+      case "wedding":
+      default:
+        return (
+          <motion.div
+            animate={{ scale: [1, 1.12, 1], y: [0, -1.5, 0] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Flame className="w-5 h-5 text-gold fill-gold/20 transition-colors" />
+          </motion.div>
+        );
+    }
+  };
+
+  return (
+    <div className="relative w-12 h-12 flex items-center justify-center select-none">
+      {/* Outer Ethereal Ripple Ring (Emits when entering view) */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{
+          scale: [0.9, 1.45, 1.6],
+          opacity: [0.75, 0.35, 0],
+        }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{
+          duration: 2.4,
+          repeat: Infinity,
+          ease: "easeOut",
+          delay: index * 0.15,
+        }}
+        className="absolute inset-0 rounded-full border border-gold/40 pointer-events-none"
+      />
+
+      {/* Subtle Ambient Golden Glow Behind Sign */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 0.45, scale: 1.15 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ duration: 0.7 }}
+        className="absolute -inset-1 rounded-full bg-gold/20 blur-xs pointer-events-none"
+      />
+
+      {/* Main Circular Sign Container */}
+      <motion.div
+        initial={{ scale: 0.85, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{
+          type: "spring",
+          stiffness: 280,
+          damping: 20,
+          delay: 0.05,
+        }}
+        className="relative w-11 h-11 rounded-full bg-[#FAF3E4] border-[1.5px] border-gold/75 flex items-center justify-center shadow-md overflow-hidden z-10"
+      >
+        {/* Animated Radial Golden Veil Covering the Sign on Scroll */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1.3, opacity: 1 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute inset-0 rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(235, 195, 105, 0.45) 0%, rgba(196, 154, 69, 0.22) 65%, transparent 100%)",
+          }}
+        />
+
+        {/* Diagonal Light Shimmer Sweep Across the Sign Disc */}
+        <motion.div
+          initial={{ x: "-120%" }}
+          whileInView={{ x: "120%" }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.9, ease: "easeInOut", delay: 0.15 }}
+          className="absolute inset-y-0 w-full bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none -skew-x-12"
+        />
+
+        {/* Animated Perimeter Golden Stroke Covering the Border */}
+        <svg
+          className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none z-10"
+          viewBox="0 0 44 44"
+        >
+          <motion.circle
+            cx="22"
+            cy="22"
+            r="20"
+            fill="none"
+            stroke="#D4AF37"
+            strokeWidth="1.5"
+            strokeDasharray="125.6"
+            initial={{ strokeDashoffset: 125.6 }}
+            whileInView={{ strokeDashoffset: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.85, ease: "easeInOut" }}
+          />
+        </svg>
+
+        {/* The Sign Icon */}
+        <div className="relative z-20 flex items-center justify-center">
+          {renderIcon()}
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 export const EventsTimeline: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const signRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [pathData, setPathData] = useState<string>("");
+  const { containerRef: scrollContainer } = useScrollContainer();
+
+  // Scroll Progress for active golden path drawing
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    container: scrollContainer || undefined,
+    offset: ["start 65%", "end 75%"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 85,
+    damping: 24,
+    restDelta: 0.001,
+  });
+
+  // Calculate dynamic SVG connecting path that weaves behind each sign
+  const calculatePath = useCallback(() => {
+    if (!containerRef.current) return;
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const coords: { x: number; y: number }[] = [];
+
+    signRefs.current.forEach((el) => {
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        coords.push({
+          x: rect.left - containerRect.left + rect.width / 2,
+          y: rect.top - containerRect.top + rect.height / 2,
+        });
+      }
+    });
+
+    if (coords.length >= 2) {
+      let d = `M ${coords[0].x} ${coords[0].y}`;
+      for (let i = 0; i < coords.length - 1; i++) {
+        const p0 = coords[i];
+        const p1 = coords[i + 1];
+        const dy = p1.y - p0.y;
+        const cp1x = p0.x;
+        const cp1y = p0.y + dy * 0.45;
+        const cp2x = p1.x;
+        const cp2y = p1.y - dy * 0.45;
+        d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
+      }
+      setPathData(d);
+    }
+  }, []);
+
+  useEffect(() => {
+    calculatePath();
+    const timer1 = setTimeout(calculatePath, 80);
+    const timer2 = setTimeout(calculatePath, 350);
+
+    window.addEventListener("resize", calculatePath);
+    const ro = new ResizeObserver(calculatePath);
+    if (containerRef.current) {
+      ro.observe(containerRef.current);
+    }
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      window.removeEventListener("resize", calculatePath);
+      ro.disconnect();
+    };
+  }, [calculatePath]);
+
+  // Flatten events with alternating left/right layout:
+  // Event 1 (Haldi) -> Left
+  // Event 2 (Mehndi) -> Right
+  // Event 3 (Sangeet) -> Left
+  // Event 4 (Baraat) -> Right
+  // Event 5 (Vivah) -> Left
+
   return (
     <section
       id="events-section"
-      className="relative w-full py-10 px-2 sm:px-4 bg-ivory paper-texture overflow-hidden flex flex-col items-center select-none"
+      className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture overflow-hidden select-none"
     >
-      {/* Background Architectural Palace Wash (Subtle & Crafted) */}
-      <div className="absolute inset-0 w-full h-full opacity-35 pointer-events-none select-none z-0">
-        <Image
-          src="/assets/illustrations/timeline_palace_bg.png"
-          alt="Palace Architectural Background"
-          fill
-          unoptimized
-          className="object-cover object-center"
-        />
+      {/* Section Header */}
+      <div className="text-center max-w-lg mx-auto mb-10">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans font-semibold mb-1"
+        >
+          {weddingConfig.timeline.sectionEyebrow}
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          {weddingConfig.timeline.heading}
+        </motion.h2>
+
+        <LotusDivider variant="simple" className="my-2 max-w-[120px]" />
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto"
+        >
+          {weddingConfig.timeline.subtitle}
+        </motion.p>
       </div>
 
-      {/* Main Canvas */}
-      <div className="relative w-full max-w-[420px] mx-auto flex flex-col items-center z-10">
-        {/* Top Royal Indian Mehrab Arch with Hanging Lanterns */}
-        <div className="relative w-full aspect-[426/160] overflow-hidden select-none pointer-events-none mb-1">
-          <Image
-            src="/assets/illustrations/timeline_mehrab_top.png"
-            alt="Royal Indian Mehrab Arch"
-            fill
-            priority
-            unoptimized
-            className="object-contain object-top"
-          />
-        </div>
-
-        {/* Section Header framed by the Mehrab Arch */}
-        <div className="text-center w-full max-w-[320px] mx-auto mb-6 px-2">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-[#A67C38] font-sans font-bold mb-1">
-            CELEBRATIONS &amp; RITUALS
-          </p>
-
-          <h2
-            className="text-2xl sm:text-3xl font-serif text-forest tracking-tight font-semibold"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-          >
-            The Wedding Festivities
-          </h2>
-
-          <p className="text-xs text-sage/85 font-sans tracking-wide mt-1.5 leading-relaxed">
-            Each ritual is an invocation of love, joyous melody, and auspicious grace.
-          </p>
-        </div>
-
-        {/* ========================================================================= */}
-        {/* S-SHAPED TIMELINE CONTAINER */}
-        {/* ========================================================================= */}
-        <div className="relative w-full py-4 flex flex-col items-center">
-          {/* Continuous SVG Golden S-Curve Path connecting all stages */}
+      {/* Main Timeline Container with Dynamic SVG Connecting Line */}
+      <div ref={containerRef} className="relative max-w-md mx-auto py-2">
+        {/* Dynamic SVG Connecting Thread Behind the Signs */}
+        {pathData && (
           <svg
-            className="absolute inset-0 w-full h-full pointer-events-none select-none z-0"
-            viewBox="0 0 420 1800"
-            fill="none"
-            preserveAspectRatio="none"
+            className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+            aria-hidden="true"
           >
+            <defs>
+              <linearGradient
+                id="goldTimelineGrad"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#C49A45" stopOpacity="0.85" />
+                <stop offset="50%" stopColor="#F0D08A" stopOpacity="1" />
+                <stop offset="100%" stopColor="#A67B28" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+
+            {/* Faint baseline guide */}
             <path
-              d="M 210 50 
-                 C 210 100, 70 140, 70 230 
-                 C 70 320, 210 380, 210 440 
-                 C 210 500, 350 560, 350 650 
-                 C 350 740, 210 800, 210 870 
-                 C 210 940, 70 1000, 70 1090 
-                 C 70 1180, 210 1230, 210 1300 
-                 C 210 1370, 350 1420, 350 1500 
-                 C 350 1580, 210 1640, 210 1720 
-                 C 210 1760, 210 1780, 210 1800"
-              stroke="#D4AF37"
-              strokeWidth="2.5"
-              strokeDasharray="6 4"
-              strokeOpacity="0.75"
+              d={pathData}
+              fill="none"
+              stroke="#C49A45"
+              strokeWidth="1.5"
+              strokeDasharray="3 5"
+              opacity="0.22"
+            />
+
+            {/* Scroll-driven active golden path */}
+            <motion.path
+              d={pathData}
+              fill="none"
+              stroke="url(#goldTimelineGrad)"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              style={{ pathLength: smoothProgress }}
             />
           </svg>
+        )}
 
-          {/* ---------------- DAY I BADGE ---------------- */}
-          <div className="relative z-10 my-4 inline-flex items-center px-4 py-1 rounded-full bg-ivory-light/95 border border-[#C5A358]/55 shadow-xs">
-            <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-[#8D6B2C] font-sans font-bold">
-              DAY I · AUSPICIOUS BEGINNINGS · THURSDAY, 11 FEBRUARY 2027
-            </span>
-          </div>
+        {/* Days and Events */}
+        <div className="space-y-12">
+          {weddingConfig.timeline.days.map((day, dayIndex) => {
+            const dayOffset =
+              dayIndex === 0
+                ? 0
+                : weddingConfig.timeline.days
+                    .slice(0, dayIndex)
+                    .reduce((acc, d) => acc + d.events.length, 0);
 
-          {/* ---------------- 1. HALDI UTSAV (LEFT SIDE) ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 w-full my-6 flex flex-col items-center sm:items-start px-3"
-          >
-            <div className="w-full flex flex-col sm:flex-row items-center sm:items-start gap-3">
-              {/* Haldi Bowl Illustration on Left */}
-              <div className="relative w-32 sm:w-38 aspect-[135/145] shrink-0 filter drop-shadow-sm">
-                <Image
-                  src="/assets/illustrations/haldi_art.png"
-                  alt="Haldi Turmeric Bowl"
-                  fill
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Event Content */}
-              <div className="flex-1 text-center sm:text-left flex flex-col items-center sm:items-start">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-gold/70 flex items-center justify-center shadow-xs">
-                    <Sun className="w-4 h-4 text-gold" />
+            return (
+              <div key={day.dayLabel} className="relative">
+                {/* Day Header */}
+                <div className="flex justify-center mb-6 relative z-10">
+                  <div className="px-4 py-1 rounded-full bg-ivory/95 border border-gold/30 shadow-2xs backdrop-blur-xs text-center">
+                    <span className="text-xs font-serif tracking-widest uppercase text-forest font-semibold">
+                      {day.dayLabel}
+                    </span>
+                    <span className="mx-1.5 text-gold">·</span>
+                    <span className="text-xs text-gold-dark font-sans font-medium">
+                      {day.dateString}
+                    </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold">
-                    Haldi Utsav
-                  </h3>
-                </div>
-                <p className="font-script italic text-base text-gold-dark">
-                  Sunshine, laughter and a touch of turmeric
-                </p>
-
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 my-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <Clock className="w-3 h-3 text-gold" />
-                    10:30 AM onwards
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    Courtyard of Lotuses
-                  </span>
                 </div>
 
-                <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
-                  Wear cheerful shades of turmeric yellow &amp; sunshine gold.
-                </p>
-                <p className="text-[10px] text-[#8D6B2C] font-sans mt-0.5">
-                  <span className="font-bold uppercase">Attire:</span> Yellow &amp; Floral Traditional
-                </p>
+                {/* Events in this day */}
+                <div className="space-y-12">
+                  {day.events.map((event, eventIdx) => {
+                    const globalIdx = dayOffset + eventIdx;
+                    // Left / Right alternation:
+                    // 0 (Haldi): Left
+                    // 1 (Mehndi): Right
+                    // 2 (Sangeet): Left
+                    // 3 (Baraat): Right
+                    // 4 (Vivah): Left
+                    const isLeft = globalIdx % 2 === 0;
 
-                <a
-                  href="https://maps.google.com/?q=Vrindavan+Courtyard+of+Lotuses"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-[10.5px] font-serif uppercase tracking-wider text-forest font-bold hover:text-gold transition-colors"
-                >
-                  <span>Get Directions</span>
-                  <span className="text-gold">→</span>
-                </a>
+                  return (
+                    <motion.div
+                      key={event.id}
+                      initial={{ opacity: 0, y: 18 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{ duration: 0.55 }}
+                      className={`relative flex flex-col w-[86%] sm:w-[82%] max-w-[310px] ${
+                        isLeft
+                          ? "mr-auto pl-2 pr-1 items-start text-left"
+                          : "ml-auto pr-2 pl-1 items-end text-right"
+                      }`}
+                    >
+                      {/* Event Sign Badge (Positioned Left or Right) */}
+                      <div
+                        className={`relative mb-2 flex items-center z-10 ${
+                          isLeft ? "justify-start pl-1" : "justify-end pr-1"
+                        }`}
+                      >
+                        <div
+                          ref={(el) => {
+                            signRefs.current[globalIdx] = el;
+                          }}
+                        >
+                          <EventSignBadge
+                            iconType={event.iconType}
+                            isLeft={isLeft}
+                            index={globalIdx}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Event Content (Left-aligned or Right-aligned, completely uncovered) */}
+                      <div
+                        className={`w-full flex flex-col gap-1.5 ${
+                          isLeft
+                            ? "items-start text-left pl-1"
+                            : "items-end text-right pr-1"
+                        }`}
+                      >
+                        <div>
+                          <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold tracking-tight text-embossed">
+                            {event.name}
+                          </h3>
+
+                          <p className="font-script text-base sm:text-lg text-gold-dark -mt-0.5">
+                            {event.subtitle}
+                          </p>
+                        </div>
+
+                        {/* Chips */}
+                        <div
+                          className={`flex flex-wrap items-center gap-1.5 my-1 ${
+                            isLeft ? "justify-start" : "justify-end"
+                          }`}
+                        >
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory/90 text-forest text-[10px] font-sans border border-gold/25 shadow-2xs">
+                            <Clock className="w-3 h-3 text-gold" />
+                            {event.time}
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory/90 text-forest text-[10px] font-sans border border-gold/25 shadow-2xs">
+                            <MapPin className="w-3 h-3 text-gold" />
+                            {event.venueName}
+                          </span>
+                        </div>
+
+                        {/* Note */}
+                        <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[260px]">
+                          {event.note}
+                        </p>
+
+                        {/* Dress Code */}
+                        {event.dressCode && (
+                          <div className="text-[10px] text-gold-dark font-sans tracking-wide">
+                            <span className="font-semibold uppercase text-gold">
+                              Attire:
+                            </span>{" "}
+                            {event.dressCode}
+                          </div>
+                        )}
+
+                        {/* Directions Link */}
+                        <div className="pt-1">
+                          <a
+                            href={event.mapLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[10px] font-serif uppercase tracking-widest text-forest hover:text-gold transition-colors font-semibold group"
+                          >
+                            <span>Get Directions</span>
+                            <span
+                              className={`text-gold transition-transform ${
+                                isLeft
+                                  ? "group-hover:translate-x-0.5"
+                                  : "group-hover:translate-x-0.5"
+                              }`}
+                            >
+                              →
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
-          </motion.div>
-
-          {/* ---------------- 2. MEHNDI KI RAAT (RIGHT SIDE) ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 w-full my-6 flex flex-col items-center sm:items-end px-3"
-          >
-            <div className="w-full flex flex-col sm:flex-row-reverse items-center sm:items-start gap-3">
-              {/* Henna Cones Illustration on Right */}
-              <div className="relative w-32 sm:w-38 aspect-[135/140] shrink-0 filter drop-shadow-sm">
-                <Image
-                  src="/assets/illustrations/mehndi_art.png"
-                  alt="Mehndi Henna Cones"
-                  fill
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Event Content */}
-              <div className="flex-1 text-center sm:text-right flex flex-col items-center sm:items-end">
-                <div className="flex items-center gap-2 mb-1 flex-row-reverse sm:flex-row-reverse">
-                  <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-gold/70 flex items-center justify-center shadow-xs">
-                    <Sparkles className="w-4 h-4 text-gold" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold">
-                    Mehndi Ki Raat
-                  </h3>
-                </div>
-                <p className="font-script italic text-base text-gold-dark">
-                  Intricate henna, lively music and endless happiness
-                </p>
-
-                <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 my-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <Clock className="w-3 h-3 text-gold" />
-                    04:00 PM onwards
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    The Riverside Verandah
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
-                  Join us for henna artistry, fresh chai, and folk songs.
-                </p>
-                <p className="text-[10px] text-[#8D6B2C] font-sans mt-0.5">
-                  <span className="font-bold uppercase">Attire:</span> Pastel Greens &amp; Vibrant Florals
-                </p>
-
-                <a
-                  href="https://maps.google.com/?q=Vrindavan+The+Riverside+Verandah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-[10.5px] font-serif uppercase tracking-wider text-forest font-bold hover:text-gold transition-colors"
-                >
-                  <span>Get Directions</span>
-                  <span className="text-gold">→</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ---------------- 3. SANGEET & MUSICAL NIGHT (LEFT SIDE) ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 w-full my-6 flex flex-col items-center sm:items-start px-3"
-          >
-            <div className="w-full flex flex-col sm:flex-row items-center sm:items-start gap-3">
-              {/* Sitar & Tabla Illustration on Left */}
-              <div className="relative w-36 sm:w-44 aspect-[135/160] shrink-0 filter drop-shadow-sm">
-                <Image
-                  src="/assets/illustrations/sangeet_art.png"
-                  alt="Sangeet Sitar and Tabla"
-                  fill
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Event Content */}
-              <div className="flex-1 text-center sm:text-left flex flex-col items-center sm:items-start">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-gold/70 flex items-center justify-center shadow-xs">
-                    <Music className="w-4 h-4 text-gold" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold">
-                    Sangeet &amp; Musical Night
-                  </h3>
-                </div>
-                <p className="font-script italic text-base text-gold-dark">
-                  An evening of dance, laughter, and heartwarming tunes
-                </p>
-
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 my-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <Clock className="w-3 h-3 text-gold" />
-                    07:30 PM onwards
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    The Royal Lotus Ballroom
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
-                  Bring your dancing shoes for non-stop celebration!
-                </p>
-                <p className="text-[10px] text-[#8D6B2C] font-sans mt-0.5">
-                  <span className="font-bold uppercase">Attire:</span> Emerald Glam &amp; Indian Evening Couture
-                </p>
-
-                <a
-                  href="https://maps.google.com/?q=Vrindavan+The+Royal+Lotus+Ballroom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-[10.5px] font-serif uppercase tracking-wider text-forest font-bold hover:text-gold transition-colors"
-                >
-                  <span>Get Directions</span>
-                  <span className="text-gold">→</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ---------------- DAY II BADGE ---------------- */}
-          <div className="relative z-10 my-4 inline-flex items-center px-4 py-1 rounded-full bg-ivory-light/95 border border-[#C5A358]/55 shadow-xs">
-            <span className="text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-[#8D6B2C] font-sans font-bold">
-              DAY II · THE SACRED VOWS · FRIDAY, 12 FEBRUARY 2027
-            </span>
-          </div>
-
-          {/* ---------------- 4. BARAAT SWAGAT (RIGHT SIDE) ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 w-full my-6 flex flex-col items-center sm:items-end px-3"
-          >
-            <div className="w-full flex flex-col sm:flex-row-reverse items-center sm:items-start gap-3">
-              {/* Royal Horse Illustration on Right */}
-              <div className="relative w-36 sm:w-44 aspect-[165/240] shrink-0 filter drop-shadow-sm">
-                <Image
-                  src="/assets/illustrations/baraat_art.png"
-                  alt="Baraat Royal Stallion"
-                  fill
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Event Content */}
-              <div className="flex-1 text-center sm:text-right flex flex-col items-center sm:items-end">
-                <div className="flex items-center gap-2 mb-1 flex-row-reverse sm:flex-row-reverse">
-                  <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-gold/70 flex items-center justify-center shadow-xs">
-                    <Flame className="w-4 h-4 text-gold" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold">
-                    Baraat Swagat
-                  </h3>
-                </div>
-                <p className="font-script italic text-base text-gold-dark">
-                  The groom&apos;s royal arrival, a moment to remember
-                </p>
-
-                <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 my-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <Clock className="w-3 h-3 text-gold" />
-                    04:30 PM
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    Grand Palace Archway
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
-                  Let the beats of dholak herald the arrival of the groom.
-                </p>
-                <p className="text-[10px] text-[#8D6B2C] font-sans mt-0.5">
-                  <span className="font-bold uppercase">Attire:</span> Regal Indian Heritage
-                </p>
-
-                <a
-                  href="https://maps.google.com/?q=Vrindavan+Grand+Palace+Archway"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-[10.5px] font-serif uppercase tracking-wider text-forest font-bold hover:text-gold transition-colors"
-                >
-                  <span>Get Directions</span>
-                  <span className="text-gold">→</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ---------------- 5. VIVAH SANSKAR & SAAT PHERE (LEFT SIDE) ---------------- */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10 w-full my-6 flex flex-col items-center sm:items-start px-3"
-          >
-            <div className="w-full flex flex-col sm:flex-row items-center sm:items-start gap-3">
-              {/* Vedic Mandap Illustration on Left */}
-              <div className="relative w-36 sm:w-44 aspect-[180/190] shrink-0 filter drop-shadow-sm">
-                <Image
-                  src="/assets/illustrations/mandap_art.png"
-                  alt="Vedic Wedding Mandap"
-                  fill
-                  unoptimized
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Event Content */}
-              <div className="flex-1 text-center sm:text-left flex flex-col items-center sm:items-start">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-gold/70 flex items-center justify-center shadow-xs">
-                    <Heart className="w-4 h-4 text-gold fill-gold/20" />
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-forest font-semibold">
-                    Vivah Sanskar &amp; Saat Phere
-                  </h3>
-                </div>
-                <p className="font-script italic text-base text-gold-dark">
-                  Sacred vows around the holy fire, a bond for eternity
-                </p>
-
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 my-1.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <Clock className="w-3 h-3 text-gold" />
-                    06:00 PM onwards
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-ivory-light/90 text-forest text-[10px] font-sans border border-gold/25">
-                    <MapPin className="w-3 h-3 text-gold" />
-                    Yamuna Ghat Mandap
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-sage/85 font-sans leading-relaxed max-w-[240px]">
-                  Followed by a royal dinner banquet under starry skies.
-                </p>
-                <p className="text-[10px] text-[#8D6B2C] font-sans mt-0.5">
-                  <span className="font-bold uppercase">Attire:</span> Traditional Formal / Raw Silk &amp; Gold
-                </p>
-
-                <a
-                  href="https://maps.google.com/?q=Vrindavan+Yamuna+Ghat+Mandap"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-[10.5px] font-serif uppercase tracking-wider text-forest font-bold hover:text-gold transition-colors"
-                >
-                  <span>Get Directions</span>
-                  <span className="text-gold">→</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Base: Yamuna Ghat with Lotus Flowers, Diyas, and Blessing Quote */}
-        <div className="relative w-full aspect-[426/104] overflow-hidden mt-6 filter drop-shadow-sm select-none pointer-events-none">
-          <Image
-            src="/assets/illustrations/timeline_lake_bottom.png"
-            alt="Yamuna Ghat Lotus Pond"
-            fill
-            unoptimized
-            className="object-contain object-bottom"
-          />
-        </div>
-
-        <div className="text-center mt-3 mb-6">
-          <p className="text-[10.5px] sm:text-[11.5px] uppercase tracking-[0.26em] text-[#8D6B2C] font-sans font-bold">
-            SAME TRADITIONS · BRIGHTER TOMORROWS
-          </p>
+          );
+        })}
         </div>
       </div>
     </section>

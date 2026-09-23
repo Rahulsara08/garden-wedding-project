@@ -1,98 +1,137 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
-import { LotusDivider } from "../motifs/LotusDivider";
-import { Phone, MessageCircle } from "lucide-react";
 
 export const GetInTouch: React.FC = () => {
   const { contacts } = weddingConfig;
 
+  // Exact coordinates matching the visual buttons on the plate
+  const contactLinks = [
+    {
+      name: "Rajesh Sharma",
+      relation: "Father of the Bride",
+      phone: "+919876543210",
+      phoneDisplay: "+91 98765 43210",
+      whatsapp: "919876543210",
+      waText: "Hi Rajesh ji, regarding Riya and Aarav's wedding",
+      callCoords: { top: "36.1%", left: "26.4%", width: "9.8%", height: "4.7%" },
+      waCoords: { top: "36.1%", left: "40.0%", width: "34.0%", height: "4.7%" },
+      phoneCoords: { top: "32.6%", left: "28.0%", width: "44.0%", height: "3.2%" },
+    },
+    {
+      name: "Vikram Mehta",
+      relation: "Father of the Groom",
+      phone: "+919812345678",
+      phoneDisplay: "+91 98123 45678",
+      whatsapp: "919812345678",
+      waText: "Hi Vikram ji, regarding Riya and Aarav's wedding",
+      callCoords: { top: "57.6%", left: "26.4%", width: "9.8%", height: "4.7%" },
+      waCoords: { top: "57.6%", left: "40.0%", width: "34.0%", height: "4.7%" },
+      phoneCoords: { top: "54.1%", left: "28.0%", width: "44.0%", height: "3.2%" },
+    },
+    {
+      name: "Ananya Kapoor",
+      relation: "Wedding Hospitality Coordinator",
+      phone: "+919988776655",
+      phoneDisplay: "+91 99887 76655",
+      whatsapp: "919988776655",
+      waText: "Hi Ananya, regarding wedding hospitality and assistance",
+      callCoords: { top: "78.9%", left: "26.4%", width: "9.8%", height: "4.7%" },
+      waCoords: { top: "78.9%", left: "40.0%", width: "34.0%", height: "4.7%" },
+      phoneCoords: { top: "75.4%", left: "28.0%", width: "44.0%", height: "3.2%" },
+    },
+  ];
+
   return (
-    <section id="contact-section" className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture">
-      <div className="max-w-3xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-lg mx-auto mb-8">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans font-semibold mb-1"
-          >
-            {contacts.sectionEyebrow}
-          </motion.p>
+    <section
+      id="contact-section"
+      className="relative w-full pt-0 pb-8 sm:pb-12 bg-[#FAF3E4] paper-texture overflow-hidden flex flex-col items-center select-none"
+    >
+      {/* Main Container Full Bleed Touching Phone Edges */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: false, margin: "-50px" }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full px-0 mx-0"
+      >
+        <div className="relative w-full aspect-[492/1024] overflow-hidden">
+          {/* Master High-Resolution Artwork Plate */}
+          <Image
+            src="/assets/watercolor/we-are-here-for-you.png"
+            alt="Need Assistance? We Are Here For You - Contact Details"
+            fill
+            priority
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 480px"
+            className="object-cover object-center pointer-events-none select-none"
+          />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            {contacts.heading}
-          </motion.h2>
+          {/* Fully Interactive Call, WhatsApp, and Phone Number Overlays */}
+          {contactLinks.map((contact) => (
+            <React.Fragment key={contact.name}>
+              {/* 1. Clickable Phone Number Text */}
+              <a
+                href={`tel:${contact.phone}`}
+                title={`Call ${contact.name} at ${contact.phoneDisplay}`}
+                aria-label={`Call ${contact.name}`}
+                style={{
+                  top: contact.phoneCoords.top,
+                  left: contact.phoneCoords.left,
+                  width: contact.phoneCoords.width,
+                  height: contact.phoneCoords.height,
+                }}
+                className="absolute z-20 rounded-md transition-all duration-200 hover:bg-black/5 active:scale-95 cursor-pointer"
+              />
 
-          <LotusDivider variant="simple" className="my-2 max-w-[120px]" />
+              {/* 2. Clickable Phone Call Icon Button */}
+              <a
+                href={`tel:${contact.phone}`}
+                title={`Call ${contact.name}`}
+                aria-label={`Call ${contact.name}`}
+                style={{
+                  top: contact.callCoords.top,
+                  left: contact.callCoords.left,
+                  width: contact.callCoords.width,
+                  height: contact.callCoords.height,
+                }}
+                className="absolute z-20 rounded-full transition-all duration-200 hover:bg-[#B68D4C]/15 active:scale-90 hover:shadow-xs cursor-pointer"
+              />
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto"
-          >
-            {contacts.subtitle}
-          </motion.p>
+              {/* 3. Clickable WhatsApp Button */}
+              <a
+                href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(contact.waText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Chat with ${contact.name} on WhatsApp`}
+                aria-label={`WhatsApp ${contact.name}`}
+                style={{
+                  top: contact.waCoords.top,
+                  left: contact.waCoords.left,
+                  width: contact.waCoords.width,
+                  height: contact.waCoords.height,
+                }}
+                className="absolute z-20 rounded-full transition-all duration-200 hover:bg-white/20 active:scale-95 hover:shadow-xs cursor-pointer"
+              />
+            </React.Fragment>
+          ))}
         </div>
+      </motion.div>
 
-        {/* Contacts (Direct on Background - No Boxed Cards) */}
-        <div className="flex flex-col gap-6 items-center justify-center w-full max-w-sm mx-auto">
-          {contacts.people.map((person, idx) => (
-            <motion.div
-              key={person.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="text-center flex flex-col items-center w-full max-w-[300px] mx-auto py-2"
-            >
-              <div>
-                <h3 className="text-xl font-serif text-forest font-semibold">
-                  {person.name}
-                </h3>
-                <p className="text-xs text-gold font-sans font-medium tracking-wide mt-0.5">
-                  {person.relation}
-                </p>
-                <p className="text-sm text-forest font-sans font-semibold tracking-wider mt-1">
-                  {person.phone}
-                </p>
-              </div>
-
-              {/* Action Buttons: Call & WhatsApp */}
-              <div className="flex items-center justify-center gap-3 pt-3 w-full">
-                <a
-                  href={`tel:${person.phone.replace(/[^0-9+]/g, "")}`}
-                  className="p-2.5 rounded-full bg-ivory text-forest hover:text-gold border border-gold/30 transition-colors shadow-xs"
-                  title={`Call ${person.name}`}
-                  aria-label={`Call ${person.name}`}
-                >
-                  <Phone className="w-4 h-4" />
-                </a>
-
-                <a
-                  href={`https://wa.me/${person.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-forest text-ivory hover:bg-forest-deep text-xs font-serif tracking-wider uppercase transition-colors shadow-xs"
-                  title={`WhatsApp ${person.name}`}
-                >
-                  <MessageCircle className="w-4 h-4 text-gold" />
-                  <span>WhatsApp</span>
-                </a>
-              </div>
-            </motion.div>
+      {/* Accessible semantic details for screen readers and SEO only */}
+      <div className="sr-only">
+        <h2>{contacts.sectionEyebrow} - {contacts.heading}</h2>
+        <p>{contacts.subtitle}</p>
+        <div>
+          {contactLinks.map((c) => (
+            <div key={c.name}>
+              <h3>{c.name} ({c.relation})</h3>
+              <p>Phone: <a href={`tel:${c.phone}`}>{c.phoneDisplay}</a></p>
+              <p><a href={`https://wa.me/${c.whatsapp}`}>WhatsApp</a></p>
+            </div>
           ))}
         </div>
       </div>

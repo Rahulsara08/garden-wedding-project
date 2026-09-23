@@ -63,7 +63,7 @@ export const Countdown: React.FC = () => {
     >
       {/* Main Jhula & Countdown Canvas */}
       <div
-        className="relative w-full max-w-[420px] mx-auto flex flex-col items-center bg-ivory overflow-hidden"
+        className="relative w-full mx-auto flex flex-col items-center bg-ivory overflow-hidden"
         style={{ aspectRatio: "1080 / 1920" }}
       >
         {/* Top Corner Floral Bouquets - positioned seamlessly to completely cover rope origins */}

@@ -328,7 +328,7 @@ export const weddingConfig = {
     sectionEyebrow: "THE DESTINATION",
     heading: "Shri Vrindavan Gardens",
     location: "Vrindavan, Mathura District, Uttar Pradesh",
-    description: "Nestled amidst sacred groves along the sacred banks, Shri Vrindavan Gardens offers a timeless oasis of heritage pavilions, reflecting fountains, and serene spiritual serenity.",
+    description: "",
     insiderTip: "Insider Tip: Golf carts operate smoothly from the main gate to the Yamuna Mandap pavilion; please arrive 30 mins before the Baraat.",
     mapUrl: "https://maps.google.com/?q=Vrindavan+Gardens",
     artworkImage: "/assets/watercolor/venue.jpg",

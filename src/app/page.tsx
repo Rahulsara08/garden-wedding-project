@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Preloader } from "@/components/sections/00-Preloader";
 import { PhoneMockupFrame } from "@/components/layout/PhoneMockupFrame";
@@ -16,8 +16,6 @@ import { Venue } from "@/components/sections/10-Venue";
 import { TravelStay } from "@/components/sections/11-TravelStay";
 import { GetInTouch } from "@/components/sections/12-GetInTouch";
 import { Closing } from "@/components/sections/13-Closing";
-import { FinalLoveNote } from "@/components/sections/14-FinalLoveNote";
-import { Footer } from "@/components/sections/15-Footer";
 
 export default function Home() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -73,14 +71,8 @@ export default function Home() {
             {/* 12: Get in Touch */}
             <GetInTouch />
 
-            {/* 13: Closing */}
+            {/* 13: Closing & Final Note */}
             <Closing onReplay={() => handleReplay(scrollContainerRef)} />
-
-            {/* 14: Final Love Note */}
-            <FinalLoveNote />
-
-            {/* 15: Footer */}
-            <Footer />
           </main>
         )}
       </PhoneMockupFrame>

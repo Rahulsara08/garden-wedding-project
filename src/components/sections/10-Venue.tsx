@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { CornerFlourish } from "../motifs/CornerFlourish";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { MapPin, Clock, Compass, ExternalLink } from "lucide-react";
+import { MapPin, Clock, ExternalLink } from "lucide-react";
 
 export const Venue: React.FC = () => {
   const { venue } = weddingConfig;
@@ -48,7 +48,7 @@ export const Venue: React.FC = () => {
           className="relative w-full max-w-sm mx-auto flex flex-col items-center text-center gap-4 py-2"
         >
           {/* Watercolor Venue Illustration Merged with Background */}
-          <div className="relative w-full max-w-[300px] h-44 sm:h-48 overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory">
+          <div className="relative w-full max-w-[340px] aspect-[16/11] overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory">
             <Image
               src={venue.artworkImage}
               alt={venue.heading}
@@ -62,9 +62,11 @@ export const Venue: React.FC = () => {
 
           {/* Details & Location */}
           <div className="w-full flex flex-col justify-center items-center px-2">
-            <p className="text-xs text-sage/90 font-sans leading-relaxed max-w-[280px] mx-auto">
-              {venue.description}
-            </p>
+            {venue.description && (
+              <p className="text-xs text-sage/90 font-sans leading-relaxed max-w-[280px] mx-auto mb-2">
+                {venue.description}
+              </p>
+            )}
 
             {/* Chips */}
             <div className="flex flex-wrap items-center justify-center gap-1.5 pt-3">
