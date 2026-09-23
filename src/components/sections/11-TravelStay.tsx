@@ -13,7 +13,7 @@ export const TravelStay: React.FC = () => {
   const { travel } = weddingConfig;
 
   return (
-    <section id="travel-section" className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture">
+    <section id="travel-section" className="relative pt-12 pb-4 px-3 sm:px-4 bg-[#FAF3E4]">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-lg mx-auto mb-8">
@@ -122,18 +122,7 @@ export const TravelStay: React.FC = () => {
               </h3>
             </div>
 
-            {/* Single Unique Heritage Fort / Hotel Artwork below Accommodations heading */}
-            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory my-1">
-              <Image
-                src="/assets/watercolor/royal-palace-suite.jpg"
-                alt="Royal Palace Suites Accommodations in Vrindavan"
-                fill
-                unoptimized
-                sizes="(max-width: 768px) 100vw, 320px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ivory/30 via-transparent to-transparent pointer-events-none" />
-            </div>
+
 
             {/* Hotel Information rendered directly on background - No Boxed Cards */}
             <div className="w-full flex flex-col gap-2 pt-1">

@@ -74,15 +74,15 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
             className="object-cover object-top select-none pointer-events-none"
           />
 
-          {/* Animated Text & Details Layer - Pops Up and Fades In */}
-          <div className="absolute inset-0 flex flex-col items-center justify-between px-5 py-7 sm:py-9 text-center z-10">
+          {/* Animated Text & Details Layer - Pops Up and Fades In with natural compact spacing */}
+          <div className="absolute inset-0 flex flex-col items-center justify-start gap-4 sm:gap-5 px-5 pt-10 sm:pt-14 pb-8 text-center z-10">
             {/* Top Block: Save the Date & Invitation Heading */}
             <motion.div
               {...popFade}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center max-w-[270px] pt-4 sm:pt-6"
+              className="flex flex-col items-center max-w-[270px]"
             >
-              <p className="text-[10px] sm:text-[11px] font-sans font-semibold tracking-[0.25em] text-[#B68D4C] uppercase mb-1.5">
+              <p className="text-[10px] sm:text-[11px] font-sans font-semibold tracking-[0.25em] text-[#B68D4C] uppercase mb-1">
                 {closing.sectionEyebrow}
               </p>
               <h2
@@ -93,7 +93,7 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
               </h2>
 
               {/* Diamond divider flourish */}
-              <div className="flex items-center justify-center gap-2 text-[#B68D4C] opacity-75 my-2">
+              <div className="flex items-center justify-center gap-2 text-[#B68D4C] opacity-75 my-1.5">
                 <span className="h-[1px] w-6 bg-[#B68D4C]/50" />
                 <span className="text-[8px] transform rotate-45 inline-block">◆</span>
                 <span className="h-[1px] w-6 bg-[#B68D4C]/50" />
@@ -108,7 +108,7 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
             <motion.div
               {...popFade}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center gap-3 w-full max-w-[260px] my-1"
+              className="flex flex-col items-center gap-2 w-full max-w-[260px]"
             >
               <button
                 type="button"
@@ -122,7 +122,7 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
               <button
                 type="button"
                 onClick={onReplay}
-                className="inline-flex items-center justify-center gap-1.5 text-[9.5px] sm:text-[10px] font-sans font-semibold tracking-[0.18em] text-[#556B5A] uppercase hover:text-[#1E2D22] active:scale-95 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 text-[9.5px] sm:text-[10px] font-sans font-semibold tracking-[0.18em] text-[#556B5A] uppercase hover:text-[#1E2D22] active:scale-95 transition-all cursor-pointer pt-0.5"
               >
                 <RotateCcw className="w-3 h-3 text-[#B68D4C]" />
                 <span>{closing.replayButtonText}</span>
@@ -133,10 +133,10 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
             <motion.div
               {...popFade}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center max-w-[270px] my-1"
+              className="flex flex-col items-center max-w-[270px]"
             >
               {/* Golden Wax Seal Medallion */}
-              <div className="relative w-13 h-13 sm:w-14 sm:h-14 mb-2 shadow-xs rounded-full">
+              <div className="relative w-12 h-12 sm:w-13 sm:h-13 mb-1.5 shadow-xs rounded-full">
                 <Image
                   src="/assets/watercolor/closing-wax-seal.png"
                   alt="R & A Monogram Seal"
@@ -147,18 +147,18 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
               </div>
 
               {/* Heart Line Flourish */}
-              <div className="flex items-center justify-center gap-2 text-[#B68D4C] opacity-80 mb-2">
+              <div className="flex items-center justify-center gap-2 text-[#B68D4C] opacity-80 mb-1.5">
                 <span className="h-[1px] w-7 bg-[#B68D4C]/40" />
                 <Heart className="w-3.5 h-3.5 text-[#B68D4C] fill-[#B68D4C]/15" />
                 <span className="h-[1px] w-7 bg-[#B68D4C]/40" />
               </div>
 
-              <p className="font-serif italic text-xs sm:text-[13px] text-[#1E2D22]/90 mb-1">
+              <p className="font-serif italic text-xs sm:text-[13px] text-[#1E2D22]/90 mb-0.5">
                 {loveNote.signOff}
               </p>
 
               <h3
-                className="text-2xl sm:text-[28px] font-serif font-semibold text-[#1E2D22] tracking-tight mb-1"
+                className="text-2xl sm:text-[27px] font-serif font-semibold text-[#1E2D22] tracking-tight mb-0.5"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {loveNote.names}
@@ -173,23 +173,23 @@ export const Closing: React.FC<ClosingProps> = ({ onReplay }) => {
             <motion.div
               {...popFade}
               transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center max-w-[260px] pb-4 sm:pb-6"
+              className="flex flex-col items-center max-w-[260px] pt-1"
             >
-              <div className="flex justify-center text-[#B68D4C] mb-1.5 opacity-80">
+              <div className="flex justify-center text-[#B68D4C] mb-1 opacity-80">
                 <Sparkles className="w-3.5 h-3.5 text-[#B68D4C]" />
               </div>
 
-              <p className="text-[10px] sm:text-[10.5px] text-[#4A5D4E] font-sans leading-relaxed mb-2.5">
+              <p className="text-[10px] sm:text-[10.5px] text-[#4A5D4E] font-sans leading-relaxed mb-2">
                 Thank you for being a part of our journey and for showering us with your love, blessings, and good wishes.
               </p>
 
-              <LotusDivider variant="simple" className="my-1.5 max-w-[90px] mx-auto" />
+              <LotusDivider variant="simple" className="my-1 max-w-[90px] mx-auto" />
 
-              <p className="text-[10px] sm:text-[11px] font-sans font-bold tracking-[0.22em] text-[#B68D4C] uppercase mt-1 mb-1">
+              <p className="text-[10px] sm:text-[11px] font-sans font-bold tracking-[0.22em] text-[#B68D4C] uppercase mt-0.5 mb-0.5">
                 {footer.hashtag}
               </p>
 
-              <div className="flex items-center justify-center gap-1.5 text-[#B68D4C] opacity-60 my-1">
+              <div className="flex items-center justify-center gap-1.5 text-[#B68D4C] opacity-60 my-0.5">
                 <span className="h-[1px] w-5 bg-[#B68D4C]/40" />
                 <span className="text-[6px] transform rotate-45 inline-block">◆</span>
                 <span className="h-[1px] w-5 bg-[#B68D4C]/40" />
