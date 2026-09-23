@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { useStorageState } from "@/hooks/useStorageState";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 import { Feather, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 interface BlessingNote {
@@ -280,6 +281,11 @@ export const BlessingsWall: React.FC = () => {
             ))}
           </AnimatePresence>
         </div>
+      </div>
+
+      {/* Section Breaker Divider Motif (Image 5) */}
+      <div className="w-full pt-4 pb-2 flex justify-center z-20">
+        <GoldenLeafDivider />
       </div>
     </section>
   );

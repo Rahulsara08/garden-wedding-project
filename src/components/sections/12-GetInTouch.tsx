@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 export const GetInTouch: React.FC = () => {
   const { contacts } = weddingConfig;
@@ -48,8 +49,12 @@ export const GetInTouch: React.FC = () => {
   return (
     <section
       id="contact-section"
-      className="relative w-full pt-0 pb-8 sm:pb-12 bg-[#FAF3E4] paper-texture overflow-hidden flex flex-col items-center select-none"
+      className="relative w-full pt-0 pb-6 sm:pb-8 bg-[#FAF3E4] paper-texture overflow-hidden flex flex-col items-center select-none"
     >
+      {/* Dissolve top and bottom into theme background #FAF3E4 */}
+      <div className="absolute top-0 left-0 right-0 h-10 sm:h-14 bg-gradient-to-b from-[#FAF3E4] via-[#FAF3E4]/70 to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-10 sm:h-14 bg-gradient-to-t from-[#FAF3E4] via-[#FAF3E4]/70 to-transparent z-10 pointer-events-none" />
+
       {/* Main Container Full Bleed Touching Phone Edges */}
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.98 }}
@@ -120,6 +125,11 @@ export const GetInTouch: React.FC = () => {
           ))}
         </div>
       </motion.div>
+
+      {/* Section Breaker Divider Motif (Image 5) */}
+      <div className="w-full pt-4 pb-2 flex justify-center z-20">
+        <GoldenLeafDivider />
+      </div>
 
       {/* Accessible semantic details for screen readers and SEO only */}
       <div className="sr-only">

@@ -7,6 +7,7 @@ import { useGuestName } from "@/hooks/useGuestName";
 import { useStorageState } from "@/hooks/useStorageState";
 import { fireWeddingConfetti } from "../animations/ConfettiBurst";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 import { NamasteScrollSequence } from "../animations/NamasteScrollSequence";
 import { Heart, Check, Sparkles } from "lucide-react";
 
@@ -221,6 +222,11 @@ export const Rsvp: React.FC = () => {
             </span>
           </div>
         </motion.div>
+      </div>
+
+      {/* Section Breaker Divider Motif (Image 5) */}
+      <div className="w-full pt-4 pb-2 flex justify-center z-20">
+        <GoldenLeafDivider />
       </div>
     </section>
   );

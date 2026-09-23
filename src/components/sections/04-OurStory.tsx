@@ -3,12 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 export const OurStory: React.FC = () => {
   return (
     <section
       id="story-section"
-      className="relative w-full py-0 bg-[#FAF3E4] paper-texture overflow-hidden flex flex-col items-center select-none"
+      className="relative w-full pt-0 pb-4 sm:pb-6 bg-[#FAF3E4] paper-texture overflow-hidden flex flex-col items-center select-none"
     >
       {/* Gentle Soft Top & Bottom Blends to Adjacent Sections */}
       <div className="absolute top-0 left-0 right-0 h-6 sm:h-8 bg-gradient-to-b from-[#FAF3E4] via-[#FAF3E4]/70 to-transparent z-20 pointer-events-none" />
@@ -69,6 +70,11 @@ export const OurStory: React.FC = () => {
           />
         </div>
       </motion.div>
+
+      {/* Section Breaker Divider Motif (Image 5) between Story and Family */}
+      <div className="w-full pt-4 pb-1 flex justify-center z-20">
+        <GoldenLeafDivider />
+      </div>
     </section>
   );
 };

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { weddingConfig } from "@/config/weddingConfig";
 import { SwingScrollOverlay } from "../animations/SwingScrollOverlay";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 interface TimeLeft {
   days: number;
@@ -59,11 +60,11 @@ export const Countdown: React.FC = () => {
   return (
     <section
       id="countdown-section"
-      className="relative w-full bg-ivory paper-texture pt-2 pb-10 sm:pb-14 px-0 flex flex-col items-center select-none overflow-hidden"
+      className="relative w-full bg-[#FAF3E4] paper-texture pt-2 pb-2 px-0 flex flex-col items-center select-none overflow-hidden"
     >
       {/* Main Jhula & Countdown Canvas */}
       <div
-        className="relative w-full mx-auto flex flex-col items-center bg-ivory overflow-hidden"
+        className="relative w-full mx-auto flex flex-col items-center bg-[#FAF3E4] overflow-hidden"
         style={{ aspectRatio: "1080 / 1920" }}
       >
         {/* Top Corner Floral Bouquets - positioned seamlessly to completely cover rope origins */}
@@ -87,14 +88,14 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Animated Jhula Swing Video Overlay - masked top and bottom so it seamlessly blends with zero hard border lines */}
+        {/* Animated Jhula Swing Video Overlay - Top blend only so legs remain 100% crisp and unblurred (Image 1) */}
         <div
           className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden"
           style={{
             WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 35px, black calc(100% - 65px), transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 35px, black 100%)",
             maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 35px, black calc(100% - 65px), transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 35px, black 100%)",
           }}
         >
           <SwingScrollOverlay
@@ -106,9 +107,8 @@ export const Countdown: React.FC = () => {
           />
         </div>
 
-        {/* Soft Top & Bottom Seamless Blending Overlays */}
+        {/* Soft Top Seamless Blending Overlay */}
         <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-ivory to-transparent z-12 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-ivory via-ivory/80 to-transparent z-12 pointer-events-none" />
 
         {/* Bottom Flowers matching Reference Image (Authentic clean watercolor botanicals) */}
         <div className="absolute bottom-0 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-1 sm:px-2">
@@ -134,6 +134,9 @@ export const Countdown: React.FC = () => {
             />
           </div>
         </div>
+
+        {/* Soft Bottom Dissolve into Theme Background (Image 2) */}
+        <div className="absolute -bottom-1 left-0 right-0 h-12 bg-gradient-to-t from-[#FAF3E4] via-[#FAF3E4]/70 to-transparent z-25 pointer-events-none" />
 
         {/* Countdown details centered in middle of swing section, right above the couple swinging */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-[28%] sm:pt-[30%] px-4 pointer-events-auto">
@@ -215,6 +218,11 @@ export const Countdown: React.FC = () => {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Section Breaker Motif (Image 5) */}
+      <div className="w-full pt-4 pb-2 flex justify-center z-20">
+        <GoldenLeafDivider />
       </div>
     </section>
   );

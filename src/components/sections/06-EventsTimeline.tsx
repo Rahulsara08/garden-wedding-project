@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 import { LotusDivider } from "../motifs/LotusDivider";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 import { MapPin, Clock, Sparkles, Sun, Music, Flame, Heart } from "lucide-react";
 
 interface EventSignBadgeProps {
@@ -237,41 +239,21 @@ export const EventsTimeline: React.FC = () => {
   return (
     <section
       id="events-section"
-      className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture overflow-hidden select-none"
+      className="relative py-8 px-2 sm:px-4 bg-[#FAF3E4] paper-texture overflow-hidden select-none"
     >
-      {/* Section Header */}
-      <div className="text-center max-w-lg mx-auto mb-10">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans font-semibold mb-1"
-        >
-          {weddingConfig.timeline.sectionEyebrow}
-        </motion.p>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-2xl sm:text-3xl font-serif text-forest tracking-tight text-embossed"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          {weddingConfig.timeline.heading}
-        </motion.h2>
-
-        <LotusDivider variant="simple" className="my-2 max-w-[120px]" />
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto"
-        >
-          {weddingConfig.timeline.subtitle}
-        </motion.p>
+      {/* Section Header Card: User Provided Image 1 replacing Wedding Festivities heading and Day 1 heading */}
+      <div className="relative w-full max-w-lg mx-auto mb-2 px-0">
+        <div className="relative w-full aspect-[1024/668] overflow-hidden">
+          <Image
+            src="/assets/watercolor/wedding-festivities-header.png"
+            alt="Celebrations & Rituals - The Wedding Festivities - Day 1 Auspicious Beginnings"
+            fill
+            priority
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 540px"
+            className="object-contain pointer-events-none select-none"
+          />
+        </div>
       </div>
 
       {/* Main Timeline Container with Dynamic SVG Connecting Line */}
@@ -330,18 +312,20 @@ export const EventsTimeline: React.FC = () => {
 
             return (
               <div key={day.dayLabel} className="relative">
-                {/* Day Header */}
-                <div className="flex justify-center mb-6 relative z-10">
-                  <div className="px-4 py-1 rounded-full bg-ivory/95 border border-gold/30 shadow-2xs backdrop-blur-xs text-center">
-                    <span className="text-xs font-serif tracking-widest uppercase text-forest font-semibold">
-                      {day.dayLabel}
-                    </span>
-                    <span className="mx-1.5 text-gold">·</span>
-                    <span className="text-xs text-gold-dark font-sans font-medium">
-                      {day.dateString}
-                    </span>
+                {/* Day Header - Only for Day 2 onwards (Day 1 is already in the header card) */}
+                {dayIndex > 0 && (
+                  <div className="flex justify-center mb-6 relative z-10">
+                    <div className="px-4 py-1 rounded-full bg-[#FAF3E4]/95 border border-[#C5A358]/40 shadow-2xs backdrop-blur-xs text-center">
+                      <span className="text-xs font-serif tracking-widest uppercase text-forest font-semibold">
+                        {day.dayLabel}
+                      </span>
+                      <span className="mx-1.5 text-gold">·</span>
+                      <span className="text-xs text-gold-dark font-sans font-medium">
+                        {day.dateString}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Events in this day */}
                 <div className="space-y-12">
@@ -465,6 +449,11 @@ export const EventsTimeline: React.FC = () => {
           );
         })}
         </div>
+      </div>
+
+      {/* Section Breaker Divider Motif (Image 5) */}
+      <div className="w-full pt-6 pb-2 flex justify-center z-20">
+        <GoldenLeafDivider />
       </div>
     </section>
   );

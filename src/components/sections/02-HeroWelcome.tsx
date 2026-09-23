@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 import { HeroFlock } from "../animations/HeroFlock";
+import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 export const HeroWelcome: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -24,7 +25,7 @@ export const HeroWelcome: React.FC = () => {
     <section
       ref={containerRef}
       id="welcome-hero"
-      className="relative w-full flex flex-col items-center justify-start overflow-hidden bg-ivory paper-texture pt-0 pb-2 px-0 select-none"
+      className="relative w-full flex flex-col items-center justify-start overflow-hidden bg-ivory paper-texture pt-0 pb-3 sm:pb-4 px-0 select-none"
     >
       {/* Main Container */}
       <motion.div
@@ -49,6 +50,11 @@ export const HeroWelcome: React.FC = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* Section Breaker Divider Motif (Image 5) at the end of first stage */}
+      <div className="w-full pt-3 pb-1 flex justify-center z-20">
+        <GoldenLeafDivider />
+      </div>
     </section>
   );
 };
