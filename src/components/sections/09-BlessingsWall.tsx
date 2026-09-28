@@ -7,6 +7,8 @@ import { useStorageState } from "@/hooks/useStorageState";
 import { LotusDivider } from "../motifs/LotusDivider";
 import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 import { Feather, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { SmoothInput } from "@/components/ui/SmoothInput";
+import { SmoothTextarea } from "@/components/ui/SmoothTextarea";
 
 interface BlessingNote {
   id: string;
@@ -80,7 +82,7 @@ export const BlessingsWall: React.FC = () => {
   };
 
   return (
-    <section id="blessings-section" className="relative py-10 px-3 sm:px-4 bg-ivory paper-texture overflow-hidden">
+    <section id="blessings-section" className="relative py-10 px-3 sm:px-4 bg-[#FAF3E4] paper-texture overflow-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-lg mx-auto mb-5">
@@ -151,24 +153,28 @@ export const BlessingsWall: React.FC = () => {
               </div>
 
               <div>
-                <input
+                <SmoothInput
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={weddingConfig.blessings.namePlaceholder}
-                  className="w-full px-3 py-1.5 rounded-xl bg-ivory border border-gold/30 text-forest text-xs font-sans focus:outline-none focus:border-gold shadow-inner"
+                  wrapperClassName="w-full px-3 py-1.5 rounded-xl bg-ivory border border-gold/30 focus-within:border-gold shadow-inner"
+                  className="text-forest text-xs font-sans placeholder:text-sage/60"
+                  caretClassName="bg-[#C49A45]"
                 />
               </div>
 
               <div>
-                <textarea
+                <SmoothTextarea
                   required
                   maxLength={180}
                   rows={2}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={weddingConfig.blessings.inputPlaceholder}
-                  className="w-full px-3 py-1.5 rounded-xl bg-ivory border border-gold/30 text-forest text-xs font-sans focus:outline-none focus:border-gold resize-none shadow-inner"
+                  wrapperClassName="w-full px-3 py-1.5 rounded-xl bg-ivory border border-gold/30 focus-within:border-gold shadow-inner"
+                  className="text-forest text-xs font-sans placeholder:text-sage/60 resize-none"
+                  caretClassName="bg-[#C49A45]"
                 />
                 <div className="flex justify-between items-center mt-1 text-[9px] text-sage/80 font-sans">
                   <span>Color variant:</span>
@@ -283,10 +289,7 @@ export const BlessingsWall: React.FC = () => {
         </div>
       </div>
 
-      {/* Section Breaker Divider Motif (Image 5) */}
-      <div className="w-full pt-4 pb-2 flex justify-center z-20">
-        <GoldenLeafDivider />
-      </div>
+
     </section>
   );
 };

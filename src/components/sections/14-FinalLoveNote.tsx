@@ -10,7 +10,7 @@ export const FinalLoveNote: React.FC = () => {
   const { loveNote } = weddingConfig;
 
   return (
-    <section className="relative min-h-[380px] flex flex-col items-center justify-center py-14 px-4 text-center overflow-hidden bg-ivory">
+    <section className="relative min-h-[380px] flex flex-col items-center justify-center py-14 px-4 text-center overflow-hidden bg-[#FAF3E4] paper-texture">
       {/* Background: Ganga River Watercolor Wave Wash */}
       <div className="absolute inset-0 pointer-events-none opacity-70 select-none">
         <Image

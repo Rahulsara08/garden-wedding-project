@@ -10,6 +10,7 @@ import { LotusDivider } from "../motifs/LotusDivider";
 import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 import { NamasteScrollSequence } from "../animations/NamasteScrollSequence";
 import { Heart, Check, Sparkles } from "lucide-react";
+import { SmoothInput } from "@/components/ui/SmoothInput";
 
 interface RsvpEntry {
   name: string;
@@ -54,7 +55,7 @@ export const Rsvp: React.FC = () => {
   };
 
   return (
-    <section id="rsvp-section" className="relative py-10 px-3 sm:px-4 bg-ivory paper-texture">
+    <section id="rsvp-section" className="relative py-10 px-3 sm:px-4 bg-[#FAF3E4] paper-texture">
       <div className="max-w-lg mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -130,13 +131,15 @@ export const Rsvp: React.FC = () => {
                   className="text-left space-y-2.5 w-full max-w-[270px] mx-auto"
                 >
                   <div>
-                    <input
+                    <SmoothInput
                       type="text"
                       required
                       value={nameInput}
                       onChange={(e) => setNameInput(e.target.value)}
                       placeholder="Your Full Name"
-                      className="w-full px-3 py-2 rounded-xl bg-ivory border-2 border-gold/35 text-forest text-xs font-sans focus:outline-none focus:border-gold shadow-inner"
+                      wrapperClassName="w-full px-3 py-2 rounded-xl bg-ivory border-2 border-gold/35 focus-within:border-gold shadow-inner"
+                      className="text-forest text-xs font-sans placeholder:text-sage/60"
+                      caretClassName="bg-[#C49A45]"
                     />
                   </div>
 
@@ -163,12 +166,14 @@ export const Rsvp: React.FC = () => {
                   </div>
 
                   <div>
-                    <input
+                    <SmoothInput
                       type="text"
                       value={dietaryNote}
                       onChange={(e) => setDietaryNote(e.target.value)}
                       placeholder="Dietary preference (optional)"
-                      className="w-full px-3 py-2 rounded-xl bg-ivory border-2 border-gold/35 text-forest text-xs font-sans focus:outline-none focus:border-gold shadow-inner"
+                      wrapperClassName="w-full px-3 py-2 rounded-xl bg-ivory border-2 border-gold/35 focus-within:border-gold shadow-inner"
+                      className="text-forest text-xs font-sans placeholder:text-sage/60"
+                      caretClassName="bg-[#C49A45]"
                     />
                   </div>
 
@@ -224,10 +229,7 @@ export const Rsvp: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Section Breaker Divider Motif (Image 5) */}
-      <div className="w-full pt-4 pb-2 flex justify-center z-20">
-        <GoldenLeafDivider />
-      </div>
+
     </section>
   );
 };

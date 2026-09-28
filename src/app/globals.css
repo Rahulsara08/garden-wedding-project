@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Italianno&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -23,6 +24,7 @@
   --font-cinzel: var(--font-cinzel-deco), serif;
   --font-cormorant: var(--font-cormorant), serif;
   --font-calligraphy: var(--font-great-vibes), cursive;
+  --font-pinyon: 'Pinyon Script', cursive;
 }
 
 :root {
@@ -125,5 +127,35 @@ nextjs-portal,
 #nextjs-dev-overlay,
 div[class*="nextjs-toast"] {
   display: none !important;
+}
+
+/* Off-screen performance optimizations for 60fps scrolling */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+/* GPU acceleration helper for smooth 60fps transform & opacity transitions */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Accessibility: Reduce motion & reduce data preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .paper-texture {
+    background-image: none !important;
+  }
 }
 

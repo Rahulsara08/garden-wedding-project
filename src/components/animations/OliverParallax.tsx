@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { GalleryPhoto } from "@/config/weddingConfig";
 import { X, ZoomIn } from "lucide-react";
@@ -42,11 +42,10 @@ export const OliverParallax: React.FC<OliverParallaxProps> = ({ photos }) => {
               className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl aspect-[4/5] border border-gold/25"
             >
               <div className="relative w-full h-full overflow-hidden">
-                <Image
+                <OptimizedImage
                   src={photo.src}
                   alt={photo.caption}
                   fill
-                  unoptimized
                   sizes="(max-width: 640px) 100vw, 350px"
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
@@ -70,11 +69,10 @@ export const OliverParallax: React.FC<OliverParallaxProps> = ({ photos }) => {
               className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl aspect-[4/5] border border-gold/25"
             >
               <div className="relative w-full h-full overflow-hidden">
-                <Image
+                <OptimizedImage
                   src={photo.src}
                   alt={photo.caption}
                   fill
-                  unoptimized
                   sizes="(max-width: 640px) 100vw, 350px"
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
@@ -115,7 +113,7 @@ export const OliverParallax: React.FC<OliverParallaxProps> = ({ photos }) => {
                 <X className="w-5 h-5" />
               </button>
               <div className="relative w-full aspect-[3/4] max-h-[75vh] overflow-hidden rounded-md bg-ivory-dark">
-                <Image
+                <OptimizedImage
                   src={activePhoto.src}
                   alt={activePhoto.caption}
                   fill

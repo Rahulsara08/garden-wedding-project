@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   const { footer, couple } = weddingConfig;
 
   return (
-    <footer className="relative py-8 px-4 bg-ivory text-center border-t border-gold/15 select-none">
+    <footer className="relative py-8 px-4 bg-[#FAF3E4] paper-texture text-center border-t border-gold/15 select-none">
       <div className="max-w-md mx-auto flex flex-col items-center gap-3">
         {/* Sized down monogram mark */}
         <RadhaKrishnaSeal

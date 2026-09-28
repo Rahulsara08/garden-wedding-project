@@ -1,0 +1,823 @@
+{
+  "/assets/events/event-baraat.png": {
+    "width": 996,
+    "height": 661,
+    "aspectRatio": 1.5068,
+    "blurDataURL": "data:image/webp;base64,UklGRkYBAABXRUJQVlA4WAoAAAAQAAAADwAACgAAQUxQSLEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAYIgAFABVyMwABAgACAQQAi4EAAwS+/9wZAQABAAEDANBqADxwOzwsCgtkE0EpABn/p2j890RCKgB3yR+yTGC++vD/z06Bv6AyYPHO4eD4///9/7optIfjJj798O782+jQ0PyGYuyl4gV+/4ro3198HhhrSar73f8/kZuxjLFUFU4aTErb/7eBcx4FQgsqKQAbEzQRXH41ATMAVlA4IG4AAACwAQCdASoQAAsABUB8JbACdABz8h9gAP4+IprUXoVfa8OUJhhcRH3hqovM4qgeeCPcIHqkKu6FhHesZczYsEEVKtSdKFci4R5e6+ogqeo2gJ2BWSfbq19OpcBK37Vzk8G+s0/fToDuZFOX+ZEAAA==",
+    "webp": "/assets/events/event-baraat.webp",
+    "avif": "/assets/events/event-baraat.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/events/event-baraat-400w.webp",
+        "avif": "/assets/events/event-baraat-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/events/event-baraat-800w.webp",
+        "avif": "/assets/events/event-baraat-800w.avif"
+      }
+    ]
+  },
+  "/assets/events/event-haldi.png": {
+    "width": 972,
+    "height": 997,
+    "aspectRatio": 0.9749,
+    "blurDataURL": "data:image/webp;base64,UklGRngBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSNcAAAABkGNr27FX9/N+sTt1Tm1OwFaV1rZtTCCpjdboVNm27aP3/Z+jQUTEBAAgJOQABAgBAERYfQh0gxD4L8F6d+jxxAyI9gKBUPvA+6+caFveV2UAAed3ljrJl52RpAloyLi8Y/mDOyAEARoarp9Y/eIwGAAAQZvgn0pyEsQ/GqKUkkoqWY//tfMnK6UUB0D8E8slJyx1P7kZBgSC3XvaIksl+dIeGoEw0r3woaSSvBKtB2jInt34Yp3u1w/JM+YgDCd1ba9+/pJ8MFJrAJAdTM01V7/MQisQAABWUDggegAAABACAJ0BKhAAEAAFQHwlsAJ0Bisj6PFsOQAA/pGAB48xP4kTW/mxQkJ/uLAnsbXYM0YW1i3K9LJFwSaBFMsMdQRRHp9xON7uEP+l3wUYv/z80aPqh3ybGan2ezjp+bU7EZOOF/66zRBUPSWtwlM9x1yDg8qnvRsKHgAA",
+    "webp": "/assets/events/event-haldi.webp",
+    "avif": "/assets/events/event-haldi.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/events/event-haldi-400w.webp",
+        "avif": "/assets/events/event-haldi-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/events/event-haldi-800w.webp",
+        "avif": "/assets/events/event-haldi-800w.avif"
+      }
+    ]
+  },
+  "/assets/events/event-mehndi.png": {
+    "width": 961,
+    "height": 990,
+    "aspectRatio": 0.9707,
+    "blurDataURL": "data:image/webp;base64,UklGRkoBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSLcAAAABgGPb2rHnfvj/P3bS2WaZit1fpUppq8ooOANjALbZ2yptv+97w28METEB0AwENRVl5QfbYWgaoCFz4+L89mOvLxUmgNjyEwoKJXnS3BsAZD8qqSSVlJLXCUApBf8WvIoDhixQsAOuE1T/KT6kuS1RWlBsdN4JWuBn6iyVpau4pEVKK/sRaOXHf5IH3rrRTvGX5I0TOtL2XsWnkOKDr4XQYSDtiYqk5LoPNACOgqGBwc3hmjxfaAAAVlA4IGwAAACQAgCdASoQABAABUB8JbACdAywTlZQn061gC9ogAD+qXBUFyLmm15LFbipSyy00pMMfmxX11Xb591Hto9RdRWBQNNauVRyPewDqcHtEOXTh2CE2iFypqtjn43ydWd8DooD+4ppNkvWH09eKAA=",
+    "webp": "/assets/events/event-mehndi.webp",
+    "avif": "/assets/events/event-mehndi.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/events/event-mehndi-400w.webp",
+        "avif": "/assets/events/event-mehndi-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/events/event-mehndi-800w.webp",
+        "avif": "/assets/events/event-mehndi-800w.avif"
+      }
+    ]
+  },
+  "/assets/events/event-sangeet.png": {
+    "width": 784,
+    "height": 986,
+    "aspectRatio": 0.7951,
+    "blurDataURL": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4WAoAAAAQAAAADAAADwAAQUxQSLcAAAABgKpt//nn/eG6dghWXrSttLgzMJNtpd+/zWzeqr1F20b9N36+73ASEREIi4dpaPA6bIOO6BpMDwH6owUDPk0pZA6yPrYiAFhHwqU0Cr99NZjFwjsb3R4mw0Am6bBTyXclTJTQTUXF1VHoGKZbKQr3+wHjlEJSuFqvI9xFRUW7awAG+ughhcd7FuD7QfV/MDwK1NHD/xPbArxf6RLxuPjYNYcRCkkqPuZtILRiauHqaqEjNztkOQgAVlA4IFgAAADwAQCdASoNABAABUB8JZACdADcpNTUb9gA/l7llIzAWv6EanI5UM3vdVmSfUuMVKynV1I3JG9fMyOXltoi2JFumpFQ5iiTTj7Lr9u9SNWY0HRA4QgTmYAA",
+    "webp": "/assets/events/event-sangeet.webp",
+    "avif": "/assets/events/event-sangeet.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/events/event-sangeet-400w.webp",
+        "avif": "/assets/events/event-sangeet-400w.avif"
+      }
+    ]
+  },
+  "/assets/events/event-vivah.png": {
+    "width": 1024,
+    "height": 1024,
+    "aspectRatio": 1,
+    "blurDataURL": "data:image/webp;base64,UklGRnQBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSPIAAAABkHPb1rHXsp/YZpXOtu3Wtm07vdWms1Hatu3k2n7f5zznKiKWQUBI+A9B4uBB/v/+IxT+9CZKgPyjURIfnruGALiQnV6UJlSOFBEpAEVkyOzz8BfPUQbAKM/x4GL3iv2DyBijeCfj9Mi/ReCPH4DBG7wW9zy4GaE4HJm/hdD/tKas2DNV/OtnFFFswDf5J7UCJG3KFxsFBYn2+DuDCztCUo4tH/Q647w7kvdzP9gS0nzh830Cl6fx+vYjRhBS9WYcgQfgGP3KfAhpRA4p5XkABAwn/i8+f/3IISL99eXLz11jJXl1g4T99pOtuoMgE01lOVZQOCBcAAAA0AEAnQEqEAAQAAVAfCWwAnQAhqeHgAAA38ZFi0QPBhkTLd6BuxATrP/cpoiXFG0onbiD3O5OwtURyjyHjQcppLR7Y/y8r4ao+F8vf9exvh26CBdBOVetE5QAAAA=",
+    "webp": "/assets/events/event-vivah.webp",
+    "avif": "/assets/events/event-vivah.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/events/event-vivah-400w.webp",
+        "avif": "/assets/events/event-vivah-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/events/event-vivah-800w.webp",
+        "avif": "/assets/events/event-vivah-800w.avif"
+      }
+    ]
+  },
+  "/assets/illustrations/bottom-flower-left.png": {
+    "width": 280,
+    "height": 394,
+    "aspectRatio": 0.7107,
+    "blurDataURL": "data:image/webp;base64,UklGRggBAABXRUJQVlA4WAoAAAAQAAAACgAADwAAQUxQSJIAAAABgGNt2zHnGbuzbc90tm3PxE5WYO4gpdFZq0iZNgtJ52QNETEBYBHxp7LCAeE3Z/4fAQb+tntA+sNhJeDPvoBVpf92ZY6nQfylbIypDSD8qJe89SBodAAn7ViUzrNzQSQc3p/MiLdsIAHPH++HLq2XDh3/8uV1ZZYX8EkKiYO3s83pMeXsjFq4tLa/uvJgb5UIAFZQOCBQAAAAEAIAnQEqCwAQAAVAfCWwAnQA3UC7XVgxAAD+jYHtJuwxv14+JDpq2XYu6/hj4JYqp+M7zWERfVQuKvI4vdYUZBw7Cu7X1ck9cb+q+L2FAAA=",
+    "webp": "/assets/illustrations/bottom-flower-left.webp",
+    "avif": "/assets/illustrations/bottom-flower-left.avif",
+    "variants": []
+  },
+  "/assets/illustrations/bottom-flower-right.png": {
+    "width": 292,
+    "height": 304,
+    "aspectRatio": 0.9605,
+    "blurDataURL": "data:image/webp;base64,UklGRioBAABXRUJQVlA4WAoAAAAQAAAADgAADwAAQUxQSKkAAAABgFzb2rHn+W3btm3bsW3bmmZklpEyMk4rGaWA5KkhIhS2bYO0HcMhgJNAwEEk4hkETjjoFDSlSdSRQZrAer49XzuG1VRz020HjOMOxd3/D4QoC5yda2SyNiQwjWT+5kI2XD0nIXMDbDafCIODRGo7N3k9B+ZUk0E7Wgga8ms/v+vGPbrRSrJMLxcG5r++d5RycMzXA/l8eSK7fHkBQICRDsRu89n5z4MPAFZQOCBaAAAAMAIAnQEqDwAQAAVAfCWwAsSVAAcNPHYcIAAA/vQlPv4pSGp8h09S7X+yioWZbQ+EQ5Ge+nvOMgKQhHnq+Vwk5yoKiROMSVA8V+R6rrjyM6BccamEAlY7MAAA",
+    "webp": "/assets/illustrations/bottom-flower-right.webp",
+    "avif": "/assets/illustrations/bottom-flower-right.avif",
+    "variants": []
+  },
+  "/assets/illustrations/jhula_corner_flower_left.png": {
+    "width": 425,
+    "height": 470,
+    "aspectRatio": 0.9043,
+    "blurDataURL": "data:image/webp;base64,UklGRkgBAABXRUJQVlA4WAoAAAAQAAAADQAADwAAQUxQSMoAAAABgLtt2/FV+pNtt9Voa7dt200dvynbxmRja2uzbds23/f7nhgRE6CvDnxWirxmiirKwAUc9OIsug6fJaxZgIN1GO4vr+/j8cdLRepjThK+77wylKH9K2OTtplICUGWZV8OevdKE5CwLDIMmbrpE+eXnUeGZd6wQ91UTwiikWGYj6IdH+AFLq5SJLjfUGcDvNzcAAK1eFgwUSIDXPA7Gc+Dn1qBG34r9ZziqL4I/K269bFtxA3/ChWdox/w/gOSGouJwPMfN+ioAfc/VlA4IFgAAADQAQCdASoOABAABUB8JbACdAYto2XwAAD9/D5Ar21KZht7B9zqhNLu6Rg6pW7zBW4oHIdHJI8JLy31COo0B1wK3U7dPXsdjNLBqkJj0NThKksEmZNfAAAA",
+    "webp": "/assets/illustrations/jhula_corner_flower_left.webp",
+    "avif": "/assets/illustrations/jhula_corner_flower_left.avif",
+    "variants": []
+  },
+  "/assets/illustrations/jhula_corner_flower_right.png": {
+    "width": 425,
+    "height": 470,
+    "aspectRatio": 0.9043,
+    "blurDataURL": "data:image/webp;base64,UklGRkgBAABXRUJQVlA4WAoAAAAQAAAADQAADwAAQUxQSMcAAAABgLtt2/FV/f3Ltifbtq2t1Tam31aTubW5rdamNtu2bev7fe+TviJiAiCCoblBiIJevAzsXGMSELZVfDqSuFCWSuLKq5rGl88j2ltf2qOc+NnhxQEJz9HjwSuVN+737b8yRsRxHFXKqvXfT3E8I8Y4KoWCS4B1L71LGE9zOhBBGkmbza+MZ5QPSElLI7K7dZc+qQkARNBuGmvYpxa5XxCh6z7jlCogqOQxys57jAQg5bPxuWUsIIMUumxQ+od43l4DgiLYuEAKAFZQOCBaAAAAkAEAnQEqDgAQAAVAfCWwAnQAzysAAP38BGx7E3RmIQKVjzlE9oRbsu2OpItX3rLFv0etFpQCMLWNohIupOwsqENiRRWFdUzeu5aTDe4k940T41o8UaLYYAAA",
+    "webp": "/assets/illustrations/jhula_corner_flower_right.webp",
+    "avif": "/assets/illustrations/jhula_corner_flower_right.avif",
+    "variants": []
+  },
+  "/assets/photos/gallery-bride.jpg": {
+    "width": 896,
+    "height": 1200,
+    "aspectRatio": 0.7467,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoMABAABUB8JQAASzKTGH4AAPsC1nvPVzx/Dcx4j6jQvNNy37OjEx754b7wbppZPYDoIUavw/WDHW+NrN4yUg+3eIAAAA==",
+    "webp": "/assets/photos/gallery-bride.webp",
+    "avif": "/assets/photos/gallery-bride.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/gallery-bride-400w.webp",
+        "avif": "/assets/photos/gallery-bride-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/photos/gallery-bride-800w.webp",
+        "avif": "/assets/photos/gallery-bride-800w.avif"
+      }
+    ]
+  },
+  "/assets/photos/gallery-couple.jpg": {
+    "width": 896,
+    "height": 1200,
+    "aspectRatio": 0.7467,
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoMABAABUB8JaACdAD7EnuQ8AD5YQhInHgNc+4abE/jO3vy3n0IBGMMr0ZnOcVdTfYZ3H1bnQjUuPKO0Ih1xCY7HhkAAA==",
+    "webp": "/assets/photos/gallery-couple.webp",
+    "avif": "/assets/photos/gallery-couple.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/gallery-couple-400w.webp",
+        "avif": "/assets/photos/gallery-couple-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/photos/gallery-couple-800w.webp",
+        "avif": "/assets/photos/gallery-couple-800w.avif"
+      }
+    ]
+  },
+  "/assets/photos/gallery-groom.jpg": {
+    "width": 896,
+    "height": 1200,
+    "aspectRatio": 0.7467,
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoMABAABUB8JZACdADdbV87p7qAAP26n583Hjj31NyC+xIkR4pKbQqo0onrXZ8DM62bO5OdASVf8hUSGWTi9I7kHBB3gCJ4cwRbkoAA",
+    "webp": "/assets/photos/gallery-groom.webp",
+    "avif": "/assets/photos/gallery-groom.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/gallery-groom-400w.webp",
+        "avif": "/assets/photos/gallery-groom-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/photos/gallery-groom-800w.webp",
+        "avif": "/assets/photos/gallery-groom-800w.avif"
+      }
+    ]
+  },
+  "/assets/photos/gallery-sangeet.jpg": {
+    "width": 896,
+    "height": 1200,
+    "aspectRatio": 0.7467,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMABAABUB8JbACdAD0DhIoeOgA/nfD79oXNN0TmUhHEXLRPnKQ56kAQK5NsdmfJwpEhEKs7xbqe4SSdPXWsOS7e2TiUAAA",
+    "webp": "/assets/photos/gallery-sangeet.webp",
+    "avif": "/assets/photos/gallery-sangeet.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/gallery-sangeet-400w.webp",
+        "avif": "/assets/photos/gallery-sangeet-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/photos/gallery-sangeet-800w.webp",
+        "avif": "/assets/photos/gallery-sangeet-800w.avif"
+      }
+    ]
+  },
+  "/assets/photos/story-chai-moment.png": {
+    "width": 576,
+    "height": 1024,
+    "aspectRatio": 0.5625,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoJABAABUB8JaACdADYvJ7AAOGCS6U4J6hhc+ywZnshOdR0BNd+SFXRDlVQ9rfDRz4OiRtdxMdsgsneIAAAAA==",
+    "webp": "/assets/photos/story-chai-moment.webp",
+    "avif": "/assets/photos/story-chai-moment.avif",
+    "variants": []
+  },
+  "/assets/photos/story-first-hello.png": {
+    "width": 682,
+    "height": 1024,
+    "aspectRatio": 0.666,
+    "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoLABAABUB8JZQAAubV6VsJ7wAA/vHJ9pXH4hRottgGOZ6ICPJ2mKzkrx7PwLyl9hbcMoKAAAA=",
+    "webp": "/assets/photos/story-first-hello.webp",
+    "avif": "/assets/photos/story-first-hello.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/story-first-hello-400w.webp",
+        "avif": "/assets/photos/story-first-hello-400w.avif"
+      }
+    ]
+  },
+  "/assets/photos/story-proposal.png": {
+    "width": 751,
+    "height": 1024,
+    "aspectRatio": 0.7334,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAgCdASoMABAABUB8JQBdgCHfJw8XMRAAAP7t3+YsFtLUzLKn/Lf3ldnPSp+zKN+U08UOtzMOAAAA",
+    "webp": "/assets/photos/story-proposal.webp",
+    "avif": "/assets/photos/story-proposal.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/photos/story-proposal-400w.webp",
+        "avif": "/assets/photos/story-proposal-400w.avif"
+      }
+    ]
+  },
+  "/assets/reference-hero.png": {
+    "width": 1024,
+    "height": 642,
+    "aspectRatio": 1.595,
+    "blurDataURL": "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAABQAQCdASoQAAoABUB8JQBOgCgAAP7vGzGosH/FQG0Hnk/Vx6oAAA==",
+    "webp": "/assets/reference-hero.webp",
+    "avif": "/assets/reference-hero.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/reference-hero-400w.webp",
+        "avif": "/assets/reference-hero-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/reference-hero-800w.webp",
+        "avif": "/assets/reference-hero-800w.avif"
+      }
+    ]
+  },
+  "/assets/video/royal-doors-poster.jpg": {
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": 0.5625,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoJABAABUB8JagCdADdozH4gADJbWiEATkzwIHCVB7iJOPuqvmv9pULF3ErPmdb8xw3OdcLZZk90n6n8oAAAA==",
+    "webp": "/assets/video/royal-doors-poster.webp",
+    "avif": "/assets/video/royal-doors-poster.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/video/royal-doors-poster-400w.webp",
+        "avif": "/assets/video/royal-doors-poster-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/video/royal-doors-poster-800w.webp",
+        "avif": "/assets/video/royal-doors-poster-800w.avif"
+      }
+    ]
+  },
+  "/assets/videos/swing-overlay-poster.png": {
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": 0.5625,
+    "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAQAgCdASoJABAABUB8JZgCdAEO/1nLxKEgAP7tPRCBjtdWrjTGT4ipd1up++GuN/r8l21rYcH6rYThXAAAAA==",
+    "webp": "/assets/videos/swing-overlay-poster.webp",
+    "avif": "/assets/videos/swing-overlay-poster.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/videos/swing-overlay-poster-400w.webp",
+        "avif": "/assets/videos/swing-overlay-poster-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/videos/swing-overlay-poster-800w.webp",
+        "avif": "/assets/videos/swing-overlay-poster-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/brij-view-suites.jpg": {
+    "width": 1376,
+    "height": 768,
+    "aspectRatio": 1.7917,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoQAAkABUB8JYgCdAEMHLTAAP7n7hgty52gEko1QMdbZkyMNCj5CW5P0cioAA==",
+    "webp": "/assets/watercolor/brij-view-suites.webp",
+    "avif": "/assets/watercolor/brij-view-suites.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/brij-view-suites-400w.webp",
+        "avif": "/assets/watercolor/brij-view-suites-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/brij-view-suites-800w.webp",
+        "avif": "/assets/watercolor/brij-view-suites-800w.avif"
+      },
+      {
+        "width": 1200,
+        "webp": "/assets/watercolor/brij-view-suites-1200w.webp",
+        "avif": "/assets/watercolor/brij-view-suites-1200w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/closing-save-the-date-bg.png": {
+    "width": 392,
+    "height": 1024,
+    "aspectRatio": 0.3828,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoGABAABUB8JYwCdAD5iROLAAD+61pGGgQQSPWHcRESDcV1HkQADFJUAAA=",
+    "webp": "/assets/watercolor/closing-save-the-date-bg.webp",
+    "avif": "/assets/watercolor/closing-save-the-date-bg.avif",
+    "variants": []
+  },
+  "/assets/watercolor/closing-save-the-date.png": {
+    "width": 392,
+    "height": 1024,
+    "aspectRatio": 0.3828,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoGABAABUB8JYwCdAD0q+TogAD+61pEhs+36taHrdIgK0EGHVI+ydw3AAA=",
+    "webp": "/assets/watercolor/closing-save-the-date.webp",
+    "avif": "/assets/watercolor/closing-save-the-date.avif",
+    "variants": []
+  },
+  "/assets/watercolor/closing-wax-seal.png": {
+    "width": 72,
+    "height": 75,
+    "aspectRatio": 0.96,
+    "blurDataURL": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4WAoAAAAQAAAADgAADwAAQUxQSJsAAAABgGLb2rLlvu/7GzANd7fs0EhEonv7F8nddUbuVRvd7ZXn4kwhIiYAyiBW0ZHsrolDK8Cg5UhI4XkrDDRGSfHei3AeGv30nt+95QjS7xj4s/ClcIqOvzuu7dD/IfDkiuEPwtvr/+zT/yHwdJ7uD47bOc+UX0RsGZK04YdgOQmFFUpwzgXhllLQaLugUHjTDg0og9TawbHhhjQYBQBWUDggTAAAANABAJ0BKg8AEAAFQHwlsAJ0AR/38VgAAP7tYjkrAcDhKnxMwwbs0dE3Jp59h0WV8PxWtyyCAvfoD6Gt90zXXmBW2Aq+SSOFnfbgAAA=",
+    "webp": "/assets/watercolor/closing-wax-seal.webp",
+    "avif": "/assets/watercolor/closing-wax-seal.avif",
+    "variants": []
+  },
+  "/assets/watercolor/contact-clean-bg.png": {
+    "width": 557,
+    "height": 1024,
+    "aspectRatio": 0.5439,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACwAQCdASoJABAABUB8JQBOgCFrrWhAAP7tSr3wOXH73PtimHwWpUaAAAA=",
+    "webp": "/assets/watercolor/contact-clean-bg.webp",
+    "avif": "/assets/watercolor/contact-clean-bg.avif",
+    "variants": []
+  },
+  "/assets/watercolor/desktop-ambient-wallpaper.jpg": {
+    "width": 1920,
+    "height": 1092,
+    "aspectRatio": 1.7582,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAACwAQCdASoQAAkABUB8JQBWAB6WdCcAAP7hU0sRdwTN/E8tvikYZ3vAAAA=",
+    "webp": "/assets/watercolor/desktop-ambient-wallpaper.webp",
+    "avif": "/assets/watercolor/desktop-ambient-wallpaper.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/desktop-ambient-wallpaper-400w.webp",
+        "avif": "/assets/watercolor/desktop-ambient-wallpaper-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/desktop-ambient-wallpaper-800w.webp",
+        "avif": "/assets/watercolor/desktop-ambient-wallpaper-800w.avif"
+      },
+      {
+        "width": 1200,
+        "webp": "/assets/watercolor/desktop-ambient-wallpaper-1200w.webp",
+        "avif": "/assets/watercolor/desktop-ambient-wallpaper-1200w.avif"
+      },
+      {
+        "width": 1600,
+        "webp": "/assets/watercolor/desktop-ambient-wallpaper-1600w.webp",
+        "avif": "/assets/watercolor/desktop-ambient-wallpaper-1600w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/family-corner-bl.png": {
+    "width": 417,
+    "height": 451,
+    "aspectRatio": 0.9246,
+    "blurDataURL": "data:image/webp;base64,UklGRkQBAABXRUJQVlA4WAoAAAAQAAAADgAADwAAQUxQSLoAAAABgGtb2zHned+xZ2LbtlvbttFNF1Z2NVWcVK6SzvZFoE9nO7cQEROAfxNA9Af6xn+ADVn0+4B/8V03LUhLF+PXndvwhko7yW83q8mRGQiU/1IQ3zzq5jinh/AHy/H38xjXylAwWACkDG8nBnQlt0zXEADkz2dFx1Z6XDwNKO1L5OSSpU+qWjiOYiivJ8EJUsN7Ysb7HhDXHjsWbQPdggGhKwKLNc+Ql0sQYEwwI/FVJ0ztCcQAE8EvHQxWUDggZAAAAPABAJ0BKg8AEAAFQHwlqAJ0Biw6mUx3AAD4Mv5WYgUaw+eT6iL7lU4lSN3E7EMLnPL5V9R+FGNd4vncTxkb5ZvUfNj96DZ4ytakYovETkCC6NEMAgV/f/0QN7dHEpZIV3ZVQAA=",
+    "webp": "/assets/watercolor/family-corner-bl.webp",
+    "avif": "/assets/watercolor/family-corner-bl.avif",
+    "variants": []
+  },
+  "/assets/watercolor/family-corner-br.png": {
+    "width": 366,
+    "height": 656,
+    "aspectRatio": 0.5579,
+    "blurDataURL": "data:image/webp;base64,UklGRuwAAABXRUJQVlA4WAoAAAAQAAAACAAADwAAQUxQSH4AAAABgJpt27LleuV3d7fkmr9/gD+6O+6SGMAqmcoYDEFiArYgOTtExAQ4QtFcAKKeQDqRD9O8KXqCsYhm8ejht83qM4EQSMm/Qom/rILfiuuBAgSBp48WSMpvL4YHhOb200DhuHQ41lME+n0fWwxjZ3jSwQTPD+1aESlQBF/XKABWUDggSAAAAHABAJ0BKgkAEAAFQHwlAF2AGwOAAP6jNEeXrv/V38kMLyUMRx6/O9jxvpEn6WsNGzKZqKVGuOsDQpBQm2CmOu8DSt3t+0AAAA==",
+    "webp": "/assets/watercolor/family-corner-br.webp",
+    "avif": "/assets/watercolor/family-corner-br.avif",
+    "variants": []
+  },
+  "/assets/watercolor/family-corner-tl.png": {
+    "width": 365,
+    "height": 450,
+    "aspectRatio": 0.8111,
+    "blurDataURL": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4WAoAAAAQAAAADAAADwAAQUxQSFYAAAAFcBzZthK9b7g7bFmRAUX+OXgOLuPuk0BETAD8IX4BnSOvfQbA6P4BQuczoDO8j85q0jW61q0PtGzr5FRBcI/YWZh49Ain7RYfB/IAxQRNxxN8FL32FFZQOCBUAAAAMAIAnQEqDQAQAAVAfCWQAuwwRoGJ3Tp440AA/vQlL+FNg5QhlyZV+fa+vgjcLJRIk/aOIq1TFN8K5p41fQQSoYetdJtVkhh5L+YFwP6tDS6PqgAA",
+    "webp": "/assets/watercolor/family-corner-tl.webp",
+    "avif": "/assets/watercolor/family-corner-tl.avif",
+    "variants": []
+  },
+  "/assets/watercolor/family-corner-tr.png": {
+    "width": 397,
+    "height": 512,
+    "aspectRatio": 0.7754,
+    "blurDataURL": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4WAoAAAAQAAAACwAADwAAQUxQSK8AAAABgGLb2rLlPu/7u7u7u/+4k9whukeyRqIPwRvNHabhUOk0hzFExAQQjDbDy/bj6mxWRWDSqqXF5beL9WkAUI1ObX+8H1TqDEbw25H2u49nj9HhJKrE3uP+xxEAIo7F10RUip8EQ3v95kzYqLGkzVohzjcWSmr7u1uaG43oCoa5RCSSSITEMDCZrIm4q1M2QNLULBQJuIBzgrazDP/0yxj7QVCNgHk1PwCFDySg334CAFZQOCBYAAAAMAIAnQEqDAAQAAVAfCUAXYDFqrWN7uE0eIAA/ki+XThxrjGyQnhNiJ58jlJP6LXeSwP75/GDKvPZJVpg6MnYuEeImJ9AENCiwRzC9/9kbjJtpIq5LsYAAA==",
+    "webp": "/assets/watercolor/family-corner-tr.webp",
+    "avif": "/assets/watercolor/family-corner-tr.avif",
+    "variants": []
+  },
+  "/assets/watercolor/family-union-scroll.png": {
+    "width": 1044,
+    "height": 2048,
+    "aspectRatio": 0.5098,
+    "blurDataURL": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAADQAQCdASoIABAABUB8JYwCdAEPAno0gAD+7VkfnpHMzwAA",
+    "webp": "/assets/watercolor/family-union-scroll.webp",
+    "avif": "/assets/watercolor/family-union-scroll.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/family-union-scroll-400w.webp",
+        "avif": "/assets/watercolor/family-union-scroll-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/family-union-scroll-800w.webp",
+        "avif": "/assets/watercolor/family-union-scroll-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/ganga-wave.jpg": {
+    "width": 1376,
+    "height": 768,
+    "aspectRatio": 1.7917,
+    "blurDataURL": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAQCdASoQAAkABUB8JQBWAB6WsKBAAP7hU0gnuA9s40ug+LBtAAAA",
+    "webp": "/assets/watercolor/ganga-wave.webp",
+    "avif": "/assets/watercolor/ganga-wave.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/ganga-wave-400w.webp",
+        "avif": "/assets/watercolor/ganga-wave-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/ganga-wave-800w.webp",
+        "avif": "/assets/watercolor/ganga-wave-800w.avif"
+      },
+      {
+        "width": 1200,
+        "webp": "/assets/watercolor/ganga-wave-1200w.webp",
+        "avif": "/assets/watercolor/ganga-wave-1200w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/hero-header-bg-clean.jpg": {
+    "width": 768,
+    "height": 1376,
+    "aspectRatio": 0.5581,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAAAwAgCdASoJABAABUB8JYwCdAEfboeNnmq2AAD+6teiEYd62qayNVRyPIZ3kmgA",
+    "webp": "/assets/watercolor/hero-header-bg-clean.webp",
+    "avif": "/assets/watercolor/hero-header-bg-clean.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/hero-header-bg-clean-400w.webp",
+        "avif": "/assets/watercolor/hero-header-bg-clean-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/hero-header-bg-clean.png": {
+    "width": 768,
+    "height": 1376,
+    "aspectRatio": 0.5581,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoJABAABUB8JQBOgCP7qLrrQAD+6y4hLLdiA5mpiY7f06o5dY669dkAAAA=",
+    "webp": "/assets/watercolor/hero-header-bg-clean.webp",
+    "avif": "/assets/watercolor/hero-header-bg-clean.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/hero-header-bg-clean-400w.webp",
+        "avif": "/assets/watercolor/hero-header-bg-clean-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/hero-header-bg-pure.png": {
+    "width": 768,
+    "height": 1376,
+    "aspectRatio": 0.5581,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADwAQCdASoJABAABUB8JYwCdAEf/7AObIAA/urXohGHetqmsi3KFFtHLfI5QAAA",
+    "webp": "/assets/watercolor/hero-header-bg-pure.webp",
+    "avif": "/assets/watercolor/hero-header-bg-pure.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/hero-header-bg-pure-400w.webp",
+        "avif": "/assets/watercolor/hero-header-bg-pure-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/hero-header-card.png": {
+    "width": 521,
+    "height": 830,
+    "aspectRatio": 0.6277,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoKABAABUB8JYwCdAEfboWrmMAA/usuIW3g02IQ1yJ2fwQ8BgZwKUcu4AA=",
+    "webp": "/assets/watercolor/hero-header-card.webp",
+    "avif": "/assets/watercolor/hero-header-card.avif",
+    "variants": []
+  },
+  "/assets/watercolor/hero-header-perfect.png": {
+    "width": 521,
+    "height": 780,
+    "aspectRatio": 0.6679,
+    "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAQCdASoLABAABUB8JYwCdAD0tW9UVIgA/usuQbHHjYZGH+x/vEsRKyJ+imCV8aSaxQAA",
+    "webp": "/assets/watercolor/hero-header-perfect.webp",
+    "avif": "/assets/watercolor/hero-header-perfect.avif",
+    "variants": []
+  },
+  "/assets/watercolor/love-story-journey.png": {
+    "width": 686,
+    "height": 2048,
+    "aspectRatio": 0.335,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoFABAABUB8JYwCdADx/vQgAAD+1hk6PvqDkte0zewb4ij1K1dLldUVpAAAAA==",
+    "webp": "/assets/watercolor/love-story-journey.webp",
+    "avif": "/assets/watercolor/love-story-journey.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/love-story-journey-400w.webp",
+        "avif": "/assets/watercolor/love-story-journey-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/nidhivan-sarovar.jpg": {
+    "width": 1376,
+    "height": 768,
+    "aspectRatio": 1.7917,
+    "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAACwAQCdASoQAAkABUB8JYgCdACj0XlAAP5hEUu/Dldb+luP1IesNj1BtvtebdHiMM/V4AAA",
+    "webp": "/assets/watercolor/nidhivan-sarovar.webp",
+    "avif": "/assets/watercolor/nidhivan-sarovar.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/nidhivan-sarovar-400w.webp",
+        "avif": "/assets/watercolor/nidhivan-sarovar-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/nidhivan-sarovar-800w.webp",
+        "avif": "/assets/watercolor/nidhivan-sarovar-800w.avif"
+      },
+      {
+        "width": 1200,
+        "webp": "/assets/watercolor/nidhivan-sarovar-1200w.webp",
+        "avif": "/assets/watercolor/nidhivan-sarovar-1200w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/pink-rose-petal-1.png": {
+    "width": 621,
+    "height": 644,
+    "aspectRatio": 0.9643,
+    "blurDataURL": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4WAoAAAAQAAAADgAADwAAQUxQSJ4AAAABgFtte0Llu0l7tbqdYx01a9AxAofS3VvXAShZgNqd1nUDtyT//6FhhYiYAMCicWLtZGU4BwvAouWFSuFGGRYWrcIQxDteVGHQxiD86XnVgKZ3Ff7ueZxepeffjh131Ajh4XOU8u3xH+EuSni9TYkIXG+ni3DsSR/Q6S/6wf0kqscU58WL8qQKg+zUI5XK+7k8DBIG9f3LR5PNBZgEAFZQOCA4AAAAsAEAnQEqDwAQAAVAfCWwAnQBDmg2OAD+VId82x14LDijgMlHlK29U1ayqP8ciQ035HO9nuwAAAA=",
+    "webp": "/assets/watercolor/pink-rose-petal-1.webp",
+    "avif": "/assets/watercolor/pink-rose-petal-1.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/pink-rose-petal-1-400w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-1-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/pink-rose-petal-2.png": {
+    "width": 879,
+    "height": 884,
+    "aspectRatio": 0.9943,
+    "blurDataURL": "data:image/webp;base64,UklGRhoBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSJ0AAAABgGJbeyLpy5+4hmFWjKo3MqCYZxQzrmPkSIY1tRpGxYFPpLKHiJgAxGK0KKSVIBadELTODPQXFSRDYf+TwT/fliAABBv0PjDwdxgChVyZlgzhn+UqKEHJMTC2XII2mKJnpuNltEGXOoXWGElZ7kAr1N/RRY73LRAIxhisc5Z/wxAAgsUvhsD3JQhiQdfRyfFqMzSyBZmCtBhjtEIMAFZQOCBWAAAAMAIAnQEqEAAQAAVAfCWwAnQGLfduUGI2r2AA/eoZF1yzYyzIy+kcgUMXan/jkkT0QlMDcoMxBW28kCoMye7tUZYA6WC+tl/+vQu4HR6JUrE3xv2AAAA=",
+    "webp": "/assets/watercolor/pink-rose-petal-2.webp",
+    "avif": "/assets/watercolor/pink-rose-petal-2.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/pink-rose-petal-2-400w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-2-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/pink-rose-petal-2-800w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-2-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/pink-rose-petal-3.png": {
+    "width": 835,
+    "height": 848,
+    "aspectRatio": 0.9847,
+    "blurDataURL": "data:image/webp;base64,UklGRjIBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSKMAAAABgFvbtmplnXP/B1JI6YIKtAEyi8gogZDcLXR3yBwKcGiABuiAd++7+3sNETEBtPSqeYX2wcDArJUTBuZeLqarWJMz9l5KWbe9GBizyjmm+K8NnMCgypgllfrrxwIrimqZNEOAH5XtznD8t5MnzLhRahW1iQcmVeSmnDRKAPZUpJRSoR0MjK55ZanUXV8TZjZ+/P16NdWD0WwODrjRNjgWggEAAFZQOCBoAAAAEAIAnQEqEAAQAAVAfCWwAnQwRgiIxOaf2AD+r5cYd0vC3xi4FG5dJFOvx9NP4ScE3IA5ahQMy/85ZWb14IEwHEcnplUi6u3fUEKtzKR2Zj1bcjztqlSOFAwA93GRYkmxKKSsEy530AA=",
+    "webp": "/assets/watercolor/pink-rose-petal-3.webp",
+    "avif": "/assets/watercolor/pink-rose-petal-3.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/pink-rose-petal-3-400w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-3-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/pink-rose-petal-3-800w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-3-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/pink-rose-petal-4.png": {
+    "width": 783,
+    "height": 768,
+    "aspectRatio": 1.0195,
+    "blurDataURL": "data:image/webp;base64,UklGRhoBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSKEAAAABgKNtkyLlq+rdRWNCd8vd3TVzOQGHIOMupOSektsBNsJlZqqQYc4QERPA3yCABNJFkeqeZkFSVJg7f4zeTidFAKXuxNzdzY8RlOmix7GZRbFvEchd+6enxn5TCnOe+P9fXXCQJfEh2MvWDbVFtwyDBI48Sov8DISqB/8yc4sTXycQmP1wS6LE/JAAKD1X725+u4LyV9HWxY2xSpR0Ff4qAABWUDggUgAAANABAJ0BKhAAEAAFQHwlsAJ0BiwTkJpAAP61qMmBU7gmOgHH1itmeVka+ObJokq9r/+fNqXN+K+R7/1HFjWhx8claMMKcBKb63hRFrRg7wgAAAA=",
+    "webp": "/assets/watercolor/pink-rose-petal-4.webp",
+    "avif": "/assets/watercolor/pink-rose-petal-4.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/pink-rose-petal-4-400w.webp",
+        "avif": "/assets/watercolor/pink-rose-petal-4-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/royal-palace-suite.jpg": {
+    "width": 1024,
+    "height": 576,
+    "aspectRatio": 1.7778,
+    "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAkABUB8JaACdACj7zf4XoAAzg02f5G4qC9FQKYEK/BdrqSIkCN/GMfLK9qZdWUWVeohDTV2C3iXXX2gAA==",
+    "webp": "/assets/watercolor/royal-palace-suite.webp",
+    "avif": "/assets/watercolor/royal-palace-suite.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/royal-palace-suite-400w.webp",
+        "avif": "/assets/watercolor/royal-palace-suite-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/royal-palace-suite-800w.webp",
+        "avif": "/assets/watercolor/royal-palace-suite-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/royal-peacock-feather.png": {
+    "width": 512,
+    "height": 512,
+    "aspectRatio": 1,
+    "blurDataURL": "data:image/webp;base64,UklGRmABAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSM8AAAANgGLb2rLlPO+PuzvJk7ukvzIYHQiZRHJNpB+6e3d35/P/QT7mEBETQKigYoI0tQgViRdUVrz1Le9JSKSvpT3zNf9xlL8mXtebgiovVWcBCIXdLx8KkpiVfQTZXdkHboAoXtk1ZDeampidqKLyFXeQl6/P+gpLRCPWUlYimpadd1iNdSN3q/kADU7OQRD5uj1LSitAlMzWsWic1DeZyzUobNRGz8z6PlmJCCAvswP5G2vt/TNG4oAmrGyOxIyVgBLqy8ROHubhP9QfT0BFCQUAVlA4IGoAAABQAgCdASoQABAABUB8JbACsAYrddZfrOvPIAAA/fuab4g7pmF9O+H94uJFstXmdGDMv4XTvg6s+zDC6So+Qy5wbi9zDj2qyIElbfIRvgtDEN8/OiImxpTiLxcWPKDHucfxDPj+wfPbQugA",
+    "webp": "/assets/watercolor/royal-peacock-feather.webp",
+    "avif": "/assets/watercolor/royal-peacock-feather.avif",
+    "variants": []
+  },
+  "/assets/watercolor/seal-cover-bg.jpg": {
+    "width": 768,
+    "height": 1376,
+    "aspectRatio": 0.5581,
+    "blurDataURL": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoJABAABUB8JYgCdAEPCQ2yoNQA/uF7J0Wdwvexv76PXLrGdkWkQWgGAAA=",
+    "webp": "/assets/watercolor/seal-cover-bg.webp",
+    "avif": "/assets/watercolor/seal-cover-bg.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/seal-cover-bg-400w.webp",
+        "avif": "/assets/watercolor/seal-cover-bg-400w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/seal-invitation-hd.jpg": {
+    "width": 896,
+    "height": 1200,
+    "aspectRatio": 0.7467,
+    "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoMABAABUB8JZgCdAECphsS7oAAAPa3qwRGpeR1qCWuVHAezzLyW4lqv/YcDMHxhEqrGZ7rMRho9oJjhw4BPj5U+93Wa+T9LrseXQAA",
+    "webp": "/assets/watercolor/seal-invitation-hd.webp",
+    "avif": "/assets/watercolor/seal-invitation-hd.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/seal-invitation-hd-400w.webp",
+        "avif": "/assets/watercolor/seal-invitation-hd-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/seal-invitation-hd-800w.webp",
+        "avif": "/assets/watercolor/seal-invitation-hd-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/seal-invitation-master.png": {
+    "width": 341,
+    "height": 521,
+    "aspectRatio": 0.6545,
+    "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAAAQAgCdASoKABAABUB8JQBOgCK557sX1xsAAP7XvanUWMDag8TgM/Fqc6E5xgVDIurGgAAA",
+    "webp": "/assets/watercolor/seal-invitation-master.webp",
+    "avif": "/assets/watercolor/seal-invitation-master.avif",
+    "variants": []
+  },
+  "/assets/watercolor/seal-sanctuary-bg.jpg": {
+    "width": 388,
+    "height": 830,
+    "aspectRatio": 0.4675,
+    "blurDataURL": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoHABAABUB8JQBOgB5uIelwAP7oLR4i76E5whfCqu+FZ9E8Iwz9XgAA",
+    "webp": "/assets/watercolor/seal-sanctuary-bg.webp",
+    "avif": "/assets/watercolor/seal-sanctuary-bg.avif",
+    "variants": []
+  },
+  "/assets/watercolor/seal-sanctuary-bg.png": {
+    "width": 388,
+    "height": 830,
+    "aspectRatio": 0.4675,
+    "blurDataURL": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAABwAQCdASoHABAABUB8JQBOgB5IfAD+61uzZCQ3DmuMX1VfvrK+JSg+LNW0AA==",
+    "webp": "/assets/watercolor/seal-sanctuary-bg.webp",
+    "avif": "/assets/watercolor/seal-sanctuary-bg.avif",
+    "variants": []
+  },
+  "/assets/watercolor/venue.jpg": {
+    "width": 914,
+    "height": 609,
+    "aspectRatio": 1.5008,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAsABUB8JZgCdACyoGMjAAD+1v8Z0O6nYVC9OjMvPjv1dtR5WeyPttkDJVH7RXT/hqNlYadzNKYAAAA=",
+    "webp": "/assets/watercolor/venue.webp",
+    "avif": "/assets/watercolor/venue.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/venue-400w.webp",
+        "avif": "/assets/watercolor/venue-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/venue-800w.webp",
+        "avif": "/assets/watercolor/venue-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/we-are-here-for-you.png": {
+    "width": 984,
+    "height": 2048,
+    "aspectRatio": 0.4805,
+    "blurDataURL": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACQAQCdASoIABAABUB8JYwAAudZOxAA/u/SDSPXrYYKVtTTzHs6peC3ljKPlZd6pDgAAA==",
+    "webp": "/assets/watercolor/we-are-here-for-you.webp",
+    "avif": "/assets/watercolor/we-are-here-for-you.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/we-are-here-for-you-400w.webp",
+        "avif": "/assets/watercolor/we-are-here-for-you-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/we-are-here-for-you-800w.webp",
+        "avif": "/assets/watercolor/we-are-here-for-you-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/wedding-festivities-header.png": {
+    "width": 1024,
+    "height": 668,
+    "aspectRatio": 1.5329,
+    "blurDataURL": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAADwAQCdASoQAAoABUB8JYwCdAEUrnMm95AA/uFZNulXpAHP6lgL8CyAAAA=",
+    "webp": "/assets/watercolor/wedding-festivities-header.webp",
+    "avif": "/assets/watercolor/wedding-festivities-header.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/wedding-festivities-header-400w.webp",
+        "avif": "/assets/watercolor/wedding-festivities-header-400w.avif"
+      },
+      {
+        "width": 800,
+        "webp": "/assets/watercolor/wedding-festivities-header-800w.webp",
+        "avif": "/assets/watercolor/wedding-festivities-header-800w.avif"
+      }
+    ]
+  },
+  "/assets/watercolor/wedding-seal-invitation.jpg": {
+    "width": 664,
+    "height": 1024,
+    "aspectRatio": 0.6484,
+    "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAQCdASoKABAABUB8JQBOgB4/q7H6ucAA/uIkTykB4BGnDjspJbyFTfCYe0vO9+SygAAA",
+    "webp": "/assets/watercolor/wedding-seal-invitation.webp",
+    "avif": "/assets/watercolor/wedding-seal-invitation.avif",
+    "variants": [
+      {
+        "width": 400,
+        "webp": "/assets/watercolor/wedding-seal-invitation-400w.webp",
+        "avif": "/assets/watercolor/wedding-seal-invitation-400w.avif"
+      }
+    ]
+  }
+}

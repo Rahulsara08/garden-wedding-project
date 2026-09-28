@@ -14,12 +14,15 @@ export interface EventCeremony {
   id: string;
   name: string;
   subtitle: string;
+  quote?: string;
   time: string;
+  date?: string;
   venueName: string;
   mapLink: string;
   note: string;
   dressCode?: string;
   iconType: "haldi" | "mehndi" | "sangeet" | "wedding" | "pheras";
+  image?: string;
 }
 
 export interface EventDay {
@@ -152,14 +155,14 @@ export const weddingConfig = {
       sideLabel: "The Bride's Family",
       childName: "Riya Sharma",
       parentsNames: "Mrs. Sunita & Mr. Rajesh Sharma",
-      blessingLine: "With immense love and treasured blessings for our beloved daughter as she blossoms into a new chapter.",
+      blessingLine: "",
       grandparentsNames: "Granddaughter of Late Smt. Kamala Devi & Late Shri O.P. Sharma",
     } as FamilySide,
     groom: {
       sideLabel: "The Groom's Family",
       childName: "Aarav Mehta",
       parentsNames: "Mrs. Meenakshi & Mr. Vikram Mehta",
-      blessingLine: "With hearts full of pride and joy, welcoming Riya into our warmth, hearts, and home forever.",
+      blessingLine: "",
       grandparentsNames: "Grandson of Smt. Shanti Devi & Shri Rameshwar Mehta",
     } as FamilySide,
   },
@@ -178,34 +181,43 @@ export const weddingConfig = {
             id: "haldi",
             name: "Haldi Utsav",
             subtitle: "Sunshine, auspicious turmeric, and fragrant marigolds",
+            quote: "A splash of turmeric, a lifetime of joy.",
             time: "10:30 AM onwards",
+            date: "Thursday, 11 Feb",
             venueName: "Courtyard of Lotuses, Shri Vrindavan Gardens",
             mapLink: "https://maps.google.com/?q=Vrindavan",
-            note: "Wear cheerful shades of turmeric yellow & sunshine gold",
-            dressCode: "Yellow & Floral Traditional",
+            note: "",
+            dressCode: "Festive Yellow & Florals",
             iconType: "haldi",
+            image: "/assets/events/event-haldi.png",
           },
           {
             id: "mehndi",
             name: "Mehndi Ki Raat",
             subtitle: "Intricate henna vines and soothing evening tunes",
+            quote: "Intricate henna, written in love.",
             time: "04:00 PM onwards",
+            date: "Thursday, 11 Feb",
             venueName: "The Riverside Verandah",
             mapLink: "https://maps.google.com/?q=Vrindavan",
-            note: "Join us for henna artistry, fresh chai, and folk songs",
-            dressCode: "Pastel Greens & Vibrant Florals",
+            note: "",
+            dressCode: "Pastel Greens & Henna Tones",
             iconType: "mehndi",
+            image: "/assets/events/event-mehndi.png",
           },
           {
             id: "sangeet",
             name: "Sangeet & Musical Night",
             subtitle: "An evening of dance, laughter, and heartwarming toasts",
+            quote: "Dancing to the rhythm of two hearts becoming one.",
             time: "07:30 PM onwards",
+            date: "Thursday, 11 Feb",
             venueName: "The Royal Lotus Ballroom",
             mapLink: "https://maps.google.com/?q=Vrindavan",
-            note: "Bring your dancing shoes for non-stop celebration",
-            dressCode: "Emerald Glam & Indian Evening Couture",
+            note: "",
+            dressCode: "Emerald Glam & Evening Couture",
             iconType: "sangeet",
+            image: "/assets/events/event-sangeet.png",
           },
         ],
       },
@@ -217,23 +229,29 @@ export const weddingConfig = {
             id: "baraat",
             name: "Baraat Swagat",
             subtitle: "The groom's celebratory royal procession",
+            quote: "With music and grand joy, the groom arrives.",
             time: "04:30 PM",
+            date: "Friday, 12 Feb",
             venueName: "Grand Palace Archway, Shri Vrindavan Gardens",
             mapLink: "https://maps.google.com/?q=Vrindavan",
-            note: "Let the beats of dholak herald the arrival of the groom",
-            dressCode: "Regal Indian Heritage",
+            note: "",
+            dressCode: "Regal Heritage Attire",
             iconType: "wedding",
+            image: "/assets/events/event-baraat.png",
           },
           {
             id: "pheras",
             name: "Vivah Sanskar & Saat Phere",
             subtitle: "Sacred vows around the holy fire at sunset",
+            quote: "Seven sacred steps into eternity.",
             time: "06:00 PM onwards",
+            date: "Friday, 12 Feb",
             venueName: "Yamuna Ghat Mandap, Shri Vrindavan Gardens",
             mapLink: "https://maps.google.com/?q=Vrindavan",
-            note: "Followed by a royal dinner banquet under starry skies",
+            note: "",
             dressCode: "Traditional Formal / Raw Silk & Gold",
             iconType: "pheras",
+            image: "/assets/events/event-vivah.png",
           },
         ],
       },

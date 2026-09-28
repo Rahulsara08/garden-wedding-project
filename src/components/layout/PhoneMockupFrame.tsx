@@ -31,7 +31,7 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, pr
       containerRef={showPhoneFrame ? phoneScrollRef : null}
       isFramed={showPhoneFrame}
     >
-      <div className="relative min-h-screen w-full bg-ivory flex flex-col items-center justify-center selection:bg-gold/20 selection:text-forest overflow-x-hidden">
+      <div className="relative min-h-screen w-full bg-[#FAF3E4] flex flex-col items-center justify-center selection:bg-gold/20 selection:text-forest overflow-x-hidden">
         {/* Desktop Ambient Animated Flowers & Birds Wallpaper Background */}
         {showPhoneFrame && (
           <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-0">
@@ -158,7 +158,7 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({ children, pr
               <div className="absolute -right-[5px] top-44 w-[3px] h-16 bg-[#181D1A] rounded-r-xs" />
 
               {/* Inner Screen Bezel */}
-              <div className="relative w-full h-full bg-ivory rounded-[42px] overflow-hidden flex flex-col border border-gold/15">
+              <div className="relative w-full h-full bg-[#FAF3E4] rounded-[42px] overflow-hidden flex flex-col border border-gold/15">
                 {/* Preloader / Seal Screen Overlay inside Phone Chassis */}
                 {preloader}
 

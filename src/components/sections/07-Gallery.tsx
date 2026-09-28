@@ -8,7 +8,7 @@ import { LotusDivider } from "../motifs/LotusDivider";
 
 export const Gallery: React.FC = () => {
   return (
-    <section id="gallery-section" className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture overflow-hidden">
+    <section id="gallery-section" className="relative py-12 px-3 sm:px-4 bg-[#FAF3E4] paper-texture overflow-hidden">
       {/* Section Header */}
       <div className="text-center max-w-lg mx-auto mb-8">
         <motion.p

@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 scratch/
+scratch_media_*
 render_v3.py
 test_*.py
 

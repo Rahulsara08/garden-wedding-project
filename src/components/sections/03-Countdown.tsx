@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { weddingConfig } from "@/config/weddingConfig";
 import { SwingScrollOverlay } from "../animations/SwingScrollOverlay";
-import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 interface TimeLeft {
   days: number;
@@ -108,7 +107,7 @@ export const Countdown: React.FC = () => {
         </div>
 
         {/* Soft Top Seamless Blending Overlay */}
-        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-ivory to-transparent z-12 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#FAF3E4] via-[#FAF3E4]/80 to-transparent z-12 pointer-events-none" />
 
         {/* Bottom Flowers matching Reference Image (Authentic clean watercolor botanicals) */}
         <div className="absolute bottom-0 left-0 right-0 z-15 pointer-events-none select-none flex justify-between items-end px-1 sm:px-2">
@@ -218,11 +217,6 @@ export const Countdown: React.FC = () => {
             )}
           </div>
         </div>
-      </div>
-
-      {/* Section Breaker Motif (Image 5) */}
-      <div className="w-full pt-4 pb-2 flex justify-center z-20">
-        <GoldenLeafDivider />
       </div>
     </section>
   );

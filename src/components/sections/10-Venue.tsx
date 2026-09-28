@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { motion } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { CornerFlourish } from "../motifs/CornerFlourish";
@@ -12,7 +12,7 @@ export const Venue: React.FC = () => {
   const { venue } = weddingConfig;
 
   return (
-    <section id="venue-section" className="relative py-12 px-3 sm:px-4 bg-ivory paper-texture">
+    <section id="venue-section" className="relative py-12 px-3 sm:px-4 bg-[#FAF3E4] paper-texture">
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-lg mx-auto mb-8">
@@ -49,11 +49,10 @@ export const Venue: React.FC = () => {
         >
           {/* Watercolor Venue Illustration Merged with Background */}
           <div className="relative w-full max-w-[340px] aspect-[16/11] overflow-hidden rounded-2xl border border-gold/25 shadow-md bg-ivory">
-            <Image
+            <OptimizedImage
               src={venue.artworkImage}
               alt={venue.heading}
               fill
-              unoptimized
               sizes="(max-width: 768px) 100vw, 350px"
               className="object-cover"
             />
