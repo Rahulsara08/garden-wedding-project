@@ -71,8 +71,6 @@ export default function Home() {
           {/* 02: Hero / Welcome */}
           <HeroWelcome />
 
-          <SectionDivider />
-
           {/* 03: Countdown to Forever */}
           <Countdown />
 

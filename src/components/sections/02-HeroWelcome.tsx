@@ -6,7 +6,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 import { HeroFlock } from "../animations/HeroFlock";
-import { GoldenLeafDivider } from "../motifs/GoldenLeafDivider";
 
 export const HeroWelcome: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -173,12 +172,12 @@ export const HeroWelcome: React.FC = () => {
         </div>
       </div>
 
-      {/* 5. Bottom Cue: Subtle Scroll Cue + Royal Lotus Divider */}
+      {/* 5. Bottom Cue: Subtle Scroll Cue */}
       <div className="relative z-20 w-full flex-shrink-0 flex flex-col items-center pb-3 pt-1">
         <motion.div
           animate={{ y: [0, 4, 0], opacity: [0.65, 1, 0.65] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1 mb-2 pointer-events-none select-none"
+          className="flex flex-col items-center gap-1 mb-1 pointer-events-none select-none"
         >
           <span className="text-[9px] uppercase tracking-[0.28em] text-[#8F6E36]/80 font-medium">
             Scroll to Explore
@@ -195,11 +194,6 @@ export const HeroWelcome: React.FC = () => {
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </motion.div>
-
-        {/* Royal Section Breaker Divider Motif at boundary of first stage */}
-        <div className="w-full flex justify-center">
-          <GoldenLeafDivider />
-        </div>
       </div>
     </section>
   );
