@@ -6,7 +6,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { weddingConfig } from "@/config/weddingConfig";
 import { useScrollContainer } from "@/context/ScrollContainerContext";
 import { LotusDivider } from "../motifs/LotusDivider";
-import { MapPin, Clock, Calendar } from "lucide-react";
+import { MapPin, Clock, Calendar, Sparkles } from "lucide-react";
 
 export const EventsTimeline: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,8 +14,8 @@ export const EventsTimeline: React.FC = () => {
   const [pathData, setPathData] = useState<string>("");
   const { containerRef: scrollContainer } = useScrollContainer();
 
-  // Flatten all events across days into one unified chronological sequence
-  const allEvents = weddingConfig.timeline.days.flatMap((day) => day.events);
+  const days = weddingConfig.timeline.days;
+  const allEvents = days.flatMap((day) => day.events);
 
   // Scroll Progress for active golden path drawing
   const { scrollYProgress } = useScroll({
@@ -81,13 +81,15 @@ export const EventsTimeline: React.FC = () => {
     };
   }, [calculatePath]);
 
+  let globalEventCounter = 0;
+
   return (
     <section
       id="events-section"
       className="relative py-12 px-3 sm:px-4 bg-[#FAF3E4] paper-texture overflow-hidden select-none"
     >
-      {/* Section Header — Clean Text Title without any card image */}
-      <div className="text-center max-w-lg mx-auto mb-12">
+      {/* Section Header */}
+      <div className="text-center max-w-lg mx-auto mb-10 sm:mb-12">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -115,7 +117,7 @@ export const EventsTimeline: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto"
+          className="text-xs text-sage/80 font-sans tracking-wide max-w-xs mx-auto leading-relaxed"
         >
           {weddingConfig.timeline.subtitle}
         </motion.p>
@@ -165,163 +167,189 @@ export const EventsTimeline: React.FC = () => {
           </svg>
         )}
 
-        {/* All Events (Single list directly after heading) */}
-        <div className="space-y-16 sm:space-y-20">
-          {allEvents.map((event, globalIdx) => {
-            // Alternating left/right orientation
-            const isLeft = globalIdx % 2 === 0;
+        {/* Days & Events */}
+        <div className="space-y-12 sm:space-y-16">
+          {days.map((day, dayIdx) => (
+            <div key={dayIdx} className="space-y-12 sm:space-y-14">
+              {/* Creative Day Banner Divider */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative z-10 flex items-center justify-center my-6"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E4]/95 border border-gold/40 shadow-xs backdrop-blur-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-gold" />
+                  <span className="text-[11px] sm:text-xs font-serif font-semibold tracking-wider text-forest uppercase">
+                    {day.dayLabel}
+                  </span>
+                  <span className="text-gold/50">•</span>
+                  <span className="text-[10px] sm:text-[11px] font-sans text-gold-dark font-medium">
+                    {day.dateString}
+                  </span>
+                </div>
+              </motion.div>
 
-            return (
-              <div key={event.id} className="relative w-full min-h-[160px]">
-                {/* 1. Main Event Card/Content */}
-                <motion.div
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.25 }}
-                  transition={{ duration: 0.6 }}
-                  className={`flex flex-col w-[58%] sm:w-[52%] max-w-[320px] ${
-                    isLeft ? "mr-auto items-start text-left" : "ml-auto items-end text-right"
-                  }`}
-                >
-                  {/* Prominent Event Illustration Node (Smaller Size) */}
-                  <div
-                    className={`relative mb-2 flex items-center z-10 ${
-                      isLeft ? "justify-start" : "justify-end"
-                    }`}
-                  >
-                    <div
-                      ref={(el) => {
-                        signRefs.current[globalIdx] = el;
-                      }}
-                      className="relative w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center"
-                    >
-                      {/* Soft Theme Aura behind image */}
-                      <div className="absolute inset-1 rounded-full bg-gold/10 blur-sm pointer-events-none" />
+              {/* Events for this Day */}
+              <div className="space-y-14 sm:space-y-18">
+                {day.events.map((event) => {
+                  const globalIdx = globalEventCounter++;
+                  const isLeft = globalIdx % 2 === 0;
 
-                      <div className="relative w-full h-full">
-                        <OptimizedImage
-                          src={event.image || "/assets/events/event-haldi.png"}
-                          alt={event.name}
-                          fill
-                          sizes="(max-width: 768px) 128px, 140px"
-                          className="object-contain drop-shadow-[0_4px_10px_rgba(44,56,38,0.1)] select-none pointer-events-none"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  return (
+                    <div key={event.id} className="relative w-full min-h-[150px]">
+                      {/* 1. Main Event Content Block */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 22 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.25 }}
+                        transition={{ duration: 0.6 }}
+                        className={`flex flex-col w-[58%] sm:w-[52%] max-w-[320px] ${
+                          isLeft
+                            ? "mr-auto items-start text-left"
+                            : "ml-auto items-end text-right"
+                        }`}
+                      >
+                        {/* Prominent Event Illustration Node */}
+                        <div
+                          className={`relative mb-2 flex items-center z-10 ${
+                            isLeft ? "justify-start" : "justify-end"
+                          }`}
+                        >
+                          <div
+                            ref={(el) => {
+                              signRefs.current[globalIdx] = el;
+                            }}
+                            className="relative w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center"
+                          >
+                            {/* Soft Theme Aura behind image */}
+                            <div className="absolute inset-1 rounded-full bg-gold/15 blur-md pointer-events-none" />
 
-                  {/* Direct Text Layout without Card Box */}
-                  <div
-                    className={`w-full flex flex-col gap-1.5 z-10 py-1 ${
-                      isLeft ? "items-start text-left" : "items-end text-right"
-                    }`}
-                  >
-                    {/* Event Name */}
-                    <h3
-                      className="text-lg sm:text-2xl font-serif text-forest font-semibold tracking-tight text-embossed"
-                      style={{ fontFamily: "var(--font-playfair)" }}
-                    >
-                      {event.name}
-                    </h3>
+                            <div className="relative w-full h-full">
+                              <OptimizedImage
+                                src={event.image || "/assets/events/event-haldi.png"}
+                                alt={event.name}
+                                fill
+                                sizes="(max-width: 768px) 128px, 140px"
+                                className="object-contain drop-shadow-[0_4px_12px_rgba(44,56,38,0.12)] select-none pointer-events-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-                    {/* Tagline right below the event name */}
-                    <p className="font-script text-sm sm:text-lg text-gold-dark -mt-1 leading-snug">
-                      {event.subtitle}
-                    </p>
+                        {/* Direct Text Layout — Tagline removed per request */}
+                        <div
+                          className={`w-full flex flex-col gap-1.5 z-10 py-1 ${
+                            isLeft ? "items-start text-left" : "items-end text-right"
+                          }`}
+                        >
+                          {/* Event Name */}
+                          <h3
+                            className="text-lg sm:text-2xl font-serif text-forest font-semibold tracking-tight text-embossed"
+                            style={{ fontFamily: "var(--font-playfair)" }}
+                          >
+                            {event.name}
+                          </h3>
 
-                    {/* Chips: Date & Time & Venue */}
-                    <div
-                      className={`flex flex-wrap items-center gap-1.5 my-1 ${
-                        isLeft ? "justify-start" : "justify-end"
-                      }`}
-                    >
-                      {event.date && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FAF3E4]/90 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/30">
-                          <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
-                          {event.date}
-                        </span>
+                          {/* Chips: Date & Time & Venue */}
+                          <div
+                            className={`flex flex-wrap items-center gap-1.5 my-1 ${
+                              isLeft ? "justify-start" : "justify-end"
+                            }`}
+                          >
+                            {event.date && (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF3E4]/95 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/35 shadow-2xs">
+                                <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
+                                {event.date}
+                              </span>
+                            )}
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF3E4]/95 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/35 shadow-2xs">
+                              <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
+                              {event.time}
+                            </span>
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF3E4]/95 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/35 shadow-2xs">
+                              <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
+                              {event.venueName}
+                            </span>
+                          </div>
+
+                          {/* Attire / Dress Code */}
+                          {event.dressCode && (
+                            <div className="text-[10px] sm:text-[10.5px] text-gold-dark font-sans tracking-wide">
+                              <span className="font-semibold uppercase text-gold">
+                                Attire:
+                              </span>{" "}
+                              {event.dressCode}
+                            </div>
+                          )}
+
+                          {/* Directions Link */}
+                          <div className="pt-0.5">
+                            <a
+                              href={event.mapLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-serif uppercase tracking-widest text-forest hover:text-gold transition-colors font-semibold group"
+                            >
+                              <span>Get Directions</span>
+                              <span className="text-gold transition-transform group-hover:translate-x-0.5">
+                                →
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* 2. Cursive Poetic Quote floating on opposite side */}
+                      {event.quote && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: false, amount: 0.3 }}
+                          transition={{ duration: 0.8, delay: 0.15 }}
+                          className={`absolute top-2 sm:top-6 w-[42%] sm:w-[46%] max-w-[220px] pointer-events-none z-10 flex flex-col ${
+                            isLeft
+                              ? "right-0 items-start text-left pl-2 sm:pl-4"
+                              : "left-0 items-end text-right pr-2 sm:pr-4"
+                          }`}
+                        >
+                          <p
+                            className="font-script text-lg sm:text-2xl text-[#B68D4C] leading-snug tracking-wide font-normal"
+                            style={{
+                              fontFamily: "var(--font-script), cursive",
+                              textShadow: "0 1px 2px rgba(182, 141, 76, 0.15)",
+                            }}
+                          >
+                            {event.quote}
+                          </p>
+                          {/* Delicate Golden Heart & Stem Motif */}
+                          <div
+                            className={`mt-1 flex items-center gap-1 text-[#C49A45]/80 ${
+                              isLeft ? "justify-start" : "justify-end"
+                            }`}
+                          >
+                            <svg
+                              className="w-3.5 h-3.5 text-[#C49A45]"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                            </svg>
+                            <span className="w-8 h-[1px] bg-gradient-to-r from-[#C49A45]/40 to-transparent" />
+                          </div>
+                        </motion.div>
                       )}
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FAF3E4]/90 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/30">
-                        <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
-                        {event.time}
-                      </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FAF3E4]/90 text-forest text-[9.5px] sm:text-[10px] font-sans border border-gold/30">
-                        <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gold" />
-                        {event.venueName}
-                      </span>
                     </div>
-
-                    {/* Attire / Dress Code */}
-                    {event.dressCode && (
-                      <div className="text-[10px] sm:text-[10.5px] text-gold-dark font-sans tracking-wide">
-                        <span className="font-semibold uppercase text-gold">Attire:</span>{" "}
-                        {event.dressCode}
-                      </div>
-                    )}
-
-                    {/* Directions Link */}
-                    <div className="pt-0.5">
-                      <a
-                        href={event.mapLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-serif uppercase tracking-widest text-forest hover:text-gold transition-colors font-semibold group"
-                      >
-                        <span>Get Directions</span>
-                        <span className="text-gold transition-transform group-hover:translate-x-0.5">
-                          →
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* 2. Minimal Aesthetic Cursive Quote in Free Space matching Image 2 */}
-                {event.quote && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8, delay: 0.15 }}
-                    className={`absolute top-2 sm:top-6 w-[42%] sm:w-[46%] max-w-[220px] pointer-events-none z-10 flex flex-col ${
-                      isLeft
-                        ? "right-0 items-start text-left pl-2 sm:pl-4"
-                        : "left-0 items-end text-right pr-2 sm:pr-4"
-                    }`}
-                  >
-                    <p
-                      className="font-script text-lg sm:text-2xl text-[#B68D4C] leading-snug tracking-wide font-normal"
-                      style={{
-                        fontFamily: "var(--font-script), cursive",
-                        textShadow: "0 1px 2px rgba(182, 141, 76, 0.15)",
-                      }}
-                    >
-                      {event.quote}
-                    </p>
-                    {/* Delicate Golden Heart & Stem Motif matching Image 2 */}
-                    <div
-                      className={`mt-1 flex items-center gap-1 text-[#C49A45]/80 ${
-                        isLeft ? "justify-start" : "justify-end"
-                      }`}
-                    >
-                      <svg
-                        className="w-3.5 h-3.5 text-[#C49A45]"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                      </svg>
-                      <span className="w-8 h-[1px] bg-gradient-to-r from-[#C49A45]/40 to-transparent" />
-                    </div>
-                  </motion.div>
-                )}
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
