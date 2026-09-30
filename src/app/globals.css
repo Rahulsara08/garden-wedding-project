@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Italianno&family=Caveat:wght@500;600;700&family=Marck+Script&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -25,6 +25,8 @@
   --font-cormorant: var(--font-cormorant), serif;
   --font-calligraphy: var(--font-great-vibes), cursive;
   --font-pinyon: 'Pinyon Script', cursive;
+  --font-handwriting: 'Caveat', cursive;
+  --font-journal: 'Marck Script', cursive;
 }
 
 :root {

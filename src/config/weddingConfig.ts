@@ -3,11 +3,17 @@ export interface StoryMoment {
   title: string;
   date: string;
   dateDetail?: string;
+  badgeMonth?: string;
+  badgeLabel?: string;
   iconEmoji?: string;
   quote: string;
   extraText?: string;
   photo: string;
   rotation: number; // slight polaroid tilt angle in degrees (-4 to 4)
+  notes?: {
+    left?: string[];
+    right?: string[];
+  };
 }
 
 export interface EventCeremony {
@@ -105,43 +111,59 @@ export const weddingConfig = {
   story: {
     sectionEyebrow: "OUR JOURNEY",
     heading: "How Love Unfolded",
-    subtitle: "Every love story is beautiful, but ours is our absolute favorite.",
+    subtitle: "Some stories are known..., but ours is our endless favorite.",
     moments: [
       {
         id: "moment-1",
         title: "The First Hello",
-        date: "October 2023",
-        dateDetail: "12/10/23 · Oct 2023",
+        date: "February 2023",
+        dateDetail: "FEB 2023 · FIRST MEET",
+        badgeMonth: "FEB 2023",
+        badgeLabel: "FIRST MEET",
         iconEmoji: "☕",
-        quote: "Where two quiet paths gently met and became one.",
+        quote: "“A simple conversation, yet a page in our forever story.”",
         extraText:
           "A quiet coffee shop in Delhi, crisp autumn air, and two souls who were supposed to have a brief conversation. Three hours later, amidst unfinished lattes and shared smiles, neither of us wanted the evening to end.",
-        photo: "/assets/photos/story-first-hello.png",
+        photo: "/assets/photos/story-first-hello-hd.png",
         rotation: 0,
+        notes: {
+          left: ["Strangers", "today,", "forever", "tomorrow"],
+        },
       },
       {
         id: "moment-2",
         title: "A Shared Cup of Chai",
-        date: "Spring 2024",
-        dateDetail: "18/04/24 · Apr 2024",
+        date: "July 2023",
+        dateDetail: "JUL 2023 · A DEEPER US",
+        badgeMonth: "JUL 2023",
+        badgeLabel: "A DEEPER US",
         iconEmoji: "🫖",
-        quote: "Countless conversations, quiet glances, and knowing our souls had found home.",
+        quote: "“Over our first cup of cutting chai, two hearts began a forever journey.”",
         extraText:
           "Under the blossoming jacaranda trees and winding evening walks, between laughter, cherished secrets, and spontaneous road trips, we realized that the simplest moments together were the ones that felt most like forever.",
-        photo: "/assets/photos/story-chai-moment.png",
+        photo: "/assets/photos/story-chai-hd.png",
         rotation: 0,
+        notes: {
+          left: ["Some", "conversations", "change", "everything"],
+          right: ["You", "make", "the ordinary", "extraordinary"],
+        },
       },
       {
         id: "moment-3",
         title: "The Proposal",
-        date: "Winter 2024",
-        dateDetail: "14/11/24 · Nov 2024",
+        date: "May 2024",
+        dateDetail: "MAY 2024 · TOGETHER",
+        badgeMonth: "MAY 2024",
+        badgeLabel: "TOGETHER",
         iconEmoji: "💍",
-        quote: "Under golden skies, she said yes to a lifetime of love.",
+        quote: "“Under open skies, we chose a forever together.”",
         extraText:
           "Against the timeless sandstone ramparts of Udaipur, as the golden sun dipped gently into the tranquil waters of Lake Pichola, Aarav asked the question that changed everything. With tearful joy and overflowing hearts, she said yes.",
-        photo: "/assets/photos/story-proposal.png",
+        photo: "/assets/photos/story-proposal-hd.png",
         rotation: 0,
+        notes: {
+          left: ["Different", "places,", "same dream"],
+        },
       },
     ] as StoryMoment[],
   },
